@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "cdn.collegiax.app" },
     ],
   },
-  serverExternalPackages: ["@libsql/client"],
+  serverExternalPackages: ["better-sqlite3"],
 };
 
 export default nextConfig;

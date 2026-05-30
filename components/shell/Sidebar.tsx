@@ -21,6 +21,8 @@ import {
   Shield,
   UserCog,
   Megaphone,
+  PanelLeftClose,
+  PanelLeftOpen,
   X,
   Sparkles,
 } from "lucide-react";
@@ -47,7 +49,7 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export function Sidebar({ user }: { user: { id: string; name: string; role: string; avatarInitials: string | null } }) {
   const pathname = usePathname();
-  const { sidebarOpen, setSidebarOpen } = useUIStore();
+  const { sidebarOpen, setSidebarOpen, sidebarCollapsed, toggleSidebarCollapsed } = useUIStore();
   const navs = ROLE_NAVS[user.role] || ROLE_NAVS.student;
 
   return (
@@ -58,34 +60,50 @@ export function Sidebar({ user }: { user: { id: string; name: string; role: stri
       )}
 
       <aside
-        className="sidebar fixed top-0 left-0 bottom-0 z-[100] flex w-[240px] flex-col overflow-y-auto border-r border-[var(--border)] bg-[var(--bg2)] transition-transform duration-300"
-        style={{ transform: sidebarOpen ? "translateX(0)" : undefined }}
+        className={`sidebar fixed top-0 left-0 bottom-0 z-[100] flex w-[280px] max-w-[86vw] flex-col overflow-y-auto border-r border-[var(--border)] bg-[var(--bg2)] transition-[transform,width] duration-300 ease-out md:translate-x-0 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } ${sidebarCollapsed ? "md:w-[72px]" : "md:w-[240px]"}`}
       >
         {/* Left accent line */}
         <div className="absolute top-0 left-0 bottom-0 w-[3px]" style={{ background: "linear-gradient(180deg,var(--accent),var(--accent2),var(--accent3))", opacity: 0.6 }} />
 
         {/* Header */}
-        <div className="relative border-b border-[var(--border)] px-[18px] pt-5 pb-4">
-          <div className="mb-3 flex items-center gap-2">
+        <div className={`relative border-b border-[var(--border)] px-[18px] pt-5 pb-4 ${sidebarCollapsed ? "md:px-3" : ""}`}>
+          <div className={`mb-3 flex items-center gap-2 ${sidebarCollapsed ? "md:justify-center" : ""}`}>
             <div className="flex h-[34px] w-[34px] items-center justify-center rounded-[9px] text-sm text-white" style={{ background: "linear-gradient(135deg,var(--accent),var(--accent2))" }}>
               <Sparkles size={16} />
             </div>
-            <span className="text-[17px] font-extrabold" style={{ fontFamily: "var(--font-syne)" }}>
+            <span className={`text-[17px] font-extrabold ${sidebarCollapsed ? "md:hidden" : ""}`} style={{ fontFamily: "var(--font-syne)" }}>
               Collegia<span className="text-[var(--accent)]">X</span>
             </span>
           </div>
-          <div className="flex items-center gap-2 rounded-[10px] bg-[var(--surface)] p-2">
+          <div className={`flex items-center gap-2 rounded-[10px] bg-[var(--surface)] p-2 ${sidebarCollapsed ? "md:justify-center md:bg-transparent md:p-0" : ""}`}>
             <div className="flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white" style={{ background: "linear-gradient(135deg,var(--accent),var(--accent2))" }}>
               {user.avatarInitials || user.name.slice(0, 2).toUpperCase()}
             </div>
-            <div className="min-w-0">
+            <div className={`min-w-0 ${sidebarCollapsed ? "md:hidden" : ""}`}>
               <div className="truncate text-xs font-semibold">{user.name}</div>
               <div className="text-[10px] text-[var(--accent)] opacity-80" style={{ fontFamily: "var(--font-jetbrains)" }}>
                 {user.role}
               </div>
             </div>
           </div>
-          <button onClick={() => setSidebarOpen(false)} className="absolute top-4 right-3 text-[var(--text2)] md:hidden">
+          <button
+            onClick={toggleSidebarCollapsed}
+            className={`hidden h-8 w-8 items-center justify-center rounded-[10px] text-[var(--text2)] transition hover:bg-[var(--surface)] hover:text-[var(--text)] md:flex ${
+              sidebarCollapsed ? "md:mx-auto md:mt-3" : "md:absolute md:top-4 md:right-3"
+            }`}
+            title={sidebarCollapsed ? "Expand dashboard menu" : "Close dashboard menu"}
+            aria-label={sidebarCollapsed ? "Expand dashboard menu" : "Close dashboard menu"}
+          >
+            {sidebarCollapsed ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
+          </button>
+          <button
+            onClick={() => setSidebarOpen(false)}
+            className="absolute top-4 right-3 flex h-8 w-8 items-center justify-center rounded-[10px] text-[var(--text2)] transition hover:bg-[var(--surface)] hover:text-[var(--text)] md:hidden"
+            title="Close menu"
+            aria-label="Close menu"
+          >
             <X size={18} />
           </button>
         </div>
@@ -99,18 +117,19 @@ export function Sidebar({ user }: { user: { id: string; name: string; role: stri
                 key={item.href}
                 href={item.href}
                 onClick={() => setSidebarOpen(false)}
+                title={item.label}
                 className={`nav-item relative mb-0.5 flex items-center gap-2 rounded-[10px] px-3 py-2 text-[13px] font-medium transition ${
                   active
                     ? "text-[var(--text)]"
                     : "text-[var(--text2)] hover:bg-[var(--surface)] hover:text-[var(--text)]"
-                }`}
+                } ${sidebarCollapsed ? "md:justify-center md:px-0" : ""}`}
                 style={active ? { background: "linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.1))" } : undefined}
               >
                 {active && (
                   <span className="absolute left-0 top-1/2 h-[18px] w-[3px] -translate-y-1/2 rounded-r-sm bg-[var(--accent)]" />
                 )}
                 <span className="flex-shrink-0">{iconMap[item.icon]}</span>
-                <span>{item.label}</span>
+                <span className={sidebarCollapsed ? "md:hidden" : ""}>{item.label}</span>
               </Link>
             );
           })}
@@ -118,7 +137,7 @@ export function Sidebar({ user }: { user: { id: string; name: string; role: stri
 
         {/* Footer */}
         <div className="border-t border-[var(--border)] px-2.5 py-3.5">
-          <LogoutButton />
+          <LogoutButton compact={sidebarCollapsed} />
         </div>
       </aside>
     </>

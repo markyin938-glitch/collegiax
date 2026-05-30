@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
 
-export function LogoutButton() {
+export function LogoutButton({ compact = false }: { compact?: boolean }) {
   const router = useRouter();
 
   async function logout() {
@@ -15,10 +15,14 @@ export function LogoutButton() {
   return (
     <button
       onClick={logout}
-      className="flex w-full items-center gap-2 rounded-[10px] px-3 py-2 text-[13px] font-medium text-[var(--text2)] transition hover:bg-[var(--surface)] hover:text-[var(--text)]"
+      className={`flex w-full items-center gap-2 rounded-[10px] px-3 py-2 text-[13px] font-medium text-[var(--text2)] transition hover:bg-[var(--surface)] hover:text-[var(--text)] ${
+        compact ? "justify-center md:px-0" : ""
+      }`}
+      title="Logout"
+      aria-label="Logout"
     >
       <LogOut size={16} />
-      <span>Logout</span>
+      <span className={compact ? "md:hidden" : ""}>Logout</span>
     </button>
   );
 }

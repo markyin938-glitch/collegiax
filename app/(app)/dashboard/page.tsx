@@ -6,8 +6,8 @@ export default async function DashboardPage() {
   if (!session) redirect("/login");
 
   return (
-    <div>
-      <h2 className="mb-4 text-xl font-bold" style={{ fontFamily: "var(--font-syne)" }}>
+    <div className="mx-auto w-full max-w-7xl">
+      <h2 className="mb-4 text-balance text-lg font-bold sm:text-xl" style={{ fontFamily: "var(--font-syne)" }}>
         Welcome back, {session.user.name}
       </h2>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -19,7 +19,7 @@ export default async function DashboardPage() {
         ].map((stat) => (
           <div
             key={stat.label}
-            className="glass-card relative overflow-hidden p-5"
+            className="glass-card relative min-h-[116px] overflow-hidden p-4 sm:p-5"
             style={{ animation: "slideUp .4s ease both" }}
           >
             <div
@@ -28,7 +28,7 @@ export default async function DashboardPage() {
             />
             <div className="relative z-10">
               <div className="mb-1.5 text-xs text-[var(--text2)]">{stat.label}</div>
-              <div className="text-[26px] font-bold" style={{ fontFamily: "var(--font-syne)" }}>
+              <div className="text-[24px] font-bold sm:text-[26px]" style={{ fontFamily: "var(--font-syne)" }}>
                 {stat.value}
               </div>
             </div>
@@ -38,7 +38,7 @@ export default async function DashboardPage() {
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <div className="glass-card p-5 lg:col-span-2">
+        <div className="glass-card p-4 sm:p-5 lg:col-span-2">
           <h3 className="mb-3 text-sm font-semibold">Recent Activity</h3>
           <div className="space-y-3">
             {[
@@ -49,15 +49,15 @@ export default async function DashboardPage() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 rounded-[10px] border border-[var(--border)] bg-[var(--surface)]/50 px-3 py-2.5 text-sm"
+                className="flex min-w-0 items-center gap-3 rounded-[10px] border border-[var(--border)] bg-[var(--surface)]/50 px-3 py-2.5 text-sm"
               >
-                <span className="h-2 w-2 rounded-full bg-[var(--accent)]" />
-                {item}
+                <span className="h-2 w-2 flex-shrink-0 rounded-full bg-[var(--accent)]" />
+                <span className="min-w-0">{item}</span>
               </div>
             ))}
           </div>
         </div>
-        <div className="glass-card p-5">
+        <div className="glass-card p-4 sm:p-5">
           <h3 className="mb-3 text-sm font-semibold">Announcements</h3>
           <div className="space-y-3">
             {[

@@ -17,7 +17,8 @@ export default function SignupPage() {
 function SignupForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const preselectedRole = (searchParams.get("role") as any) || "student";
+  const roleParam = searchParams.get("role");
+  const preselectedRole = roleParam === "clublead" || roleParam === "admin" ? roleParam : "student";
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -40,7 +41,7 @@ function SignupForm() {
       if (!res.ok) {
         setError(data.error || "Signup failed");
       } else {
-        router.push(`/verify-email?email=${encodeURIComponent(email)}`);
+        router.push(data.redirectTo || `/verify-email?email=${encodeURIComponent(email)}`);
       }
     } catch {
       setError("Something went wrong. Please try again.");

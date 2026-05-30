@@ -5,9 +5,14 @@ import { db } from "@/lib/db/client";
 import { users, emailVerifications } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
+import { isEmailVerificationEnabled } from "@/lib/config/feature-flags";
 
 export async function POST(req: Request) {
   try {
+    if (!isEmailVerificationEnabled()) {
+      return NextResponse.json({ error: "Email verification is disabled" }, { status: 404 });
+    }
+
     const { email } = await req.json();
     if (!email || typeof email !== "string") {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });

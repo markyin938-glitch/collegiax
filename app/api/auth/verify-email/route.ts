@@ -6,11 +6,16 @@ import { users, emailVerifications, sessions } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
 import { verifyEmailSchema } from "@/lib/validation/auth";
 import { signAccessToken, generateOpaqueToken } from "@/lib/auth/jwt";
+import { isEmailVerificationEnabled } from "@/lib/config/feature-flags";
 import { cookies } from "next/headers";
 import { v4 as uuidv4 } from "uuid";
 
 export async function POST(req: Request) {
   try {
+    if (!isEmailVerificationEnabled()) {
+      return NextResponse.json({ error: "Email verification is disabled" }, { status: 404 });
+    }
+
     const body = await req.json();
     const parsed = verifyEmailSchema.safeParse(body);
     if (!parsed.success) {

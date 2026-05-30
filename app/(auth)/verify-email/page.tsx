@@ -18,6 +18,7 @@ function VerifyEmailForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get("email") || "";
+  const emailVerificationEnabled = process.env.NEXT_PUBLIC_EMAIL_VERIFICATION_ENABLED !== "false";
 
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [error, setError] = useState("");
@@ -29,6 +30,16 @@ function VerifyEmailForm() {
     const id = setInterval(() => setTimer((t) => t - 1), 1000);
     return () => clearInterval(id);
   }, [timer]);
+
+  useEffect(() => {
+    if (!emailVerificationEnabled) {
+      router.replace("/login");
+    }
+  }, [emailVerificationEnabled, router]);
+
+  if (!emailVerificationEnabled) {
+    return <div className="w-full max-w-sm text-center text-sm text-[var(--text2)]">Redirecting...</div>;
+  }
 
   async function verify() {
     const code = otp.join("");

@@ -2,9 +2,9 @@
 
 import { Suspense } from "react";
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Eye, EyeOff, Sparkles } from "lucide-react";
+import { Eye, EyeOff, GraduationCap, ShieldCheck, Sparkles, UsersRound } from "lucide-react";
 
 export default function LoginPage() {
   return (
@@ -15,15 +15,16 @@ export default function LoginPage() {
 }
 
 function LoginForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const preselectedRole = searchParams.get("role") || "";
+  const demoLoginEnabled = process.env.NEXT_PUBLIC_DEMO_LOGIN_ENABLED !== "false";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [demoLoading, setDemoLoading] = useState("");
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -45,6 +46,28 @@ function LoginForm() {
       setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function demoLogin(role: "student" | "clublead" | "admin") {
+    setError("");
+    setDemoLoading(role);
+    try {
+      const res = await fetch("/api/auth/demo-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ role }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || "Demo login failed");
+      } else {
+        window.location.href = "/dashboard";
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setDemoLoading("");
     }
   }
 
@@ -117,6 +140,46 @@ function LoginForm() {
           Forgot password?
         </Link>
       </div>
+
+      {demoLoginEnabled && (
+        <div className="mt-5 border-t border-[var(--border2)] pt-5">
+          <div className="mb-3 text-center text-[11px] font-semibold uppercase tracking-widest text-[var(--text3)]" style={{ fontFamily: "var(--font-jetbrains)" }}>
+            Demo Login
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            <button
+              type="button"
+              onClick={() => demoLogin("student")}
+              disabled={!!demoLoading || loading}
+              className="flex h-12 items-center justify-center rounded-[10px] border border-[var(--border2)] bg-[var(--surface)] text-[var(--text2)] transition hover:border-[var(--accent)] hover:text-[var(--text)] disabled:opacity-60"
+              title="Student demo"
+              aria-label="Student demo login"
+            >
+              {demoLoading === "student" ? "..." : <GraduationCap size={18} />}
+            </button>
+            <button
+              type="button"
+              onClick={() => demoLogin("clublead")}
+              disabled={!!demoLoading || loading}
+              className="flex h-12 items-center justify-center rounded-[10px] border border-[var(--border2)] bg-[var(--surface)] text-[var(--text2)] transition hover:border-[var(--accent)] hover:text-[var(--text)] disabled:opacity-60"
+              title="Club lead demo"
+              aria-label="Club lead demo login"
+            >
+              {demoLoading === "clublead" ? "..." : <UsersRound size={18} />}
+            </button>
+            <button
+              type="button"
+              onClick={() => demoLogin("admin")}
+              disabled={!!demoLoading || loading}
+              className="flex h-12 items-center justify-center rounded-[10px] border border-[var(--border2)] bg-[var(--surface)] text-[var(--text2)] transition hover:border-[var(--accent)] hover:text-[var(--text)] disabled:opacity-60"
+              title="Admin demo"
+              aria-label="Admin demo login"
+            >
+              {demoLoading === "admin" ? "..." : <ShieldCheck size={18} />}
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="mt-6 text-center text-xs text-[var(--text2)]">
         Don&apos;t have an account?{" "}

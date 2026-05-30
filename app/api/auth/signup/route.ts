@@ -1,10 +1,13 @@
 export const dynamic = "force-dynamic";
 
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { db } from "@/lib/db/client";
-import { users, emailVerifications } from "@/lib/db/schema";
+import { users, emailVerifications, sessions } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { hashPassword } from "@/lib/auth/password";
+import { signAccessToken, generateOpaqueToken } from "@/lib/auth/jwt";
+import { isEmailVerificationEnabled } from "@/lib/config/feature-flags";
 import { signupSchema } from "@/lib/validation/auth";
 import { v4 as uuidv4 } from "uuid";
 
@@ -33,7 +36,41 @@ export async function POST(req: Request) {
       name,
       role,
       avatarInitials: name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2),
+      emailVerified: !isEmailVerificationEnabled(),
     });
+
+    if (!isEmailVerificationEnabled()) {
+      const accessToken = await signAccessToken({
+        userId,
+        role,
+        email,
+      });
+
+      const refreshToken = generateOpaqueToken();
+      await db.insert(sessions).values({
+        id: uuidv4(),
+        userId,
+        tokenHash: refreshToken,
+      });
+
+      const cookieStore = await cookies();
+      cookieStore.set("access_token", accessToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: 60 * 15,
+        path: "/",
+      });
+      cookieStore.set("refresh_token", refreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: 60 * 60 * 24 * 30,
+        path: "/",
+      });
+
+      return NextResponse.json({ success: true, message: "Account created.", redirectTo: "/dashboard" });
+    }
 
     const token = uuidv4();
     const otpCode = Math.floor(100000 + Math.random() * 900000).toString();

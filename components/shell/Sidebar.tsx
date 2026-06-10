@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useUIStore } from "@/stores/ui-store";
 import { ROLE_NAVS } from "@/lib/auth/permissions";
 import {
-  LayoutDashboard,
   CalendarDays,
   Users,
   Bookmark,
@@ -29,7 +28,6 @@ import {
 import { LogoutButton } from "./LogoutButton";
 
 const iconMap: Record<string, React.ReactNode> = {
-  LayoutDashboard: <LayoutDashboard size={16} />,
   CalendarDays: <CalendarDays size={16} />,
   Users: <Users size={16} />,
   Bookmark: <Bookmark size={16} />,
@@ -60,7 +58,7 @@ export function Sidebar({ user }: { user: { id: string; name: string; role: stri
       )}
 
       <aside
-        className={`sidebar fixed top-0 left-0 bottom-0 z-[100] flex w-[280px] max-w-[86vw] flex-col overflow-y-auto border-r border-[var(--border)] bg-[var(--bg2)] transition-[transform,width] duration-300 ease-out md:translate-x-0 ${
+        className={`sidebar fixed top-0 left-0 bottom-0 z-[100] flex w-[280px] max-w-[85vw] flex-col overflow-y-auto border-r border-[var(--border)] bg-[var(--bg2)] transition-[transform,width] duration-300 ease-out md:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } ${sidebarCollapsed ? "md:w-[72px]" : "md:w-[240px]"}`}
       >
@@ -69,14 +67,18 @@ export function Sidebar({ user }: { user: { id: string; name: string; role: stri
 
         {/* Header */}
         <div className={`relative border-b border-[var(--border)] px-[18px] pt-5 pb-4 ${sidebarCollapsed ? "md:px-3" : ""}`}>
-          <div className={`mb-3 flex items-center gap-2 ${sidebarCollapsed ? "md:justify-center" : ""}`}>
+          <Link
+            href="/dashboard"
+            onClick={() => setSidebarOpen(false)}
+            className={`mb-3 flex items-center gap-2 transition hover:opacity-80 ${sidebarCollapsed ? "md:justify-center" : ""}`}
+          >
             <div className="flex h-[34px] w-[34px] items-center justify-center rounded-[9px] text-sm text-white" style={{ background: "linear-gradient(135deg,var(--accent),var(--accent2))" }}>
               <Sparkles size={16} />
             </div>
             <span className={`text-[17px] font-extrabold ${sidebarCollapsed ? "md:hidden" : ""}`} style={{ fontFamily: "var(--font-syne)" }}>
               Collegia<span className="text-[var(--accent)]">X</span>
             </span>
-          </div>
+          </Link>
           <div className={`flex items-center gap-2 rounded-[10px] bg-[var(--surface)] p-2 ${sidebarCollapsed ? "md:justify-center md:bg-transparent md:p-0" : ""}`}>
             <div className="flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white" style={{ background: "linear-gradient(135deg,var(--accent),var(--accent2))" }}>
               {user.avatarInitials || user.name.slice(0, 2).toUpperCase()}

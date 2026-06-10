@@ -39,21 +39,22 @@ export default function LandingPage() {
 
       <div className="relative z-[2] flex w-full max-w-[860px] flex-col items-center px-5 py-10 text-center">
         {/* Logo */}
-        <div className="mb-8 inline-flex items-center gap-3" style={{ animation: "float 4s ease-in-out infinite" }}>
-          <div className="relative flex h-16 w-16 items-center justify-center rounded-[18px] text-[28px] text-white"
+        <div className="mb-6 inline-flex items-center gap-2 sm:mb-8 sm:gap-3" style={{ animation: "float 4s ease-in-out infinite" }}>
+          <div className="relative flex h-12 w-12 items-center justify-center rounded-[14px] text-[22px] text-white sm:h-16 sm:w-16 sm:rounded-[18px] sm:text-[28px]"
             style={{
               background: "linear-gradient(135deg,var(--accent),var(--accent2))",
               boxShadow: "0 0 40px rgba(99,102,241,.4)",
             }}
           >
-            <Sparkles />
+            <Sparkles size={20} className="sm:hidden" />
+            <Sparkles size={24} className="hidden sm:block" />
             <span
               className="absolute -inset-2 rounded-[26px] border border-[var(--accent)]/30"
               style={{ animation: "pulse-ring 2s ease-out infinite" }}
             />
           </div>
           <span
-            className="text-4xl font-extrabold tracking-tight"
+            className="text-3xl font-extrabold tracking-tight sm:text-4xl"
             style={{ fontFamily: "var(--font-syne)" }}
           >
             Collegia<span className="text-[var(--accent)]">X</span>
@@ -62,7 +63,7 @@ export default function LandingPage() {
 
         {/* Headline */}
         <h1
-          className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl"
+          className="mb-3 text-3xl font-extrabold tracking-tight sm:mb-4 sm:text-5xl md:text-6xl"
           style={{
             fontFamily: "var(--font-syne)",
             background: "linear-gradient(180deg,#fff 0%,rgba(255,255,255,.6) 100%)",
@@ -72,7 +73,7 @@ export default function LandingPage() {
         >
           The Intelligent Campus Ecosystem
         </h1>
-        <p className="mb-12 text-base text-[var(--text2)] sm:text-lg">
+        <p className="mb-8 text-sm text-[var(--text2)] sm:mb-12 sm:text-base md:text-lg">
           Discover events, join clubs, and connect with your campus community. <br className="hidden sm:block" />
           <em className="not-italic text-[var(--accent3)]" style={{ fontFamily: "var(--font-jetbrains)" }}>
             Built for students, powered by AI.
@@ -80,7 +81,7 @@ export default function LandingPage() {
         </p>
 
         {/* Role cards */}
-        <div className="grid w-full max-w-[720px] grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="grid w-full max-w-[720px] grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
           <RoleCard
             href="/login?role=student"
             icon={<GraduationCap size={22} />}
@@ -162,15 +163,15 @@ function RoleCard({
           background: `radial-gradient(circle at 50% 0%,${glow} 0%,transparent 60%)`,
         }}
       />
-      <div className="relative z-10 mb-3 flex h-[52px] w-[52px] items-center justify-center rounded-full"
+      <div className="relative z-10 mb-3 flex h-[48px] w-[48px] items-center justify-center rounded-full sm:h-[52px] sm:w-[52px]"
         style={{ background: glow.replace(".15", ".3").replace(".2", ".2") }}
       >
         {icon}
       </div>
-      <div className="relative z-10 text-[15px] font-bold" style={{ fontFamily: "var(--font-syne)" }}>
+      <div className="relative z-10 text-[14px] font-bold sm:text-[15px]" style={{ fontFamily: "var(--font-syne)" }}>
         {title}
       </div>
-      <div className="relative z-10 mt-1.5 text-xs text-[var(--text2)]">{description}</div>
+      <div className="relative z-10 mt-1 text-[11px] text-[var(--text2)] sm:mt-1.5 sm:text-xs">{description}</div>
       <div className="relative z-10 mt-3 text-lg text-[var(--text3)] transition-all duration-300 group-hover:translate-x-1 group-hover:text-[var(--text)]">
         &rarr;
       </div>

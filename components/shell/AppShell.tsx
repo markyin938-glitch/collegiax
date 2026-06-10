@@ -26,7 +26,7 @@ export function AppShell({ children, user }: { children: React.ReactNode; user: 
         style={shellStyle}
       >
         <Topbar user={user} />
-        <main className="page-bg-gradient relative flex-1 p-4 sm:p-5 lg:p-6">{children}</main>
+        <main className="page-bg-gradient relative flex-1 p-3 sm:p-4 md:p-5 lg:p-6">{children}</main>
       </div>
     </div>
   );

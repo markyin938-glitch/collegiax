@@ -34,82 +34,88 @@
   --color-red: var(--red);
   --color-pink: var(--pink);
 
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
 }
 
 :root {
-  --bg: #0d0f14;
-  --bg2: #0d0f14;
-  --surface: #161922;
-  --surface2: #1e2330;
-  --border: #2a2f3f;
-  --border2: #2a2f3f;
-  --text: #e8eaf0;
-  --text2: #9ca3af;
-  --text3: #6b7280;
-  --accent: #6c63ff;
-  --accent2: #ff6b6b;
-  --accent3: #00d9a6;
-  --accent4: #ffd166;
+  /* Dark mode — inverted "Stark Light" palette */
+  --bg: #191c1d;
+  --bg2: #191c1d;
+  --surface: #2e3132;
+  --surface2: #4c4546;
+  --border: #7e7576;
+  --border2: #5e5e5e;
+  --text: #f0f1f2;
+  --text2: #c6c6c6;
+  --text3: #848484;
+  --accent: #c1c1ff;
+  --accent2: #00dbe9;
+  --accent3: #7df4ff;
+  --accent4: #e1dfff;
   --green: #00d9a6;
   --amber: #ffd166;
   --red: #ff6b6b;
   --pink: #ec4899;
-  --radius: 0.625rem;
+  --radius: 0px;
 
-  --background: #0d0f14;
-  --foreground: #e8eaf0;
-  --card: #1a1f2e;
-  --card-foreground: #e8eaf0;
-  --popover: #161922;
-  --popover-foreground: #e8eaf0;
-  --primary: #6c63ff;
-  --primary-foreground: #ffffff;
-  --secondary: #1e2330;
-  --secondary-foreground: #e8eaf0;
-  --muted: #1e2330;
-  --muted-foreground: #9ca3af;
-  --accent-foreground: #ffffff;
+  --background: #191c1d;
+  --foreground: #f0f1f2;
+  --card: #2e3132;
+  --card-foreground: #f0f1f2;
+  --popover: #2e3132;
+  --popover-foreground: #f0f1f2;
+  --primary: #c6c6c6;
+  --primary-foreground: #191c1d;
+  --secondary: #4c4546;
+  --secondary-foreground: #f0f1f2;
+  --muted: #4c4546;
+  --muted-foreground: #c6c6c6;
+  --accent-foreground: #191c1d;
   --destructive: #ff6b6b;
-  --input: #1e2330;
-  --ring: #6c63ff;
+  --input: #4c4546;
+  --ring: #c1c1ff;
 }
 
 [data-theme="light"] {
-  --bg: #f4f5fb;
+  /* Light mode — "Stark Light" philosophy */
+  --bg: #f8f9fa;
   --bg2: #ffffff;
-  --surface: #eef0f8;
-  --surface2: #e3e6f2;
-  --border: #d5d9e7;
-  --border2: #c5cadb;
-  --text: #161922;
-  --text2: #4b5563;
-  --text3: #6b7280;
-  --accent: #6c63ff;
-  --accent2: #ff6b6b;
-  --accent3: #00a980;
-  --accent4: #b98200;
+  --surface: #ffffff;
+  --surface2: #f3f4f5;
+  --border: #e2e2e2;
+  --border2: #cfc4c5;
+  --text: #191c1d;
+  --text2: #4c4546;
+  --text3: #7e7576;
+  --accent: #5e5eff;
+  --accent2: #00f0ff;
+  --accent3: #00dbe9;
+  --accent4: #c1c1ff;
+  --green: #00d9a6;
+  --amber: #ffd166;
+  --red: #ba1a1a;
+  --pink: #ec4899;
 
-  --background: #f4f5fb;
-  --foreground: #161922;
+  --background: #f8f9fa;
+  --foreground: #191c1d;
   --card: #ffffff;
-  --card-foreground: #161922;
+  --card-foreground: #191c1d;
   --popover: #ffffff;
-  --popover-foreground: #161922;
-  --primary: #6c63ff;
+  --popover-foreground: #191c1d;
+  --primary: #000000;
   --primary-foreground: #ffffff;
-  --secondary: #e3e6f2;
-  --secondary-foreground: #161922;
-  --muted: #e3e6f2;
-  --muted-foreground: #4b5563;
+  --secondary: #e1dfff;
+  --secondary-foreground: #191c1d;
+  --muted: #edeeef;
+  --muted-foreground: #4c4546;
   --accent-foreground: #ffffff;
-  --destructive: #ff6b6b;
-  --input: #ffffff;
-  --ring: #6c63ff;
+  --destructive: #ba1a1a;
+  --input: #f3f4f5;
+  --ring: #5e5eff;
 }
 
 @layer base {
@@ -131,8 +137,8 @@
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: var(--bg2); }
-::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 0px; }
 
 /* Animations */
 @keyframes fadeIn {
@@ -186,41 +192,41 @@
   40% { transform: translateY(-6px); opacity: 1; }
 }
 
-/* Glass card utility */
+/* Glass card utility — sharp, no blur, tonal layering */
 .glass-card {
-  background: linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-  border: 1px solid var(--border2);
-  border-radius: var(--radius);
-  box-shadow: 0 12px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(255,255,255,.025);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0px;
+  box-shadow: none;
   transition: all .3s cubic-bezier(.4,0,.2,1);
 }
 .glass-card:hover {
-  border-color: rgba(108,99,255,.3);
-  box-shadow: 0 18px 52px rgba(0,0,0,.48), 0 0 24px rgba(108,99,255,.12);
+  border-color: var(--accent);
+  box-shadow: none;
   transform: translateY(-2px);
 }
 
 [data-theme="light"] .glass-card {
-  background: rgba(255,255,255,.7);
-  backdrop-filter: blur(10px);
+  background: var(--surface);
+  backdrop-filter: none;
 }
 
 /* Gradient mesh background */
 .grad-mesh {
-  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(108,99,255,.15) 0%, transparent 60%),
-              radial-gradient(ellipse 60% 40% at 80% 60%, rgba(0,217,166,.08) 0%, transparent 50%),
-              radial-gradient(ellipse 40% 50% at 20% 80%, rgba(255,107,107,.06) 0%, transparent 50%);
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(94,94,255,.12) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 40% at 80% 60%, rgba(0,240,255,.06) 0%, transparent 50%),
+              radial-gradient(ellipse 40% 50% at 20% 80%, rgba(193,193,255,.05) 0%, transparent 50%);
 }
 [data-theme="light"] .grad-mesh {
-  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(108,99,255,.12) 0%, transparent 60%),
-              radial-gradient(ellipse 60% 40% at 80% 60%, rgba(0,217,166,.06) 0%, transparent 50%),
-              radial-gradient(ellipse 40% 50% at 20% 80%, rgba(255,107,107,.05) 0%, transparent 50%);
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(94,94,255,.08) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 40% at 80% 60%, rgba(0,240,255,.04) 0%, transparent 50%),
+              radial-gradient(ellipse 40% 50% at 20% 80%, rgba(193,193,255,.03) 0%, transparent 50%);
 }
 
 /* Page background gradient */
 .page-bg-gradient {
-  background: radial-gradient(ellipse 70% 50% at 70% 20%, rgba(108,99,255,.06) 0%, transparent 60%),
-              radial-gradient(ellipse 50% 60% at 20% 80%, rgba(0,217,166,.04) 0%, transparent 60%);
+  background: radial-gradient(ellipse 70% 50% at 70% 20%, rgba(94,94,255,.04) 0%, transparent 60%),
+              radial-gradient(ellipse 50% 60% at 20% 80%, rgba(0,240,255,.03) 0%, transparent 60%);
 }
 
 /* Skeleton */
@@ -228,9 +234,9 @@
   background: linear-gradient(90deg, var(--surface) 25%, var(--surface2) 50%, var(--surface) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
-  border-radius: var(--radius);
+  border-radius: 0px;
 }
 
 /* Role-specific accent overrides */
-body[data-role="admin"] { --accent: #ff6b6b; --accent2: #ffd166; }
-body[data-role="clublead"] { --accent: #00d9a6; --accent2: #6c63ff; }
+body[data-role="admin"] { --accent: #ba1a1a; --accent2: #ffd166; }
+body[data-role="clublead"] { --accent: #00d9a6; --accent2: #5e5eff; }

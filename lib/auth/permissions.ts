@@ -4,7 +4,6 @@ import { verifyAccessToken } from "./jwt";
 
 export const ROLE_NAVS: Record<string, { label: string; href: string; icon: string }[]> = {
   student: [
-    { label: "Dashboard", href: "/dashboard", icon: "LayoutDashboard" },
     { label: "Events", href: "/events", icon: "CalendarDays" },
     { label: "Clubs", href: "/clubs", icon: "Users" },
     { label: "Saved", href: "/saved", icon: "Bookmark" },
@@ -15,7 +14,6 @@ export const ROLE_NAVS: Record<string, { label: string; href: string; icon: stri
     { label: "Profile", href: "/profile", icon: "User" },
   ],
   clublead: [
-    { label: "Dashboard", href: "/dashboard", icon: "LayoutDashboard" },
     { label: "Events", href: "/events", icon: "CalendarDays" },
     { label: "Create Event", href: "/events/create", icon: "PlusCircle" },
     { label: "Manage Events", href: "/events/manage", icon: "ListChecks" },
@@ -27,7 +25,6 @@ export const ROLE_NAVS: Record<string, { label: string; href: string; icon: stri
     { label: "Profile", href: "/profile", icon: "User" },
   ],
   admin: [
-    { label: "Dashboard", href: "/dashboard", icon: "LayoutDashboard" },
     { label: "Events", href: "/events", icon: "CalendarDays" },
     { label: "Clubs", href: "/clubs", icon: "Users" },
     { label: "Admin Panel", href: "/admin", icon: "Shield" },

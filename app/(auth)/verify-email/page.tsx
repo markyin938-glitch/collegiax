@@ -1,14 +1,13 @@
 "use client";
 
-import { Suspense } from "react";
-import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { Suspense, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Mail } from "lucide-react";
 
 export default function VerifyEmailPage() {
   return (
-    <Suspense fallback={<div className="w-full max-w-sm text-center text-sm text-[var(--text2)]">Loading...</div>}>
+    <Suspense fallback={<div className="ui-card p-8 text-center text-sm text-[var(--on-surface-variant)]">Loading...</div>}>
       <VerifyEmailForm />
     </Suspense>
   );
@@ -38,7 +37,7 @@ function VerifyEmailForm() {
   }, [emailVerificationEnabled, router]);
 
   if (!emailVerificationEnabled) {
-    return <div className="w-full max-w-sm text-center text-sm text-[var(--text2)]">Redirecting...</div>;
+    return <div className="ui-card p-8 text-center text-sm text-[var(--on-surface-variant)]">Redirecting...</div>;
   }
 
   async function verify() {
@@ -82,81 +81,54 @@ function VerifyEmailForm() {
     if (value && index < 5) {
       document.getElementById(`otp-${index + 1}`)?.focus();
     }
-    if (!value && index > 0) {
-      document.getElementById(`otp-${index - 1}`)?.focus();
-    }
-  }
-
-  function onKeyDown(index: number, e: React.KeyboardEvent) {
-    if (e.key === "Backspace" && !otp[index] && index > 0) {
-      document.getElementById(`otp-${index - 1}`)?.focus();
-    }
   }
 
   return (
-    <div className="w-full max-w-sm">
-      <div className="mb-6 text-center">
-        <div className="mb-4 inline-block text-5xl" style={{ animation: "mailBounce 2s ease-in-out infinite" }}>
-          <Mail className="mx-auto text-[var(--accent)]" size={48} />
+    <div className="ui-card overflow-hidden">
+      <div className="border-b border-[var(--outline-variant)] px-6 py-6 text-center sm:px-8">
+        <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[color:rgba(42,96,137,0.12)] text-[var(--primary)]">
+          <Mail className="h-6 w-6" />
         </div>
-        <h2 className="mb-2 text-xl font-bold" style={{ fontFamily: "var(--font-syne)" }}>
-          Verify your email
-        </h2>
-        <p className="text-xs text-[var(--text2)]">
-          Enter the 6-digit code sent to
-        </p>
-        <div className="mt-2 rounded-[10px] border border-[var(--accent)]/20 bg-[var(--accent)]/5 px-3 py-2 text-center text-xs font-medium text-[var(--accent)]" style={{ fontFamily: "var(--font-jetbrains)" }}>
+        <p className="ui-eyebrow">Verify account</p>
+        <h1 className="mt-2 font-heading text-3xl font-semibold text-[var(--on-background)]">Check your inbox</h1>
+        <p className="mt-3 text-sm leading-7 text-[var(--on-surface-variant)]">Enter the six-digit verification code sent to your registered email address.</p>
+        <div className="mt-4 inline-flex rounded-full bg-[color:rgba(42,96,137,0.12)] px-4 py-2 text-sm font-medium text-[var(--primary)]">
           {email}
         </div>
       </div>
-
-      {error && (
-        <div className="mb-4 rounded-[10px] border border-red-500/30 bg-red-500/10 px-3 py-2 text-xs text-red-400">
-          {error}
+      <div className="space-y-5 px-6 py-6 sm:px-8 sm:py-8">
+        {error ? <div className="rounded-2xl bg-[var(--error-container)] px-4 py-3 text-sm text-[var(--error)]">{error}</div> : null}
+        <div className="flex justify-center gap-2">
+          {otp.map((digit, i) => (
+            <input
+              key={i}
+              id={`otp-${i}`}
+              type="text"
+              inputMode="numeric"
+              maxLength={1}
+              value={digit}
+              onChange={(e) => onChange(i, e.target.value)}
+              className="h-14 w-12 rounded-2xl border border-[var(--outline-variant)] bg-[var(--surface-container-lowest)] text-center text-xl font-semibold text-[var(--on-background)] focus:border-[var(--primary)] focus:shadow-[0_0_0_4px_rgba(42,96,137,0.12)]"
+            />
+          ))}
         </div>
-      )}
-
-      <div className="mb-4 flex justify-center gap-2.5">
-        {otp.map((digit, i) => (
-          <input
-            key={i}
-            id={`otp-${i}`}
-            type="text"
-            inputMode="numeric"
-            maxLength={1}
-            value={digit}
-            onChange={(e) => onChange(i, e.target.value)}
-            onKeyDown={(e) => onKeyDown(i, e)}
-            className="h-[60px] w-[52px] rounded-[var(--radius)] border-2 border-[var(--border2)] bg-[var(--surface)] text-center text-2xl font-bold text-[var(--text)] outline-none transition focus:border-[var(--accent)] focus:bg-[var(--accent)]/5 focus:ring-2 focus:ring-[var(--accent)]/20"
-            style={{ fontFamily: "var(--font-jetbrains)", caretColor: "var(--accent)" }}
-          />
-        ))}
-      </div>
-
-      <button
-        onClick={verify}
-        disabled={loading || otp.some((d) => !d)}
-        className="w-full rounded-[10px] bg-gradient-to-r from-[var(--accent)] to-[var(--accent2)] py-2.5 text-sm font-semibold text-white shadow-lg shadow-[var(--accent)]/30 transition hover:shadow-[var(--accent)]/50 disabled:opacity-60"
-      >
-        {loading ? "Verifying..." : "Verify Email"}
-      </button>
-
-      <div className="mt-3 text-center text-xs text-[var(--text2)]">
-        {timer > 0 ? (
-          <span>
-            Resend in <span className="font-bold text-[var(--accent)]">{timer}s</span>
-          </span>
-        ) : (
-          <button onClick={resend} className="text-[var(--accent)] hover:underline">
-            Resend code
-          </button>
-        )}
-      </div>
-
-      <div className="mt-6 text-center text-xs text-[var(--text2)]">
-        <Link href="/login" className="underline hover:text-[var(--text)]">
-          Back to login
-        </Link>
+        <button onClick={verify} disabled={loading || otp.some((d) => !d)} className="ui-button ui-button-primary w-full justify-center">
+          {loading ? "Verifying..." : "Verify email"}
+        </button>
+        <div className="text-center text-sm text-[var(--on-surface-variant)]">
+          {timer > 0 ? (
+            <span>Resend available in {timer}s</span>
+          ) : (
+            <button onClick={resend} className="font-semibold text-[var(--primary)] hover:underline">
+              Resend code
+            </button>
+          )}
+        </div>
+        <div className="text-center text-sm text-[var(--on-surface-variant)]">
+          <Link href="/login" className="font-semibold text-[var(--primary)] hover:underline">
+            Back to sign in
+          </Link>
+        </div>
       </div>
     </div>
   );

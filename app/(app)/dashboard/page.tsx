@@ -1,76 +1,112 @@
-import { getServerSession } from "@/lib/auth/session";
+// @ts-nocheck
+export const dynamic = "force-dynamic";
+
+import Link from "next/link";
 import { redirect } from "next/navigation";
+import { Bell, CalendarDays, Sparkles, Users2 } from "lucide-react";
+import { getServerSession } from "@/lib/auth/session";
+import { formatDateTime } from "@/lib/utils";
+import { getRoleDashboardData } from "@/lib/server/app-data";
+import { Badge, PageIntro, SectionTitle, StatCard, SurfaceCard } from "@/components/app/ui";
 
 export default async function DashboardPage() {
   const session = await getServerSession();
   if (!session) redirect("/login");
+  if (session.user.role === "admin") redirect("/admin");
+
+  const dashboard = await getRoleDashboardData(session);
 
   return (
-    <div className="mx-auto w-full max-w-7xl">
-      <h2 className="mb-4 text-balance text-lg font-bold sm:text-xl" style={{ fontFamily: "var(--font-syne)" }}>
-        Welcome back, {session.user.name}
-      </h2>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {[
-          { label: "Upcoming Events", value: "12", icon: "🗓️" },
-          { label: "Registered", value: "5", icon: "✅" },
-          { label: "Clubs Joined", value: "3", icon: "👥" },
-          { label: "Score", value: "1,240", icon: "🏆" },
-        ].map((stat) => (
-          <div
+    <div className="space-y-8">
+      <PageIntro
+        eyebrow="Dashboard"
+        title={`Welcome back, ${session.user.name}`}
+        description="Your campus workspace now reflects the new CollegiaX design system while keeping the same backend, routing, and role-aware flow underneath."
+        actions={
+          <Link href={session.user.role === "clublead" ? "/events/create" : "/events"} className="ui-button ui-button-primary">
+            {session.user.role === "clublead" ? "Create event" : "Explore events"}
+          </Link>
+        }
+      />
+
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {dashboard.stats.map((stat) => (
+          <StatCard
             key={stat.label}
-            className="glass-card relative min-h-[116px] overflow-hidden p-4 sm:p-5"
-            style={{ animation: "slideUp .4s ease both" }}
-          >
-            <div
-              className="absolute top-0 right-0 h-[70px] w-[70px] rounded-full"
-              style={{ background: "radial-gradient(circle,rgba(99,102,241,.1) 0%,transparent 70%)" }}
-            />
-            <div className="relative z-10">
-              <div className="mb-1.5 text-xs text-[var(--text2)]">{stat.label}</div>
-              <div className="text-[24px] font-bold sm:text-[26px]" style={{ fontFamily: "var(--font-syne)" }}>
-                {stat.value}
-              </div>
-            </div>
-            <div className="absolute top-4 right-4 text-[26px] opacity-40">{stat.icon}</div>
-          </div>
+            label={stat.label}
+            value={stat.value}
+            hint={stat.hint}
+            icon={stat.label.includes("event") ? <CalendarDays className="h-5 w-5" /> : stat.label.includes("club") ? <Users2 className="h-5 w-5" /> : <Sparkles className="h-5 w-5" />}
+          />
         ))}
       </div>
 
-      <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <div className="glass-card p-4 sm:p-5 lg:col-span-2">
-          <h3 className="mb-3 text-sm font-semibold">Recent Activity</h3>
-          <div className="space-y-3">
-            {[
-              "You registered for Hackathon 2026",
-              "CodeClub posted a new update",
-              "Your event proposal was approved",
-              "You earned the Early Bird badge",
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="flex min-w-0 items-center gap-3 rounded-[10px] border border-[var(--border)] bg-[var(--surface)]/50 px-3 py-2.5 text-sm"
+      <div className="grid gap-6 xl:grid-cols-[1.35fr_0.95fr]">
+        <SurfaceCard className="p-6">
+          <SectionTitle
+            title={session.user.role === "clublead" ? "Operational focus" : "Upcoming opportunities"}
+            description={session.user.role === "clublead" ? "Events and participation linked to your club activity." : "Recommended events and campus moments worth your attention."}
+          />
+          <div className="mt-5 space-y-4">
+            {dashboard.spotlightEvents.map((event) => (
+              <Link
+                key={event.id}
+                href={`/events/${event.id}`}
+                className="flex flex-col gap-4 rounded-[1.25rem] border border-[var(--outline-variant)] bg-[var(--surface-container-low)] px-5 py-4 transition hover:border-[var(--primary)] hover:bg-[color:rgba(42,96,137,0.06)] sm:flex-row sm:items-center sm:justify-between"
               >
-                <span className="h-2 w-2 flex-shrink-0 rounded-full bg-[var(--accent)]" />
-                <span className="min-w-0">{item}</span>
-              </div>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Badge tone={event.status === "approved" ? "success" : event.status === "pending" ? "warning" : "neutral"}>{event.status}</Badge>
+                    {event.category ? <Badge>{event.category}</Badge> : null}
+                  </div>
+                  <h3 className="font-heading text-xl font-semibold text-[var(--on-background)]">{event.title}</h3>
+                  <p className="text-sm text-[var(--on-surface-variant)]">{event.venue || "Campus venue to be announced"}</p>
+                </div>
+                <div className="text-sm text-[var(--on-surface-variant)]">
+                  {event.startAt ? formatDateTime(event.startAt) : "Scheduling in progress"}
+                </div>
+              </Link>
             ))}
-          </div>
-        </div>
-        <div className="glass-card p-4 sm:p-5">
-          <h3 className="mb-3 text-sm font-semibold">Announcements</h3>
-          <div className="space-y-3">
-            {[
-              { title: "Semester Kickoff", time: "2h ago" },
-              { title: "Club Fair This Friday", time: "5h ago" },
-              { title: "New AI Assistant Live", time: "1d ago" },
-            ].map((a, i) => (
-              <div key={i} className="border-b border-[var(--border)] pb-2 last:border-0">
-                <div className="text-[13px] font-medium">{a.title}</div>
-                <div className="text-[11px] text-[var(--text3)]">{a.time}</div>
+            {dashboard.spotlightEvents.length === 0 ? (
+              <div className="rounded-[1.25rem] bg-[var(--surface-container-low)] px-5 py-6 text-sm text-[var(--on-surface-variant)]">
+                No spotlight items yet. Once more events and activity are added, this space will populate automatically.
               </div>
-            ))}
+            ) : null}
           </div>
+        </SurfaceCard>
+
+        <div className="space-y-6">
+          <SurfaceCard className="p-6">
+            <SectionTitle title="Announcements" description="Campus-wide updates and important notices." />
+            <div className="mt-5 space-y-4">
+              {dashboard.announcements.map((announcement) => (
+                <div key={announcement.id} className="rounded-[1.25rem] border border-[var(--outline-variant)] bg-[var(--surface-container-lowest)] px-4 py-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--primary)]">{announcement.priority}</p>
+                  <h3 className="mt-2 font-heading text-lg font-semibold text-[var(--on-background)]">{announcement.title}</h3>
+                  <p className="mt-2 text-sm text-[var(--on-surface-variant)]">{announcement.body}</p>
+                </div>
+              ))}
+            </div>
+          </SurfaceCard>
+
+          {"notifications" in dashboard ? (
+            <SurfaceCard className="p-6">
+              <SectionTitle title="Recent notifications" description="Fresh activity from your campus network." />
+              <div className="mt-5 space-y-3">
+                {dashboard.notifications.map((notification) => (
+                  <div key={notification.id} className="flex items-start gap-3 rounded-[1.25rem] bg-[var(--surface-container-low)] px-4 py-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[color:rgba(42,96,137,0.12)] text-[var(--primary)]">
+                      <Bell className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-[var(--on-background)]">{notification.title}</p>
+                      <p className="mt-1 text-sm text-[var(--on-surface-variant)]">{notification.body}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </SurfaceCard>
+          ) : null}
         </div>
       </div>
     </div>

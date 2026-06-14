@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CollegiaX — Events Discovery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "frost": "#EEF3F8",
+                        "on-tertiary-fixed": "#091d2e",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#9accfa",
+                        "background": "#f7fafd",
+                        "tertiary-fixed": "#d1e4fb",
+                        "on-secondary-container": "#2e6080",
+                        "tertiary-container": "#64768a",
+                        "on-primary-fixed-variant": "#0a4a72",
+                        "inverse-surface": "#2d3133",
+                        "primary-fixed": "#cde5ff",
+                        "outline-variant": "#c1c7cf",
+                        "surface-container-high": "#e5e8eb",
+                        "secondary-container": "#aadaff",
+                        "tertiary-fixed-dim": "#b5c8df",
+                        "tertiary": "#4c5e71",
+                        "on-surface": "#181c1e",
+                        "surface-tint": "#2d628b",
+                        "outline": "#72787f",
+                        "secondary-fixed-dim": "#9cccf1",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#181c1e",
+                        "primary-container": "#4679a3",
+                        "surface-container-low": "#f1f4f7",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e0e3e6",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#fdfcff",
+                        "primary-fixed-dim": "#9accfa",
+                        "on-primary-container": "#fdfcff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f7fafd",
+                        "primary": "#2a6089",
+                        "surface-variant": "#e0e3e6",
+                        "on-primary-fixed": "#001d32",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#326383",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#134b6a",
+                        "inverse-on-surface": "#eef1f4",
+                        "on-tertiary-fixed-variant": "#36485b",
+                        "surface-container": "#ebeef1",
+                        "on-surface-variant": "#41474e",
+                        "surface-dim": "#d7dadd",
+                        "surface": "#f7fafd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "sm": "12px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "xs": "8px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Syne"],
+                        "label-sm": ["DM Sans"],
+                        "label-md": ["DM Sans"],
+                        "h1-mobile": ["Syne"],
+                        "body-lg": ["DM Sans"],
+                        "body-md": ["DM Sans"],
+                        "h2": ["Syne"],
+                        "h1": ["Syne"]
+                    },
+                    "fontSize": {
+                        "h3": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "h1-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header { backdrop-filter: blur(8px); background-color: rgba(247, 250, 253, 0.85); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation (Persistent Desktop) -->
+<aside class="hidden md:flex flex-col w-64 fixed inset-y-0 left-0 bg-frost border-r border-outline-variant z-50">
+<div class="px-xl py-lg">
+<h1 class="font-h3 text-h3 text-primary">CollegiaX</h1>
+</div>
+<nav class="flex-1 px-md py-md space-y-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md">Home</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-primary-container text-on-primary-container font-medium" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event</span>
+<span class="font-label-md">Events</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-md">Clubs</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md">Calendar</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md">Profile</span>
+</a>
+</nav>
+<div class="p-md">
+<div class="bg-white/50 p-md rounded-xl border border-outline-variant">
+<p class="font-label-sm text-primary uppercase">Upgrade</p>
+<p class="text-sm mt-1 mb-md">Get more features with CollegiaX Plus.</p>
+<button class="w-full bg-primary text-on-primary py-2 rounded-lg text-sm font-medium">Explore</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 md:ml-64 flex flex-col min-h-screen">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-lg py-md w-full sticky top-0 z-40 bg-background/80 glass-header border-b border-outline-variant">
+<div class="flex items-center gap-sm">
+<button class="md:hidden p-1">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="material-symbols-outlined text-primary">search</span>
+<span class="hidden sm:inline-block text-outline font-label-md">Search events...</span>
+</div>
+<h1 class="md:hidden font-h3 text-h3-mobile font-bold text-primary">CollegiaX</h1>
+<div class="flex items-center gap-md">
+<button class="hidden sm:flex items-center gap-xs text-primary font-label-md hover:bg-primary/5 px-3 py-1 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                    Create Event
+                </button>
+<button class="bg-primary-container text-on-primary-container px-4 py-1 rounded-full font-label-sm active:scale-95 transition-transform">
+                    AI Assistant
+                </button>
+</div>
+</header>
+<main class="px-md lg:px-xl py-lg max-w-7xl mx-auto w-full">
+<!-- Hero Section -->
+<div class="relative w-full h-48 md:h-64 rounded-2xl overflow-hidden mb-lg">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&amp;fit=crop&amp;q=80&amp;w=2070')] bg-cover bg-center"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-on-surface/20 to-transparent flex flex-col justify-end p-lg">
+<h2 class="font-h2 text-h2 md:text-4xl text-on-primary font-bold">Discover Events</h2>
+<p class="font-body-md text-on-primary opacity-90 text-lg">Find your community and make new connections at CollegiaX.</p>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="flex items-center justify-between mb-lg">
+<div class="flex gap-sm overflow-x-auto no-scrollbar py-2">
+<button class="bg-secondary-container text-on-secondary-container px-lg py-2 rounded-full font-label-md flex-shrink-0 active:scale-95 transition-all whitespace-nowrap">All Events</button>
+<button class="bg-surface-container-high text-on-surface-variant px-lg py-2 rounded-full font-label-md flex-shrink-0 hover:bg-surface-container-highest transition-colors active:scale-95 whitespace-nowrap">Technology</button>
+<button class="bg-surface-container-high text-on-surface-variant px-lg py-2 rounded-full font-label-md flex-shrink-0 hover:bg-surface-container-highest transition-colors active:scale-95 whitespace-nowrap">Cultural</button>
+<button class="bg-surface-container-high text-on-surface-variant px-lg py-2 rounded-full font-label-md flex-shrink-0 hover:bg-surface-container-highest transition-colors active:scale-95 whitespace-nowrap">Sports</button>
+<button class="bg-surface-container-high text-on-surface-variant px-lg py-2 rounded-full font-label-md flex-shrink-0 hover:bg-surface-container-highest transition-colors active:scale-95 whitespace-nowrap">Workshops</button>
+</div>
+<button class="hidden md:flex items-center gap-xs text-on-surface-variant border border-outline-variant px-4 py-2 rounded-lg font-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+                    Filters
+                </button>
+</div>
+<!-- Events Marketplace Grid - Responsive Adapting -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg mt-md">
+<!-- Event Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col">
+<div class="relative h-48 lg:h-56">
+<img class="w-full h-full object-cover" data-alt="A high-energy campus technology summit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR_wHsKHDwjZGpwSlE4nOCkotTVQ4pnOusT0Wfvlm7njzESYfb25l81N8gjSM-xBHfV53VDetBFSz8kFrwMR7L3R4cYmLfL-ulCCKx5QTsMWXkoI-nBIFhr8UVpzvfkVmgp2JJom4DVTNnPE-Kuv9W60jm1l3dimDAKGTG4iM9oExoOCCzgGH5Og_UIvukLqYbPQVLJ38PYXmZIYZNJltr4iR5nhpKZII6dimzeZqWyk5ZAo_tL7e10j5cJwrxJ_SDmpUqqxMrTw6p"/>
+<div class="absolute top-md right-md">
+<button class="w-10 h-10 bg-surface-container-lowest/80 backdrop-blur rounded-full flex items-center justify-center text-primary shadow-sm hover:text-error transition-colors active:scale-90">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-md space-y-sm flex-1 flex flex-col">
+<div class="flex-1">
+<p class="font-label-sm text-primary uppercase tracking-wider">Tech &amp; Innovation</p>
+<h3 class="font-h3 text-h3 leading-tight mt-xs line-clamp-2">Next-Gen Web3 Workshop</h3>
+<div class="space-y-1 mt-md">
+<div class="flex items-center gap-sm text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined text-md">calendar_month</span>
+<span>Oct 24, 2023 • 2:00 PM</span>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined text-md">location_on</span>
+<span>Main Hall, Building C</span>
+</div>
+</div>
+</div>
+<div class="pt-sm flex items-center justify-between border-t border-outline-variant mt-auto">
+<div class="flex items-center -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest bg-secondary-container flex items-center justify-center text-[10px] font-bold">JD</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest bg-primary-container flex items-center justify-center text-[10px] font-bold">AS</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest bg-tertiary-container flex items-center justify-center text-[10px] font-bold">MK</div>
+<span class="pl-4 font-label-sm text-outline hidden sm:inline">+142</span>
+</div>
+<div class="flex gap-xs">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">share</span></button>
+<button class="bg-primary text-on-primary px-lg py-2 rounded-lg font-label-md active:scale-95 transition-transform">Register</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col">
+<div class="relative h-48 lg:h-56">
+<img class="w-full h-full object-cover" data-alt="International Gala Night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSREm-FGuCPCrgzga7Ei53fnKaKgJWupDWvsZco5dfVYE0TgDuBQQQihkfQdKs8E27BAxgcsw2z78_s8kB4aN0Wk6YZ-J4CWT096Ftb8iTYHGVtHIWINerA9JjTdfodx_7-TbvFZQYIf5OizlJ_RhvbYgy7qQ_UQOVuM2NQr-UOZWR6ZnrixMc_-N1WHcZWDbsc1vOfwHzkJRSD3jzLhf4-IiSUIoKSTA2jl8xiBzrwxxipuh9GvskgIM99-TRMq4gkEvsJcLl9u8k"/>
+<div class="absolute top-md right-md">
+<button class="w-10 h-10 bg-surface-container-lowest/80 backdrop-blur rounded-full flex items-center justify-center text-primary shadow-sm hover:text-error transition-colors active:scale-90">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-md space-y-sm flex-1 flex flex-col">
+<div class="flex-1">
+<p class="font-label-sm text-secondary uppercase tracking-wider">Arts &amp; Culture</p>
+<h3 class="font-h3 text-h3 leading-tight mt-xs line-clamp-2">International Gala Night</h3>
+<div class="space-y-1 mt-md">
+<div class="flex items-center gap-sm text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined text-md">calendar_month</span>
+<span>Nov 02, 2023 • 6:30 PM</span>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined text-md">location_on</span>
+<span>Campus Courtyard South</span>
+</div>
+</div>
+</div>
+<div class="pt-sm flex items-center justify-between border-t border-outline-variant mt-auto">
+<div class="flex items-center -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest bg-secondary-container flex items-center justify-center text-[10px] font-bold">LW</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest bg-primary-container flex items-center justify-center text-[10px] font-bold">TP</div>
+<span class="pl-4 font-label-sm text-outline hidden sm:inline">+300</span>
+</div>
+<div class="flex gap-xs">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">share</span></button>
+<button class="bg-primary text-on-primary px-lg py-2 rounded-lg font-label-md active:scale-95 transition-transform">Register</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Event Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col">
+<div class="relative h-48 lg:h-56">
+<img class="w-full h-full object-cover" data-alt="Student basketball tournament" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaHdTgUn61ZyfphS3NS_q9hskvEcz_0F3wZLjGD-lBBJzyO6o7P27lGN5j7_fbtOk07_0XtJiTAgEJPR0MDWC73ZAa5Dw8JKbi6GdVQeNzjkjLI-teac6qh4K7XvqyaF0TNPrs2dJ5Xqn5zBxo-K55DqdytOrUN4CL-7AHja38r2url3wWSxGL3kBp78_Oim4EohXNn5X88Cs-qYHiATr3uuWX3PtcdrPSLH-7JOln9_myA8zHXGCpa74aHGckvMeMxwz_ikMcV4PC"/>
+<div class="absolute top-md right-md">
+<button class="w-10 h-10 bg-surface-container-lowest/80 backdrop-blur rounded-full flex items-center justify-center text-primary shadow-sm hover:text-error transition-colors active:scale-90">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-md space-y-sm flex-1 flex flex-col">
+<div class="flex-1">
+<p class="font-label-sm text-tertiary uppercase tracking-wider">Sports &amp; Wellness</p>
+<h3 class="font-h3 text-h3 leading-tight mt-xs line-clamp-2">Inter-Club Basketball Cup</h3>
+<div class="space-y-1 mt-md">
+<div class="flex items-center gap-sm text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined text-md">calendar_month</span>
+<span>Nov 15, 2023 • 10:00 AM</span>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined text-md">location_on</span>
+<span>Sports Complex Center</span>
+</div>
+</div>
+</div>
+<div class="pt-sm flex items-center justify-between border-t border-outline-variant mt-auto">
+<div class="flex items-center -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest bg-secondary-container flex items-center justify-center text-[10px] font-bold">BB</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest bg-primary-container flex items-center justify-center text-[10px] font-bold">GG</div>
+<span class="pl-4 font-label-sm text-outline hidden sm:inline">+85</span>
+</div>
+<div class="flex gap-xs">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">share</span></button>
+<button class="bg-primary text-on-primary px-lg py-2 rounded-lg font-label-md active:scale-95 transition-transform">Register</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<!-- Floating Action Button - Search Filters Contextual (Mobile/Tablet only) -->
+<button class="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-xl flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined">tune</span>
+</button>
+<script>
+    // Simple Micro-interaction for Heart Buttons
+    document.querySelectorAll('button .material-symbols-outlined').forEach(icon => {
+        if (icon.textContent === 'favorite') {
+            icon.parentElement.addEventListener('click', function() {
+                const isFilled = this.querySelector('.material-symbols-outlined').style.fontVariationSettings === "'FILL' 1";
+                this.querySelector('.material-symbols-outlined').style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
+                if (!isFilled) {
+                    this.classList.add('text-error');
+                } else {
+                    this.classList.remove('text-error');
+                }
+            });
+        }
+    });
+
+    // Sticky Header Effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 20) {
+            header.classList.add('shadow-sm');
+        } else {
+            header.classList.remove('shadow-sm');
+        }
+    });
+</script>
+</body></html>

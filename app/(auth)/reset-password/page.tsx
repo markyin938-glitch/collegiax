@@ -1,14 +1,13 @@
 "use client";
 
-import { Suspense } from "react";
-import { useState } from "react";
-import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function ResetPasswordPage() {
   return (
-    <Suspense fallback={<div className="w-full max-w-sm text-center text-sm text-[var(--text2)]">Loading...</div>}>
+    <Suspense fallback={<div className="ui-card p-8 text-center text-sm text-[var(--on-surface-variant)]">Loading...</div>}>
       <ResetPasswordForm />
     </Suspense>
   );
@@ -48,9 +47,9 @@ function ResetPasswordForm() {
 
   if (!token) {
     return (
-      <div className="w-full max-w-sm text-center">
-        <p className="text-sm text-[var(--text2)]">Invalid or missing reset token.</p>
-        <Link href="/forgot-password" className="mt-4 inline-block text-sm text-[var(--accent)] hover:underline">
+      <div className="ui-card p-8 text-center">
+        <p className="text-sm text-[var(--on-surface-variant)]">Invalid or missing reset token.</p>
+        <Link href="/forgot-password" className="mt-4 inline-block text-sm font-semibold text-[var(--primary)] hover:underline">
           Request a new link
         </Link>
       </div>
@@ -58,50 +57,44 @@ function ResetPasswordForm() {
   }
 
   return (
-    <div className="w-full max-w-sm">
-      <div className="mb-6 text-center">
-        <div className="mb-2 inline-flex items-center gap-2 text-2xl font-extrabold" style={{ fontFamily: "var(--font-syne)" }}>
-          <Sparkles className="text-[var(--accent)]" size={24} />
-          Collegia<span className="text-[var(--accent)]">X</span>
+    <div className="ui-card overflow-hidden">
+      <div className="border-b border-[var(--outline-variant)] px-6 py-6 sm:px-8">
+        <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--primary)] text-white shadow-[0_12px_30px_rgba(42,96,137,0.22)]">
+          <Sparkles className="h-5 w-5" />
         </div>
-        <h2 className="mt-3 text-lg font-bold">Set New Password</h2>
+        <p className="ui-eyebrow">Reset password</p>
+        <h1 className="mt-2 font-heading text-3xl font-semibold text-[var(--on-background)]">Choose a new password</h1>
       </div>
-
-      {success ? (
-        <div className="rounded-[10px] border border-[var(--accent)]/20 bg-[var(--accent)]/5 px-4 py-6 text-center text-sm text-[var(--text)]">
-          Password reset successful.{" "}
-          <Link href="/login" className="text-[var(--accent)] hover:underline">
-            Sign in
-          </Link>
-        </div>
-      ) : (
-        <form onSubmit={onSubmit} className="space-y-4">
-          {error && (
-            <div className="rounded-[10px] border border-red-500/30 bg-red-500/10 px-3 py-2 text-xs text-red-400">
-              {error}
-            </div>
-          )}
-          <div>
-            <label className="mb-1.5 block text-xs font-medium text-[var(--text2)]">New Password</label>
-            <input
-              type="password"
-              required
-              minLength={8}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Min 8 characters"
-              className="w-full rounded-[10px] border border-[var(--border2)] bg-[var(--surface)] px-3.5 py-2.5 text-sm text-[var(--text)] outline-none transition focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/15"
-            />
+      <div className="px-6 py-6 sm:px-8 sm:py-8">
+        {success ? (
+          <div className="rounded-[1.25rem] bg-[color:rgba(42,96,137,0.09)] px-5 py-5 text-sm leading-7 text-[var(--on-surface)]">
+            Password reset successful.{" "}
+            <Link href="/login" className="font-semibold text-[var(--primary)] hover:underline">
+              Return to sign in
+            </Link>
           </div>
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-[10px] bg-gradient-to-r from-[var(--accent)] to-[var(--accent2)] py-2.5 text-sm font-semibold text-white shadow-lg shadow-[var(--accent)]/30 transition hover:shadow-[var(--accent)]/50 disabled:opacity-60"
-          >
-            {loading ? "Resetting..." : "Reset Password"}
-          </button>
-        </form>
-      )}
+        ) : (
+          <form onSubmit={onSubmit} className="space-y-5">
+            {error ? <div className="rounded-2xl bg-[var(--error-container)] px-4 py-3 text-sm text-[var(--error)]">{error}</div> : null}
+            <label className="block space-y-2 text-sm font-medium text-[var(--on-surface-variant)]">
+              New password
+              <input
+                className="ui-input"
+                type="password"
+                minLength={8}
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Minimum 8 characters"
+              />
+            </label>
+            <button type="submit" disabled={loading} className="ui-button ui-button-primary w-full justify-center">
+              {loading ? "Resetting..." : "Reset password"}
+              {!loading ? <ArrowRight className="h-4 w-4" /> : null}
+            </button>
+          </form>
+        )}
+      </div>
     </div>
   );
 }

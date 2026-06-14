@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CollegiaX | Secure Access</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed": "#091d2e",
+            "secondary-fixed": "#c9e6ff",
+            "on-secondary-fixed": "#001e2f",
+            "on-error-container": "#93000a",
+            "inverse-primary": "#9accfa",
+            "background": "#f7fafd",
+            "tertiary-fixed": "#d1e4fb",
+            "on-secondary-container": "#2e6080",
+            "tertiary-container": "#64768a",
+            "on-primary-fixed-variant": "#0a4a72",
+            "inverse-surface": "#2d3133",
+            "primary-fixed": "#cde5ff",
+            "outline-variant": "#c1c7cf",
+            "surface-container-high": "#e5e8eb",
+            "secondary-container": "#aadaff",
+            "tertiary-fixed-dim": "#b5c8df",
+            "tertiary": "#4c5e71",
+            "on-surface": "#181c1e",
+            "surface-tint": "#2d628b",
+            "outline": "#72787f",
+            "secondary-fixed-dim": "#9cccf1",
+            "on-tertiary": "#ffffff",
+            "on-background": "#181c1e",
+            "primary-container": "#4679a3",
+            "surface-container-low": "#f1f4f7",
+            "on-error": "#ffffff",
+            "surface-container-highest": "#e0e3e6",
+            "error": "#ba1a1a",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#fdfcff",
+            "primary-fixed-dim": "#9accfa",
+            "on-primary-container": "#fdfcff",
+            "error-container": "#ffdad6",
+            "surface-bright": "#f7fafd",
+            "primary": "#2a6089",
+            "surface-variant": "#e0e3e6",
+            "on-primary-fixed": "#001d32",
+            "on-secondary": "#ffffff",
+            "secondary": "#326383",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed-variant": "#134b6a",
+            "inverse-on-surface": "#eef1f4",
+            "on-tertiary-fixed-variant": "#36485b",
+            "surface-container": "#ebeef1",
+            "on-surface-variant": "#41474e",
+            "surface-dim": "#d7dadd",
+            "surface": "#f7fafd"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "24px",
+            "margin": "32px",
+            "lg": "24px",
+            "xxl": "48px",
+            "sm": "12px",
+            "xl": "32px",
+            "md": "16px",
+            "xs": "8px",
+            "base": "4px"
+          },
+          "fontFamily": {
+            "h3": ["Syne"],
+            "label-sm": ["DM Sans"],
+            "label-md": ["DM Sans"],
+            "h1-mobile": ["Syne"],
+            "body-lg": ["DM Sans"],
+            "body-md": ["DM Sans"],
+            "h2": ["Syne"],
+            "h1": ["Syne"]
+          },
+          "fontSize": {
+            "h3": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+            "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600" }],
+            "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "h1-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "h2": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #f4f7fa; /* Ice */
+      color: #181c1e;
+    }
+    .frost-sidebar {
+      background-color: #eef3f8; /* Frost */
+      border-right: 1px solid #c1c7cf; /* Steel Mist */
+    }
+    .auth-card {
+      background-color: #ffffff; /* Pure White */
+      border: 1px solid #c1c7cf; /* Steel Mist */
+      box-shadow: 0px 12px 24px rgba(44, 62, 80, 0.08);
+    }
+    .input-field {
+      background-color: #ffffff;
+      border: 1px solid #c1c7cf;
+      transition: all 0.2s ease;
+    }
+    .input-field:focus {
+      outline: none;
+      border-color: #2a6089; /* Denim */
+      box-shadow: 0 0 0 3px rgba(42, 96, 137, 0.15);
+    }
+    .btn-primary {
+      background-color: #2a6089; /* Denim */
+      color: white;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .btn-secondary {
+      background-color: #eef3f8; /* Silver Mist / Frost */
+      color: #41474e; /* Slate */
+      border: 1px solid #c1c7cf;
+    }
+    .role-badge {
+      background-color: #eef3f8;
+      color: #326383; /* Steel Blue */
+      border-radius: 4px;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="min-h-screen font-body-md text-body-md overflow-x-hidden">
+<!-- Main Container -->
+<main class="min-h-screen flex flex-col md:flex-row">
+<!-- Left Section: Authentication Form -->
+<section class="flex-1 flex flex-col justify-center items-center px-md py-xxl z-10">
+<!-- Top Branding (Mobile Only) -->
+<div class="md:hidden absolute top-md left-md flex items-center gap-xs">
+<span class="font-h3 text-h3-mobile font-bold text-primary">CollegiaX</span>
+</div>
+<div class="w-full max-w-md space-y-xl">
+<!-- Header & Role Switcher -->
+<div class="space-y-sm text-center md:text-left">
+<h1 class="font-h1-mobile text-h1-mobile md:font-h1 md:text-h1 text-on-surface">Welcome back</h1>
+<p class="text-on-surface-variant font-body-md">Access your academic ecosystem.</p>
+<!-- Dynamic Role Badge Selection -->
+<div class="flex flex-wrap gap-xs pt-base justify-center md:justify-start" id="role-selector">
+<button class="role-badge px-sm py-xs font-label-sm text-label-sm border border-transparent transition-all hover:border-primary active:scale-95" id="role-student" onclick="selectRole('Student')">
+              Student
+            </button>
+<button class="role-badge px-sm py-xs font-label-sm text-label-sm border border-transparent transition-all hover:border-primary active:scale-95" id="role-clublead" onclick="selectRole('Club Lead')">
+              Club Lead
+            </button>
+<button class="role-badge px-sm py-xs font-label-sm text-label-sm border border-transparent transition-all hover:border-primary active:scale-95" id="role-admin" onclick="selectRole('Admin')">
+              Admin
+            </button>
+</div>
+</div>
+<!-- Auth Card -->
+<div class="auth-card rounded-xl p-lg space-y-md">
+<!-- Google Login -->
+<button class="btn-secondary w-full flex items-center justify-center gap-sm py-md rounded-lg font-label-md text-label-md transition-all active:scale-95">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+            Sign in with Google
+          </button>
+<div class="relative flex items-center py-base">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-md text-outline font-label-sm text-label-sm uppercase tracking-widest">or email</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Credentials Form -->
+<form class="space-y-md">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-base" for="email">Institutional Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">alternate_email</span>
+<input class="input-field w-full pl-xl pr-md py-md rounded-lg font-body-md text-body-md" id="email" placeholder="name@university.edu" type="email"/>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between items-center px-base">
+<label class="font-label-md text-label-md text-on-surface-variant" for="password">Password</label>
+<a class="text-primary font-label-sm text-label-sm hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="input-field w-full pl-xl pr-md py-md rounded-lg font-body-md text-body-md" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div class="flex items-center gap-sm px-base">
+<input class="w-4 h-4 text-primary border-outline rounded focus:ring-primary" id="remember" type="checkbox"/>
+<label class="font-body-md text-on-surface-variant cursor-pointer" for="remember">Remember me for 30 days</label>
+</div>
+<button class="btn-primary w-full py-md rounded-lg font-h3 text-h3 transition-all hover:bg-opacity-90 active:scale-95 shadow-md" type="submit">
+              Sign In
+            </button>
+</form>
+</div>
+<!-- Footer Actions -->
+<p class="text-center text-on-surface-variant font-body-md">
+          Don't have an account? <a class="text-primary font-bold hover:underline" href="#">Create an account</a>
+</p>
+</div>
+</section>
+<!-- Right Section: Decorative Illustration (Desktop Only) -->
+<section class="hidden md:flex flex-1 relative frost-sidebar items-center justify-center overflow-hidden">
+<!-- Background Shader -->
+
+<div class="relative z-10 w-full h-full flex flex-col justify-between p-xxl">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<span class="font-h3 text-h3 font-extrabold text-primary tracking-tight">CollegiaX</span>
+</div>
+<div class="relative max-w-lg">
+<div class="aspect-square rounded-full border border-outline-variant absolute -top-xl -left-xl w-64 h-64 animate-pulse"></div>
+<img alt="Students collaborating" class="rounded-xl object-cover shadow-2xl relative z-10 border border-white" data-alt="A group of diverse, modern university students sitting together in a bright, contemporary library lounge. They are engaged in deep academic collaboration with high-end laptops and tablets. The lighting is soft and airy, emphasizing a light-mode aesthetic with cool blue and crisp white tones. The mood is intellectually focused yet collaborative, capturing a premium academic environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF1xPlvwpEo-7_claR8baiP79vOJsS1UnX1JQXU19f7LtKsiY3rWtCQmQ_6B8vLkSK_0r0deqdfSc_ekPc-s84ANhX-maMG2NK3qwT8Rna5uTAlrUxkSTbkShON51hDeIg85IC6eDB1USEDfxNA-XTGlDvVJn29SDigk58YeYAQbJia4-caggT-mtmUdmc_BauMTsP7GOcBkeIeM5LyJaiSmPdJXqZmOQkxcf9j6BFL8LRsNyVnyzaoaC2Am1W-gmyumitaWVquqfZ"/>
+<div class="mt-xl space-y-md relative z-10">
+<h2 class="font-h2 text-h2 text-primary">Unifying Campus Life.</h2>
+<p class="text-tertiary font-body-lg max-w-sm">
+              The all-in-one platform for modern students to manage clubs, events, and academic calendars with precision.
+            </p>
+</div>
+</div>
+<div class="flex gap-lg">
+<div class="flex flex-col">
+<span class="font-h3 text-h3 text-primary">12k+</span>
+<span class="text-on-surface-variant font-label-sm">Active Students</span>
+</div>
+<div class="flex flex-col">
+<span class="font-h3 text-h3 text-primary">450+</span>
+<span class="text-on-surface-variant font-label-sm">University Clubs</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Micro-interactions & Role Logic -->
+<script>
+    function selectRole(role) {
+      // Update UI for role selection
+      const roles = ['Student', 'Club Lead', 'Admin'];
+      roles.forEach(r => {
+        const id = 'role-' + r.toLowerCase().replace(' ', '');
+        const btn = document.getElementById(id);
+        if (r === role) {
+          btn.classList.add('bg-primary', 'text-white', 'shadow-sm');
+          btn.classList.remove('bg-surface-container-low', 'text-secondary');
+        } else {
+          btn.classList.remove('bg-primary', 'text-white', 'shadow-sm');
+          btn.classList.add('bg-surface-container-low', 'text-secondary');
+        }
+      });
+      
+      // Console log or state update
+      console.log('Role Selected:', role);
+    }
+
+    // Default selection
+    window.onload = () => {
+      selectRole('Student');
+    };
+
+    // Form submission animation
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Authenticating...';
+      btn.disabled = true;
+      
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        alert('Authentication demo: Check console for role state.');
+      }, 1500);
+    });
+  </script>
+</body></html>

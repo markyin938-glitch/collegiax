@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CollegiaX | Achievements Showcase</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#4679a3",
+                    "inverse-on-surface": "#eef1f4",
+                    "on-surface-variant": "#41474e",
+                    "on-tertiary-fixed": "#091d2e",
+                    "tertiary-fixed-dim": "#b5c8df",
+                    "on-tertiary-fixed-variant": "#36485b",
+                    "surface-container-high": "#e5e8eb",
+                    "on-primary-fixed-variant": "#0a4a72",
+                    "outline-variant": "#c1c7cf",
+                    "surface-bright": "#f7fafd",
+                    "on-secondary-container": "#2e6080",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f1f4f7",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#ebeef1",
+                    "surface": "#f7fafd",
+                    "primary-fixed-dim": "#9accfa",
+                    "on-surface": "#181c1e",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#001d32",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#cde5ff",
+                    "surface-variant": "#e0e3e6",
+                    "on-primary-container": "#fdfcff",
+                    "inverse-primary": "#9accfa",
+                    "tertiary-container": "#64768a",
+                    "on-tertiary-container": "#fdfcff",
+                    "inverse-surface": "#2d3133",
+                    "tertiary": "#4c5e71",
+                    "secondary-fixed": "#c9e6ff",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#181c1e",
+                    "secondary": "#326383",
+                    "outline": "#72787f",
+                    "secondary-fixed-dim": "#9cccf1",
+                    "on-secondary-fixed-variant": "#134b6a",
+                    "tertiary-fixed": "#d1e4fb",
+                    "surface-container-highest": "#e0e3e6",
+                    "secondary-container": "#aadaff",
+                    "background": "#f7fafd",
+                    "on-secondary-fixed": "#001e2f",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#d7dadd",
+                    "surface-tint": "#2d628b",
+                    "primary": "#2a6089"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin": "32px",
+                    "gutter": "24px",
+                    "xs": "8px",
+                    "sm": "12px",
+                    "base": "4px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "xxl": "48px"
+            },
+            "fontFamily": {
+                    "label-md": ["DM Sans"],
+                    "h3": ["Syne"],
+                    "body-md": ["DM Sans"],
+                    "label-sm": ["DM Sans"],
+                    "h2": ["Syne"],
+                    "h1-mobile": ["Syne"],
+                    "body-lg": ["DM Sans"],
+                    "h1": ["Syne"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                    "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #F4F7FA; font-family: 'DM Sans', sans-serif; }
+        .sidebar-border { border-right: 1px solid #c1c7cf; }
+        .card-border { border: 1px solid #c1c7cf; }
+        .active-pill { width: 4px; height: 24px; border-radius: 0 4px 4px 0; background-color: #2a6089; position: absolute; left: 0; }
+        .glass-header { backdrop-filter: blur(8px); background: rgba(247, 250, 253, 0.8); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+    </style>
+</head>
+<body class="text-on-background">
+<!-- Top AppBar (Shared Component) -->
+<header class="flex justify-between items-center px-lg py-md w-full sticky top-0 z-50 bg-background border-b border-outline-variant glass-header">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-h3">search</span>
+<h1 class="font-h3 text-h3 font-bold text-primary">CollegiaX</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-sm px-md py-xs rounded-full bg-surface-container-high hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:rotate-12 transition-transform">auto_awesome</span>
+<span class="font-label-md text-label-md text-on-surface-variant">AI Assistant</span>
+</div>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-95 duration-150 shadow-sm">AI</button>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation (Responsive Desktop Focus) -->
+<aside class="hidden md:flex flex-col w-[280px] bg-surface-container-low sidebar-border fixed top-[72px] bottom-0 left-0 pt-lg">
+<nav class="flex flex-col gap-xs">
+<!-- Home -->
+<a class="relative flex items-center gap-md px-lg py-md hover:bg-surface-container-high transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<!-- Events -->
+<a class="relative flex items-center gap-md px-lg py-md hover:bg-surface-container-high transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="font-label-md text-label-md">Events</span>
+</a>
+<!-- Clubs -->
+<a class="relative flex items-center gap-md px-lg py-md hover:bg-surface-container-high transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-md text-label-md">Clubs</span>
+</a>
+<!-- Calendar -->
+<a class="relative flex items-center gap-md px-lg py-md hover:bg-surface-container-high transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md">Calendar</span>
+</a>
+<!-- Profile (Active) -->
+<a class="relative flex items-center gap-md px-lg py-md bg-surface-container-high text-primary font-bold" href="#">
+<div class="active-pill"></div>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<div class="mt-auto p-lg border-t border-outline-variant">
+<div class="flex items-center gap-md bg-white p-md rounded-xl card-border">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">school</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline">Level 42</p>
+<p class="font-label-md text-label-md text-on-surface font-bold">Alex Rivera</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-0 md:ml-[280px] p-lg md:p-xl space-y-xl pb-32">
+<!-- Hero Achievement Header -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<div class="lg:col-span-2 relative overflow-hidden rounded-xl bg-primary text-on-primary p-xl flex flex-col justify-end min-h-[320px] group shadow-lg">
+<div class="absolute inset-0 z-0">
+
+</div>
+<div class="relative z-10 space-y-md">
+<div class="flex items-center gap-sm">
+<span class="bg-primary-container px-md py-1 rounded-full font-label-sm text-label-sm">Academic Elite</span>
+<span class="bg-secondary-container text-on-secondary-container px-md py-1 rounded-full font-label-sm text-label-sm">Top 1%</span>
+</div>
+<h2 class="font-h1 text-h1">Master of Research 2024</h2>
+<p class="font-body-lg text-body-lg max-w-xl opacity-90">You have completed all milestones for the advanced research track. Your methodology has been verified by the institutional board.</p>
+<div class="flex gap-md pt-md">
+<button class="bg-white text-primary px-lg py-md rounded-lg font-bold hover:bg-surface-bright transition-colors shadow-md">View Showcase</button>
+<button class="border border-white/40 px-lg py-md rounded-lg font-bold hover:bg-white/10 transition-colors">Download Transcript</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl card-border p-lg flex flex-col gap-lg shadow-sm">
+<h3 class="font-h3 text-h3 text-on-surface">Skill Distribution</h3>
+<div class="flex-1 flex flex-col justify-center gap-md">
+<!-- Progress Rows -->
+<div class="space-y-sm">
+<div class="flex justify-between font-label-md text-label-md">
+<span>Quantitative Analysis</span>
+<span>85%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 85%"></div>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between font-label-md text-label-md">
+<span>Peer Collaboration</span>
+<span>92%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 92%"></div>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between font-label-md text-label-md">
+<span>System Architecture</span>
+<span>64%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container" style="width: 64%"></div>
+</div>
+</div>
+</div>
+<button class="w-full py-md bg-surface-container-high rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-highest transition-colors">Detailed Breakdown</button>
+</div>
+</section>
+<!-- Bento Grid Showcase -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Ranking -->
+<div class="md:col-span-1 bg-white p-lg rounded-xl card-border shadow-sm flex flex-col gap-md">
+<h4 class="font-h3 text-h3 text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">military_tech</span>
+                        Rank
+                    </h4>
+<div class="flex flex-col items-center justify-center py-xl bg-surface-container-low rounded-lg">
+<span class="font-h1 text-h1 text-primary">#14</span>
+<span class="font-label-md text-label-md text-outline">Global Institutional Rank</span>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center justify-between p-sm rounded-lg bg-surface-bright border border-outline-variant">
+<span class="font-label-md text-label-md">Next Milestone</span>
+<span class="font-label-sm text-label-sm text-primary">+250 XP</span>
+</div>
+</div>
+</div>
+<!-- Trophies -->
+<div class="md:col-span-2 bg-white p-lg rounded-xl card-border shadow-sm flex flex-col gap-lg">
+<div class="flex justify-between items-center">
+<h4 class="font-h3 text-h3 text-on-surface">Trophy Cabinet</h4>
+<span class="text-primary font-label-sm text-label-sm underline cursor-pointer">View All 24</span>
+</div>
+<div class="grid grid-cols-3 gap-md h-full">
+<div class="flex flex-col items-center gap-sm p-md rounded-xl hover:bg-surface-container transition-colors group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-secondary-container text-h1" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<p class="font-label-sm text-label-sm text-center font-bold">Innovation Lead</p>
+</div>
+<div class="flex flex-col items-center gap-sm p-md rounded-xl hover:bg-surface-container transition-colors group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-primary-fixed text-h1" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+</div>
+<p class="font-label-sm text-label-sm text-center font-bold">Code Master</p>
+</div>
+<div class="flex flex-col items-center gap-sm p-md rounded-xl hover:bg-surface-container transition-colors group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-tertiary-fixed flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-h1" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-label-sm text-label-sm text-center font-bold">Deep Work</p>
+</div>
+</div>
+</div>
+<!-- Verified Certificate Card -->
+<div class="md:col-span-1 bg-inverse-surface text-inverse-on-surface rounded-xl overflow-hidden shadow-xl flex flex-col relative group">
+<div class="h-32 w-full overflow-hidden">
+<img class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" data-alt="A high-definition macro photograph of a secure digital certificate hologram shimmering with iridescent blue and silver colors. The background is a sophisticated dark minimalist texture, suggesting high-tech encryption and institutional authority. The lighting is focused and dramatic, highlighting the intricate geometric patterns of the digital security seal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjBmU4jfD5cjzPGrVrqpole_zrcMPhD9eixtZFo80Fgj1DXHqGwgg7cpOW4u4dqoSFC4iqbf1mQsFgnDCDL3NcvGIsbeY_uFq-_3RIRj7eGgcm45ChjFXvJBQuz-oyJcEsRxmDlun8Q8iz259PdZ9ajU6y14UJt_a3p23rnGsHWVWOuPsqH1KYXqcwXRsFKSFA1FKG5eqTFX_K6sWhIn7511qKgwtS9RijAxfwmZg5L34ireDfie6ay9z18crEg3GMtq4YcFR-u4Ya"/>
+</div>
+<div class="p-lg flex-1 flex flex-col gap-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary-fixed text-label-md">verified</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed">Verified Credential</span>
+</div>
+<h5 class="font-h3 text-h3 leading-tight">Advanced Data Ethics Certificate</h5>
+<p class="font-label-md text-label-md opacity-70 mt-auto">ID: CX-294-883-91</p>
+</div>
+</div>
+</section>
+<!-- Activity Feed & Detailed Certificates -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Activity Timeline -->
+<div class="lg:col-span-4 bg-white rounded-xl card-border p-lg shadow-sm">
+<h4 class="font-h3 text-h3 text-on-surface mb-lg">Progression Log</h4>
+<div class="space-y-lg relative before:absolute before:left-3 before:top-2 before:bottom-0 before:w-px before:bg-outline-variant">
+<div class="relative pl-lg flex flex-col gap-xs">
+<div class="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-primary border-4 border-white flex items-center justify-center"></div>
+<p class="font-label-md text-label-md font-bold">Unlocked "Neural Pioneer"</p>
+<p class="font-label-sm text-label-sm text-outline">2 hours ago • Machine Learning Lab</p>
+</div>
+<div class="relative pl-lg flex flex-col gap-xs">
+<div class="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-secondary border-4 border-white flex items-center justify-center"></div>
+<p class="font-label-md text-label-md font-bold">Participated in Global Hackathon</p>
+<p class="font-label-sm text-label-sm text-outline">Yesterday • Collaborative Hub</p>
+</div>
+<div class="relative pl-lg flex flex-col gap-xs">
+<div class="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-outline border-4 border-white flex items-center justify-center"></div>
+<p class="font-label-md text-label-md font-bold">Semester GPA Verified (3.92)</p>
+<p class="font-label-sm text-label-sm text-outline">4 days ago • Administration</p>
+</div>
+</div>
+</div>
+<!-- Expansive Table for Certs -->
+<div class="lg:col-span-8 bg-white rounded-xl card-border p-lg shadow-sm">
+<div class="flex justify-between items-center mb-lg">
+<h4 class="font-h3 text-h3 text-on-surface">Institutional Certifications</h4>
+<div class="flex gap-sm">
+<button class="p-sm rounded-lg border border-outline-variant hover:bg-surface-container-low"><span class="material-symbols-outlined">filter_list</span></button>
+<button class="p-sm rounded-lg border border-outline-variant hover:bg-surface-container-low"><span class="material-symbols-outlined">download</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant">
+<th class="py-md font-label-md text-label-md text-outline">Program Name</th>
+<th class="py-md font-label-md text-label-md text-outline">Issuer</th>
+<th class="py-md font-label-md text-label-md text-outline">Issued Date</th>
+<th class="py-md font-label-md text-label-md text-outline">Status</th>
+<th class="py-md"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-lg font-label-md text-label-md text-on-surface font-bold">Post-Quantum Cryptography</td>
+<td class="py-lg font-label-md text-label-md">Cybersecurity Institute</td>
+<td class="py-lg font-label-md text-label-md">Oct 12, 2024</td>
+<td class="py-lg">
+<span class="px-md py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Active</span>
+</td>
+<td class="py-lg text-right">
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">open_in_new</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-lg font-label-md text-label-md text-on-surface font-bold">Neural Network Architectures</td>
+<td class="py-lg font-label-md text-label-md">CollegiaX Academy</td>
+<td class="py-lg font-label-md text-label-md">Aug 05, 2024</td>
+<td class="py-lg">
+<span class="px-md py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Active</span>
+</td>
+<td class="py-lg text-right">
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">open_in_new</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-lg font-label-md text-label-md text-on-surface font-bold">Sustainable Finance Systems</td>
+<td class="py-lg font-label-md text-label-md">Global Econ Forum</td>
+<td class="py-lg font-label-md text-label-md">May 21, 2024</td>
+<td class="py-lg">
+<span class="px-md py-1 rounded-full bg-surface-container-highest text-outline font-label-sm text-label-sm">Archived</span>
+</td>
+<td class="py-lg text-right">
+<span class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">open_in_new</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-md pt-xs bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant shadow-lg rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">event</span>
+<span class="font-label-sm text-label-sm">Events</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Clubs</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-sm text-label-sm">Calendar</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for hover effects
+        document.querySelectorAll('.card-border').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.transition = 'transform 0.2s ease-out';
+                card.classList.add('shadow-md');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.classList.remove('shadow-md');
+            });
+        });
+    </script>
+</body></html>

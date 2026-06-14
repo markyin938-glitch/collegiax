@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Event | CollegiaX</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Syne:wght@400..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#4679a3",
+                    "inverse-on-surface": "#eef1f4",
+                    "on-surface-variant": "#41474e",
+                    "on-tertiary-fixed": "#091d2e",
+                    "tertiary-fixed-dim": "#b5c8df",
+                    "on-tertiary-fixed-variant": "#36485b",
+                    "surface-container-high": "#e5e8eb",
+                    "on-primary-fixed-variant": "#0a4a72",
+                    "outline-variant": "#c1c7cf",
+                    "surface-bright": "#f7fafd",
+                    "on-secondary-container": "#2e6080",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f1f4f7",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#ebeef1",
+                    "surface": "#f7fafd",
+                    "primary-fixed-dim": "#9accfa",
+                    "on-surface": "#181c1e",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#001d32",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#cde5ff",
+                    "surface-variant": "#e0e3e6",
+                    "on-primary-container": "#fdfcff",
+                    "inverse-primary": "#9accfa",
+                    "tertiary-container": "#64768a",
+                    "on-tertiary-container": "#fdfcff",
+                    "inverse-surface": "#2d3133",
+                    "tertiary": "#4c5e71",
+                    "secondary-fixed": "#c9e6ff",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#181c1e",
+                    "secondary": "#326383",
+                    "outline": "#72787f",
+                    "secondary-fixed-dim": "#9cccf1",
+                    "on-secondary-fixed-variant": "#134b6a",
+                    "tertiary-fixed": "#d1e4fb",
+                    "surface-container-highest": "#e0e3e6",
+                    "secondary-container": "#aadaff",
+                    "background": "#f7fafd",
+                    "on-secondary-fixed": "#001e2f",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#d7dadd",
+                    "surface-tint": "#2d628b",
+                    "primary": "#2a6089"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin": "32px",
+                    "gutter": "24px",
+                    "xs": "8px",
+                    "sm": "12px",
+                    "base": "4px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "xxl": "48px"
+            },
+            "fontFamily": {
+                    "label-md": ["DM Sans"],
+                    "h3": ["Syne"],
+                    "body-md": ["DM Sans"],
+                    "label-sm": ["DM Sans"],
+                    "h2": ["Syne"],
+                    "h1-mobile": ["Syne"],
+                    "body-lg": ["DM Sans"],
+                    "h1": ["Syne"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                    "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #F4F7FA;
+            color: #181C1E;
+        }
+        .sidebar-border {
+            border-right: 1px solid #c1c7cf;
+        }
+        .content-card {
+            background-color: #FFFFFF;
+            border: 1px solid #c1c7cf;
+        }
+        .active-nav-indicator {
+            width: 4px;
+            height: 24px;
+            background-color: #326383;
+            border-radius: 0 4px 4px 0;
+            position: absolute;
+            left: 0;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #2a6089;
+            box-shadow: 0 0 0 3px rgba(42, 96, 137, 0.1);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-hidden h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-lg py-md w-full sticky top-0 z-50 bg-background dark:bg-on-tertiary-fixed border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-md">
+<span class="font-h3 text-h3 font-bold text-primary dark:text-primary-fixed">CollegiaX</span>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden md:flex items-center gap-md">
+<button class="flex items-center gap-xs px-md py-sm text-on-surface-variant dark:text-outline hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors rounded-lg active:scale-95 duration-150">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-md">Search</span>
+</button>
+<button class="flex items-center gap-xs px-md py-sm text-on-surface dark:text-on-secondary-fixed font-bold hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors rounded-lg active:scale-95 duration-150">
+<span class="material-symbols-outlined">event</span>
+<span class="font-label-md">Events</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-full font-label-md active:scale-95 duration-150 flex items-center gap-xs">
+<span class="material-symbols-outlined">auto_awesome</span>
+                AI Assistant
+            </button>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-[280px] sidebar-border bg-[#EEF3F8] hidden md:flex flex-col py-lg shrink-0 overflow-y-auto">
+<nav class="space-y-base">
+<a class="relative flex items-center gap-md px-lg py-sm text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md">Home</span>
+</a>
+<a class="relative flex items-center gap-md px-lg py-sm text-primary font-bold bg-surface-container-high" href="#">
+<div class="active-nav-indicator"></div>
+<span class="material-symbols-outlined">event</span>
+<span class="font-label-md">Events</span>
+</a>
+<a class="relative flex items-center gap-md px-lg py-sm text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-md">Clubs</span>
+</a>
+<a class="relative flex items-center gap-md px-lg py-sm text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md">Calendar</span>
+</a>
+<a class="relative flex items-center gap-md px-lg py-sm text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md">Profile</span>
+</a>
+</nav>
+<div class="mt-xxl px-lg">
+<p class="text-label-sm uppercase tracking-widest text-outline mb-md">Favorites</p>
+<ul class="space-y-sm">
+<li class="flex items-center gap-sm text-on-surface-variant cursor-pointer hover:text-primary">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-label-md">Machine Learning Hub</span>
+</li>
+<li class="flex items-center gap-sm text-on-surface-variant cursor-pointer hover:text-primary">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<span class="text-label-md">Debate Society</span>
+</li>
+</ul>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-surface p-xl">
+<div class="max-w-[1200px] mx-auto">
+<!-- Stepper -->
+<div class="flex items-center justify-between mb-xxl relative">
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant -z-10"></div>
+<div class="flex flex-col items-center gap-xs bg-surface px-md">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold">1</div>
+<span class="font-label-sm text-primary">Basic Info</span>
+</div>
+<div class="flex flex-col items-center gap-xs bg-surface px-md">
+<div class="w-10 h-10 rounded-full border border-outline-variant bg-surface-container text-on-surface-variant flex items-center justify-center font-bold">2</div>
+<span class="font-label-sm text-on-surface-variant">Logistics</span>
+</div>
+<div class="flex flex-col items-center gap-xs bg-surface px-md">
+<div class="w-10 h-10 rounded-full border border-outline-variant bg-surface-container text-on-surface-variant flex items-center justify-center font-bold">3</div>
+<span class="font-label-sm text-on-surface-variant">Visuals</span>
+</div>
+<div class="flex flex-col items-center gap-xs bg-surface px-md">
+<div class="w-10 h-10 rounded-full border border-outline-variant bg-surface-container text-on-surface-variant flex items-center justify-center font-bold">4</div>
+<span class="font-label-sm text-on-surface-variant">Review</span>
+</div>
+</div>
+<!-- Form Card -->
+<div class="content-card rounded-xl p-xxl shadow-sm max-w-4xl mx-auto">
+<div class="mb-xl">
+<h1 class="font-h2 text-h2 mb-xs text-on-surface">Create New Event</h1>
+<p class="text-on-surface-variant font-body-md">Fill in the details below to broadcast your event to the CollegiaX community.</p>
+</div>
+<form class="space-y-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="col-span-2">
+<label class="block font-label-md text-on-surface mb-xs">Event Title</label>
+<input class="w-full px-md py-sm rounded-lg border border-outline-variant bg-surface-container-lowest focus:ring-0" placeholder="e.g. Annual Tech Symposium 2024" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-on-surface mb-xs">Event Category</label>
+<select class="w-full px-md py-sm rounded-lg border border-outline-variant bg-surface-container-lowest focus:ring-0 appearance-none">
+<option>Academic</option>
+<option>Social</option>
+<option>Workshop</option>
+<option>Competition</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-on-surface mb-xs">Club / Organization</label>
+<select class="w-full px-md py-sm rounded-lg border border-outline-variant bg-surface-container-lowest focus:ring-0">
+<option>Computer Science Guild</option>
+<option>AI Research Collective</option>
+<option>Independent Organizer</option>
+</select>
+</div>
+<div class="col-span-2">
+<label class="block font-label-md text-on-surface mb-xs">Description</label>
+<textarea class="w-full px-md py-sm rounded-lg border border-outline-variant bg-surface-container-lowest focus:ring-0" placeholder="Describe what makes this event special..." rows="6"></textarea>
+</div>
+</div>
+<!-- Abstract Visual Placeholder Side -->
+<div class="mt-xl pt-xl border-t border-outline-variant grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="md:col-span-1">
+<h3 class="font-h3 text-h3 mb-sm">Visual Identity</h3>
+<p class="text-label-md text-on-surface-variant">A compelling cover image increases event engagement by up to 40%.</p>
+<div class="mt-md p-md bg-secondary-container rounded-lg">
+<p class="text-label-sm text-on-secondary-container flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">info</span>
+                                        Pro-tip: Use high-res posters.
+                                    </p>
+</div>
+</div>
+<div class="md:col-span-2">
+<div class="relative w-full aspect-video rounded-xl border-2 border-dashed border-outline-variant bg-surface-container-low flex flex-col items-center justify-center text-on-surface-variant group cursor-pointer overflow-hidden transition-all hover:bg-surface-container">
+<img alt="Event Cover" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity" data-alt="A clean, minimalist high-key photograph of a spacious modern lecture hall with blonde wood accents and bright white lighting. The perspective is from the stage looking out towards organized rows of empty seats. The atmosphere is quiet and intellectually charged, mirroring a professional academic environment with a serene blue and silver-mist color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWj8mK0zx1wE-9EOVpJfscaS8BMY32fJ5QkcEUG7jYh4cS38lkUIyVTz22bdqquz4N41i8Qmnw180QLh555lxyr6cxs8F7mtl-MZ6U_Wiwicv1I_6X0WWOdVQbLr1x673WSJLWYAZ2NYTonhCLGLsBZUw3tsberUDzEOuMbb2U0kdLv4bLNx_XqIl5mXTYZq0hDv8ydhGcyzbLNmonqZicLiV2WLzAHAuIh4tfgNslXKsajsaAXqWKS2_KfGFoft-nExbvv0J4Kazf"/>
+<div class="relative z-10 flex flex-col items-center">
+<span class="material-symbols-outlined text-[48px] mb-sm">add_photo_alternate</span>
+<span class="font-label-md">Drop event poster here or click to browse</span>
+<span class="text-label-sm mt-xs opacity-60">PNG, JPG up to 10MB</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex justify-between items-center mt-xxl pt-lg border-t border-outline-variant">
+<button class="px-xl py-sm rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors font-label-md" type="button">Save as Draft</button>
+<div class="flex gap-md">
+<button class="px-xl py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors font-label-md" type="button">Cancel</button>
+<button class="px-xxl py-sm rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-all active:scale-95 font-label-md shadow-md" type="button">Next Step</button>
+</div>
+</div>
+</form>
+</div>
+<!-- Secondary Context / Guidance -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mt-xxl">
+<div class="content-card p-lg rounded-xl flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div>
+<h4 class="font-label-md text-on-surface mb-xs">Visibility Control</h4>
+<p class="text-label-sm text-on-surface-variant">Choose who can see your event: Public, Department-only, or Private Invitation.</p>
+</div>
+</div>
+<div class="content-card p-lg rounded-xl flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<div>
+<h4 class="font-label-md text-on-surface mb-xs">RSVP Tracking</h4>
+<p class="text-label-sm text-on-surface-variant">Real-time attendance tracking and waitlist management enabled by default.</p>
+</div>
+</div>
+<div class="content-card p-lg rounded-xl flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">campaign</span>
+<div>
+<h4 class="font-label-md text-on-surface mb-xs">Auto-Promotion</h4>
+<p class="text-label-sm text-on-surface-variant">AI-suggested distribution channels based on your event's specific category.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.parentElement.querySelector('label')?.classList.add('text-primary');
+            });
+            element.addEventListener('blur', function() {
+                this.parentElement.querySelector('label')?.classList.remove('text-primary');
+            });
+        });
+
+        // Simple stepper logic simulation
+        let currentStep = 1;
+        function updateStepper(step) {
+            // In a real app, this would handle page navigation
+            console.log("Navigating to step", step);
+        }
+    </script>
+</body></html>

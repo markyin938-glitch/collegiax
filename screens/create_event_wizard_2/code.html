@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CollegiaX - Create Event</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#091d2e",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#9accfa",
+                        "background": "#f7fafd",
+                        "tertiary-fixed": "#d1e4fb",
+                        "on-secondary-container": "#2e6080",
+                        "tertiary-container": "#64768a",
+                        "on-primary-fixed-variant": "#0a4a72",
+                        "inverse-surface": "#2d3133",
+                        "primary-fixed": "#cde5ff",
+                        "outline-variant": "#c1c7cf",
+                        "surface-container-high": "#e5e8eb",
+                        "secondary-container": "#aadaff",
+                        "tertiary-fixed-dim": "#b5c8df",
+                        "tertiary": "#4c5e71",
+                        "on-surface": "#181c1e",
+                        "surface-tint": "#2d628b",
+                        "outline": "#72787f",
+                        "secondary-fixed-dim": "#9cccf1",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#181c1e",
+                        "primary-container": "#4679a3",
+                        "surface-container-low": "#f1f4f7",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e0e3e6",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#fdfcff",
+                        "primary-fixed-dim": "#9accfa",
+                        "on-primary-container": "#fdfcff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f7fafd",
+                        "primary": "#2a6089",
+                        "surface-variant": "#e0e3e6",
+                        "on-primary-fixed": "#001d32",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#326383",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#134b6a",
+                        "inverse-on-surface": "#eef1f4",
+                        "on-tertiary-fixed-variant": "#36485b",
+                        "surface-container": "#ebeef1",
+                        "on-surface-variant": "#41474e",
+                        "surface-dim": "#d7dadd",
+                        "surface": "#f7fafd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "sm": "12px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "xs": "8px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Syne"],
+                        "label-sm": ["DM Sans"],
+                        "label-md": ["DM Sans"],
+                        "h1-mobile": ["Syne"],
+                        "body-lg": ["DM Sans"],
+                        "body-md": ["DM Sans"],
+                        "h2": ["Syne"],
+                        "h1": ["Syne"]
+                    },
+                    "fontSize": {
+                        "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #f7fafd; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active { color: #2a6089; border-bottom: 2px solid #2a6089; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-lg py-md w-full sticky top-0 z-50 bg-background dark:bg-on-tertiary-fixed border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-150">close</button>
+<h1 class="font-h3 text-h3-mobile font-bold text-primary dark:text-primary-fixed">CollegiaX</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-colors active:scale-95 duration-150">AI Assist</button>
+</div>
+</header>
+<main class="flex-grow pb-32">
+<!-- Progress Stepper -->
+<div class="bg-surface-container-lowest border-b border-outline-variant overflow-x-auto hide-scrollbar sticky top-[65px] z-40">
+<div class="flex px-lg py-sm whitespace-nowrap gap-gutter">
+<div class="flex flex-col items-start gap-1 step-active pb-1">
+<span class="font-label-sm text-label-sm uppercase opacity-60">Step 1</span>
+<span class="font-label-md text-label-md font-bold">Basic Details</span>
+</div>
+<div class="flex flex-col items-start gap-1 text-on-surface-variant opacity-40 pb-1">
+<span class="font-label-sm text-label-sm uppercase">Step 2</span>
+<span class="font-label-md text-label-md font-medium">Banner</span>
+</div>
+<div class="flex flex-col items-start gap-1 text-on-surface-variant opacity-40 pb-1">
+<span class="font-label-sm text-label-sm uppercase">Step 3</span>
+<span class="font-label-md text-label-md font-medium">Schedule</span>
+</div>
+<div class="flex flex-col items-start gap-1 text-on-surface-variant opacity-40 pb-1">
+<span class="font-label-sm text-label-sm uppercase">Step 4</span>
+<span class="font-label-md text-label-md font-medium">Location</span>
+</div>
+</div>
+</div>
+<div class="p-lg max-w-md mx-auto">
+<!-- Form Section: Basic Details -->
+<div class="space-y-xl" id="step-content">
+<div class="space-y-sm">
+<h2 class="font-h2 text-h2 text-on-surface">Event Core</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Define the foundational identity of your academic event.</p>
+</div>
+<form class="space-y-lg">
+<!-- Event Title -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Event Title</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-md font-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" placeholder="e.g. Annual Quantum Computing Symposium" type="text"/>
+</div>
+<!-- Club Context -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Hosting Organization</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-md font-body-md text-on-surface appearance-none focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none">
+<option>The Physics Society</option>
+<option>Data Science Union</option>
+<option>Philosophy Circle</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+</div>
+<!-- Category Chips -->
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Category</label>
+<div class="flex flex-wrap gap-xs">
+<button class="px-md py-xs bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm border border-transparent hover:border-secondary transition-all" type="button">Symposium</button>
+<button class="px-md py-xs bg-surface-container-high text-on-surface-variant rounded-full font-label-sm text-label-sm hover:bg-surface-container-highest transition-all" type="button">Workshop</button>
+<button class="px-md py-xs bg-surface-container-high text-on-surface-variant rounded-full font-label-sm text-label-sm hover:bg-surface-container-highest transition-all" type="button">Seminar</button>
+<button class="px-md py-xs bg-surface-container-high text-on-surface-variant rounded-full font-label-sm text-label-sm hover:bg-surface-container-highest transition-all" type="button">Networking</button>
+</div>
+</div>
+<!-- Description -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Detailed Abstract</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-md font-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" placeholder="Outline the learning objectives and guest speakers..." rows="5"></textarea>
+</div>
+<!-- Tag Generator -->
+<div class="p-md bg-surface-container rounded-xl border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Smart Tagging</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Generate academic keywords using AI</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-primary bg-surface-container-lowest p-2 rounded-lg shadow-sm" type="button">refresh</button>
+</div>
+</form>
+</div>
+</div>
+</main>
+<!-- Sticky Action Bar -->
+<footer class="fixed bottom-0 w-full bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline p-md z-50">
+<div class="flex items-center justify-between gap-md max-w-md mx-auto">
+<button class="flex-1 px-4 py-3 rounded-xl border border-outline-variant font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low active:scale-95 duration-200 transition-all">
+                Save Draft
+            </button>
+<button class="flex-1 px-4 py-3 rounded-xl bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-all active:scale-90 duration-200 flex items-center justify-center gap-2" onclick="nextStep()">
+                Continue
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</footer>
+<!-- Step 2 Content Preview (Normally toggled by JS) -->
+<div class="hidden p-lg max-w-md mx-auto space-y-xl pb-32" id="step-banner">
+<div class="space-y-sm">
+<h2 class="font-h2 text-h2 text-on-surface">Visual Identity</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Upload a high-resolution banner that captures the scholarly essence of the event.</p>
+</div>
+<div class="relative group aspect-video bg-surface-container-high rounded-2xl border-2 border-dashed border-outline-variant flex flex-col items-center justify-center gap-md overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+
+</div>
+<span class="material-symbols-outlined text-xxl text-outline">add_photo_alternate</span>
+<div class="text-center">
+<p class="font-label-md text-label-md text-on-surface font-bold">Tap to upload</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">1600x900px recommended (Max 5MB)</p>
+</div>
+</div>
+<div class="space-y-md">
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Premium Templates</h3>
+<div class="grid grid-cols-2 gap-md">
+<div class="aspect-video rounded-lg overflow-hidden border border-outline-variant relative">
+<img class="w-full h-full object-cover opacity-60" data-alt="A sophisticated academic-themed banner template for a university symposium. The design features minimalist architectural lines, a professional color palette of muted denim and silver, and clean typography. The atmosphere is scholarly, intellectual, and high-end modern minimalist." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK5FnzEP4WqJKPDEhwzm7lCzEEdcYwTR_1o0XleJ-Njcx-CWPEivopDGq5-hau9zBOhx1UyMtDfpnQsl5iCgRVOkdfy_HUOcb-o6uAD_5CSPg6noT95SLuyH8TadisP5Wn1LtltUzDeHGaV7UC6xbOR_j0UcyLZrpD1YvY49wET1TARAEykLrmzc7vpXfmxj52OAFNCFqGQSjRy2nrb2MRewzP3OvmgCVGwagBVXqvYuSPBoY3AwnbkUjfTsc1ROa-Oue8wyl9Gygb"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="font-label-sm text-label-sm text-on-surface bg-surface-container-lowest px-2 py-1 rounded">Classic Academia</span>
+</div>
+</div>
+<div class="aspect-video rounded-lg overflow-hidden border border-outline-variant relative">
+<img class="w-full h-full object-cover opacity-60" data-alt="A modern tech-focused conference banner featuring abstract network patterns and geometric data visualizations. The lighting is low-key with subtle indigo glow effects. The overall look is professional, data-driven, and innovative, perfectly suited for a research-heavy academic SaaS dashboard environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4sCvTJh5X9455hOAzD1vJeq3bKdoWC7bUTMueU9gbRfYx9_91YA5XY-YpwkIDVh_kVRtdXCjdsjeSdEaga8sFixCJ-0XOPC8MnyymOINOXHO60-B3_NSGh3aXT8PADB0VvDY2DnpbdFfNmdbaYU6UtKvhe9_mrI4N6ONsLxU8wAUZvmvmoM6lKdmAe233YzrI3t5up0VnfY0fyuG4s4pnOyYMiw6VDUWcOEveYHVAgbiOQ52AbYVheJDdTileYE2iQcKeD6yTEv58"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="font-label-sm text-label-sm text-on-surface bg-surface-container-lowest px-2 py-1 rounded">Tech Horizon</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+        function nextStep() {
+            // Simple mock logic for multi-step transition
+            const content = document.getElementById('step-content');
+            const banner = document.getElementById('step-banner');
+            const stepperItems = document.querySelectorAll('.whitespace-nowrap > div');
+            
+            if (!content.classList.contains('hidden')) {
+                content.classList.add('hidden');
+                banner.classList.remove('hidden');
+                
+                // Update Stepper
+                stepperItems[0].classList.remove('step-active');
+                stepperItems[0].classList.add('opacity-40');
+                stepperItems[1].classList.add('step-active');
+                stepperItems[1].classList.remove('opacity-40');
+                
+                window.scrollTo(0, 0);
+            } else {
+                // For demo purposes, cycling back to step 1
+                content.classList.remove('hidden');
+                banner.classList.add('hidden');
+                stepperItems[0].classList.add('step-active');
+                stepperItems[0].classList.remove('opacity-40');
+                stepperItems[1].classList.remove('step-active');
+                stepperItems[1].classList.add('opacity-40');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // Add some micro-interactions
+        document.querySelectorAll('input, select, textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.classList.add('scale-[1.01]');
+                el.parentElement.style.transition = 'all 0.2s ease-out';
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clubs Explorer - CollegiaX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#091d2e",
+                    "secondary-fixed": "#c9e6ff",
+                    "on-secondary-fixed": "#001e2f",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#9accfa",
+                    "background": "#f7fafd",
+                    "tertiary-fixed": "#d1e4fb",
+                    "on-secondary-container": "#2e6080",
+                    "tertiary-container": "#64768a",
+                    "on-primary-fixed-variant": "#0a4a72",
+                    "inverse-surface": "#2d3133",
+                    "primary-fixed": "#cde5ff",
+                    "outline-variant": "#c1c7cf",
+                    "surface-container-high": "#e5e8eb",
+                    "secondary-container": "#aadaff",
+                    "tertiary-fixed-dim": "#b5c8df",
+                    "tertiary": "#4c5e71",
+                    "on-surface": "#181c1e",
+                    "surface-tint": "#2d628b",
+                    "outline": "#72787f",
+                    "secondary-fixed-dim": "#9cccf1",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#181c1e",
+                    "primary-container": "#4679a3",
+                    "surface-container-low": "#f1f4f7",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e0e3e6",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#fdfcff",
+                    "primary-fixed-dim": "#9accfa",
+                    "on-primary-container": "#fdfcff",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f7fafd",
+                    "primary": "#2a6089",
+                    "surface-variant": "#e0e3e6",
+                    "on-primary-fixed": "#001d32",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#326383",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#134b6a",
+                    "inverse-on-surface": "#eef1f4",
+                    "on-tertiary-fixed-variant": "#36485b",
+                    "surface-container": "#ebeef1",
+                    "on-surface-variant": "#41474e",
+                    "surface-dim": "#d7dadd",
+                    "surface": "#f7fafd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin": "32px",
+                    "lg": "24px",
+                    "xxl": "48px",
+                    "sm": "12px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "xs": "8px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "h3": ["Syne"],
+                    "label-sm": ["DM Sans"],
+                    "label-md": ["DM Sans"],
+                    "h1-mobile": ["Syne"],
+                    "body-lg": ["DM Sans"],
+                    "body-md": ["DM Sans"],
+                    "h2": ["Syne"],
+                    "h1": ["Syne"]
+            },
+            "fontSize": {
+                    "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7fafd; /* Ice */
+            color: #181c1e;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .club-card {
+            border: 1px solid #c1c7cf; /* Steel Mist */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .club-card:active {
+            transform: scale(0.98);
+        }
+        .badge-silver {
+            background-color: #ebeef1; /* Silver Mist */
+            color: #4c5e71; /* Steel Blue */
+        }
+        .glass-header {
+            backdrop-filter: blur(8px);
+            background: rgba(247, 250, 253, 0.8);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md overflow-x-hidden pb-24">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-lg py-md w-full sticky top-0 z-50 bg-background dark:bg-on-tertiary-fixed border-b border-outline-variant dark:border-outline glass-header">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">search</span>
+<h1 class="font-h3 text-h3-mobile font-bold text-primary dark:text-primary-fixed">CollegiaX</h1>
+</div>
+<button class="bg-primary text-on-primary px-4 py-1 rounded-full font-label-sm text-label-sm hover:bg-primary-container transition-colors active:scale-95 duration-150">
+            AI
+        </button>
+</header>
+<main class="px-md pt-lg">
+<!-- Page Header -->
+<div class="mb-lg">
+<h2 class="font-h2 text-h2 text-on-surface mb-xs">Explore Clubs</h2>
+<p class="font-body-md text-on-surface-variant">Find your community and academic niche.</p>
+</div>
+<!-- Filter Chips (Atmospheric UI) -->
+<div class="flex gap-xs overflow-x-auto pb-md no-scrollbar mb-md">
+<span class="badge-silver font-label-md text-label-md px-4 py-2 rounded-full whitespace-nowrap border border-primary/20 bg-secondary-container text-on-secondary-container">All Clubs</span>
+<span class="badge-silver font-label-md text-label-md px-4 py-2 rounded-full whitespace-nowrap border border-transparent">Robotics</span>
+<span class="badge-silver font-label-md text-label-md px-4 py-2 rounded-full whitespace-nowrap border border-transparent">Design</span>
+<span class="badge-silver font-label-md text-label-md px-4 py-2 rounded-full whitespace-nowrap border border-transparent">Economics</span>
+<span class="badge-silver font-label-md text-label-md px-4 py-2 rounded-full whitespace-nowrap border border-transparent">Philosophy</span>
+</div>
+<!-- Club Grid (Bento Style layout for mobile) -->
+<div class="flex flex-col gap-md">
+<!-- Club Card 1 -->
+<div class="club-card bg-surface-container-lowest rounded-xl p-md flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded-lg bg-surface-container overflow-hidden border border-outline-variant">
+<img alt="Club Logo" class="w-full h-full object-cover" data-alt="A professional, high-contrast logo of a robotics engineering club featuring a stylized circuit board brain. The logo is set against a clean white background with soft, cool-toned shadows. The visual style is modern, technical, and academic, fitting the premium CollegiaX aesthetic. Light blue and deep navy accents emphasize the precision and advanced technology focus of the organization." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs_4fNpBvkm5k4tYI2_l1Vu0BUmRmZvs7u5DBpwwkV9VRLKGxZs3mehYZUYEoGhoB6gsYKVIxyTnI92glGTl6HFJls0EdPPWNuSz4S5z28GHmTnnpEUQCtfZaJxkw9uMwjEFY0mwqDJdUDafehuXOsUFOaIh1SGBhDHR4i7klmx9zYEaOaRVE0AReYth_WKjOCgBFMFFFNWwRyszPMFZZ7D3Wng5yiPsLTWq-DQBGCqjOQ_PF-9g3ApWw8bnDGH-Hdl3CZ2fNLWHrx"/>
+</div>
+<div>
+<h3 class="font-h3 text-body-lg font-bold text-on-surface">Robotics Lab</h3>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span class="font-label-sm text-label-sm">482 Members</span>
+</div>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-primary">bookmark</button>
+</div>
+<div class="flex flex-wrap gap-xs">
+<div class="badge-silver font-label-sm text-label-sm px-3 py-1 rounded flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">military_tech</span>
+                        Nat'l Champs 2023
+                    </div>
+<div class="badge-silver font-label-sm text-label-sm px-3 py-1 rounded flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">stars</span>
+                        5 Projects
+                    </div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-sm border border-outline-variant/30">
+<div class="flex items-center gap-xs mb-1">
+<span class="material-symbols-outlined text-[16px] text-primary">calendar_today</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Upcoming Event</span>
+</div>
+<p class="font-body-md text-on-surface-variant text-sm">AI-Driven Robotics Workshop • Tomorrow, 4 PM</p>
+</div>
+<div class="flex gap-sm pt-xs">
+<button class="flex-1 bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md font-bold shadow-sm active:scale-95 transition-all">Follow Club</button>
+<button class="flex-1 bg-surface-container text-on-surface-variant py-3 rounded-lg font-label-md text-label-md border border-outline-variant active:scale-95 transition-all">Contact Lead</button>
+</div>
+</div>
+<!-- Club Card 2 -->
+<div class="club-card bg-surface-container-lowest rounded-xl p-md flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded-lg bg-surface-container overflow-hidden border border-outline-variant">
+<img alt="Club Logo" class="w-full h-full object-cover" data-alt="A sophisticated emblem for a design and typography student collective. The visual features an elegant, abstract 'D' constructed from modular 1px lines. The color palette is composed of cool grays, midnight blue, and a single accent of denim blue. The scene is bright and airy with a minimalist, high-end scholarly feel. Depth is created through subtle tonal shifts and precise execution of thin borders." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiqO-EzzS2IMi-RTM2fndcWExEaiV3yhcw2A1Q7HcP6cGITAMvZU8AiV2BF7_TV-xicZMxZR_3PgAOxENc31m5TmlK_GdcCzn06H8dA9rY2uboKfodQod2QGmGgANZFEYmSO3oHuPcQ8y056anejphqLZVD3C8Xt8LRv1psba3KX-tlMDRoXpVXswJErmWMqqkYqK9PErCsC3dKp3JQuBpleCWD4bfWH0heENesd6oLaNjEZziiDwwze-3Kqsh7TEWzKDXHppCEeYU"/>
+</div>
+<div>
+<h3 class="font-h3 text-body-lg font-bold text-on-surface">Design Collective</h3>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span class="font-label-sm text-label-sm">215 Members</span>
+</div>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-primary">bookmark</button>
+</div>
+<div class="flex flex-wrap gap-xs">
+<div class="badge-silver font-label-sm text-label-sm px-3 py-1 rounded flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">emoji_events</span>
+                        Behance Featured
+                    </div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-sm border border-outline-variant/30">
+<div class="flex items-center gap-xs mb-1">
+<span class="material-symbols-outlined text-[16px] text-primary">calendar_today</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Upcoming Event</span>
+</div>
+<p class="font-body-md text-on-surface-variant text-sm">Portfolio Review Night • Friday, 6 PM</p>
+</div>
+<div class="flex gap-sm pt-xs">
+<button class="flex-1 bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md font-bold shadow-sm active:scale-95 transition-all">Follow Club</button>
+<button class="flex-1 bg-surface-container text-on-surface-variant py-3 rounded-lg font-label-md text-label-md border border-outline-variant active:scale-95 transition-all">Contact Lead</button>
+</div>
+</div>
+<!-- Club Card 3 (Compact Variation) -->
+<div class="club-card bg-surface-container-lowest rounded-xl p-md flex flex-col gap-md opacity-90">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded-lg bg-surface-container overflow-hidden border border-outline-variant">
+<img alt="Club Logo" class="w-full h-full object-cover" data-alt="An intellectual and modern logo for a student economics society, depicting a stylized chart line and a globe in a clean, minimalist vector style. The aesthetic is professional and academic, utilizing a palette of Ice Blue, Steel Mist, and Midnight Navy. The lighting is soft and flat, emphasizing the 1px border precision. The composition feels organized and calm, perfect for a deep-work focused research environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFIVYYa0xqWtPpRMJ0JZv2WglCq5uy3ud7eJQCbAP5Wwzc1T8DQ0dDkzl9YNqaI9-W2mY3R2Wn2NNXtJsKM_SESoTQPPK0XaqELAphNDL2kNKyK031QeqU72-ewvBEMRVBLFXoduc7VFHjEmfj3UpKjGVFnjuBxmYlws42WTWuDvagDVN8axq8XlHh27yY1HE0Q8gvrQQvaJSzliVD1zWyJm-C02MhOHCo2R_zB7OGErP7lTsPxneztYMbQ8ujMJ99nUGyh-N-cuXL"/>
+</div>
+<div>
+<h3 class="font-h3 text-body-lg font-bold text-on-surface">Economics Society</h3>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span class="font-label-sm text-label-sm">840 Members</span>
+</div>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-primary">bookmark</button>
+</div>
+<div class="flex flex-wrap gap-xs">
+<div class="badge-silver font-label-sm text-label-sm px-3 py-1 rounded flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">article</span>
+                        Quarterly Journal
+                    </div>
+</div>
+<div class="flex gap-sm pt-xs">
+<button class="flex-1 bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md font-bold shadow-sm active:scale-95 transition-all">Follow Club</button>
+<button class="flex-1 bg-surface-container text-on-surface-variant py-3 rounded-lg font-label-md text-label-md border border-outline-variant active:scale-95 transition-all">Contact Lead</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-md pt-xs bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-lg dark:shadow-none rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">event</span>
+<span class="font-label-sm text-label-sm">Events</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-full px-4 py-1 active:scale-90 duration-200">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Clubs</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-sm text-label-sm">Calendar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.classList.add('scale-95');
+            });
+            btn.addEventListener('touchend', function() {
+                this.classList.remove('scale-95');
+            });
+        });
+
+        // Filter chips selection logic
+        const chips = document.querySelectorAll('.badge-silver');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    c.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'border-primary/20');
+                    c.classList.add('border-transparent');
+                });
+                chip.classList.add('bg-secondary-container', 'text-on-secondary-container', 'border-primary/20');
+                chip.classList.remove('border-transparent');
+            });
+        });
+    </script>
+</body></html>

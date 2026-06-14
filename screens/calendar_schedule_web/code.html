@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CollegiaX — Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Syne:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "frost": "#EEF3F8",
+                    "on-tertiary-fixed": "#091d2e",
+                    "secondary-fixed": "#c9e6ff",
+                    "on-secondary-fixed": "#001e2f",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#9accfa",
+                    "background": "#f7fafd",
+                    "tertiary-fixed": "#d1e4fb",
+                    "on-secondary-container": "#2e6080",
+                    "tertiary-container": "#64768a",
+                    "on-primary-fixed-variant": "#0a4a72",
+                    "inverse-surface": "#2d3133",
+                    "primary-fixed": "#cde5ff",
+                    "outline-variant": "#c1c7cf",
+                    "surface-container-high": "#e5e8eb",
+                    "secondary-container": "#aadaff",
+                    "tertiary-fixed-dim": "#b5c8df",
+                    "tertiary": "#4c5e71",
+                    "on-surface": "#181c1e",
+                    "surface-tint": "#2d628b",
+                    "outline": "#72787f",
+                    "secondary-fixed-dim": "#9cccf1",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#181c1e",
+                    "primary-container": "#4679a3",
+                    "surface-container-low": "#f1f4f7",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e0e3e6",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#fdfcff",
+                    "primary-fixed-dim": "#9accfa",
+                    "on-primary-container": "#fdfcff",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f7fafd",
+                    "primary": "#2a6089",
+                    "surface-variant": "#e0e3e6",
+                    "on-primary-fixed": "#001d32",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#326383",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#134b6a",
+                    "inverse-on-surface": "#eef1f4",
+                    "on-tertiary-fixed-variant": "#36485b",
+                    "surface-container": "#ebeef1",
+                    "on-surface-variant": "#41474e",
+                    "surface-dim": "#d7dadd",
+                    "surface": "#f7fafd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin": "32px",
+                    "lg": "24px",
+                    "xxl": "48px",
+                    "sm": "12px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "xs": "8px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "h3": ["Syne"],
+                    "label-sm": ["DM Sans"],
+                    "label-md": ["DM Sans"],
+                    "h1-mobile": ["Syne"],
+                    "body-lg": ["DM Sans"],
+                    "body-md": ["DM Sans"],
+                    "h2": ["Syne"],
+                    "h1": ["Syne"]
+            },
+            "fontSize": {
+                    "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .glass-header {
+            backdrop-filter: blur(8px);
+            background: rgba(247, 250, 253, 0.85);
+        }
+
+        body {
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased flex">
+<!-- Persistent Sidebar -->
+<aside class="hidden lg:flex flex-col w-64 bg-frost border-r border-outline-variant h-screen sticky top-0 overflow-y-auto">
+<div class="px-lg py-xl">
+<h1 class="font-h3 text-h3 text-primary">CollegiaX</h1>
+</div>
+<nav class="flex-1 px-md space-y-xs">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md">Home</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="font-label-md">Events</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-md">Clubs</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-xl transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-label-md font-bold">Calendar</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md">Profile</span>
+</a>
+</nav>
+<div class="p-lg border-t border-outline-variant mt-auto">
+<button class="flex items-center gap-md px-md py-sm w-full text-error hover:bg-error-container/20 rounded-xl transition-all">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md font-bold">Sign Out</span>
+</button>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-w-0">
+<!-- TopAppBar -->
+<header class="bg-background/80 backdrop-blur-md flex justify-between items-center px-lg py-md w-full sticky top-0 z-50 border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<button class="lg:hidden hover:bg-surface-container-high transition-colors p-xs rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden sm:flex items-center bg-surface-container rounded-full px-md py-1 border border-outline-variant">
+<span class="material-symbols-outlined text-outline text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-sm w-48" placeholder="Search..." type="text"/>
+</div>
+<button class="sm:hidden hover:bg-surface-container-high transition-colors p-xs rounded-full">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+</div>
+<h1 class="lg:hidden font-h3 text-h3-mobile font-bold text-primary">CollegiaX</h1>
+<div class="flex items-center gap-md">
+<button class="font-label-sm text-label-sm bg-primary-container text-on-primary-container px-md py-xs rounded-full active:scale-95 duration-150 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">smart_toy</span> AI Assistant
+                </button>
+<div class="w-10 h-10 rounded-full bg-tertiary-container overflow-hidden border-2 border-outline-variant shadow-sm">
+<img alt="avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNPRqrnoHqeFxK4GJb5qYSV_cIcOc9_LbaMPskeqbE5wsfZ6dWwMfHbqcvGKtKINIh3LDHfP8tbSAMERHLKBCc5et9VUiv-EXl_0dum9I-rgk8xYw-BDap2VTfBf0tx331w1RfN4RIzc9QhJ8GiTLM3rX3qPYpuIRxkLdyc7DTnJLnCZvy0oYhPJuTgUe8g1CI8oMMNhO1ARY1dwgilk6NiOI5L4OhBTmGy8nxFbGQiMawea9XNaxYKDxARFpXD75lpWUpcfJcAarO"/>
+</div>
+</div>
+</header>
+<main class="p-md lg:p-xl max-w-7xl mx-auto w-full">
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-lg lg:gap-xl">
+<!-- Left Content: Calendar & Stats (Expanded) -->
+<div class="xl:col-span-7 space-y-lg">
+<!-- Monthly Grid Component -->
+<section class="bg-surface-container-lowest rounded-2xl p-lg border border-outline-variant shadow-sm">
+<div class="flex justify-between items-center mb-xl">
+<div class="flex flex-col">
+<h2 class="font-h3 text-h3 text-on-surface">September 2024</h2>
+<span class="font-label-sm text-outline">Academic Semester 1</span>
+</div>
+<div class="flex gap-sm">
+<button class="p-sm rounded-xl border border-outline-variant hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-sm rounded-xl border border-outline-variant hover:bg-surface-container-high transition-colors font-label-md px-md">Today</button>
+<button class="p-sm rounded-xl border border-outline-variant hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-y-lg text-center">
+<!-- Weekdays -->
+<div class="font-label-sm text-outline uppercase tracking-wider pb-md">Mon</div>
+<div class="font-label-sm text-outline uppercase tracking-wider pb-md">Tue</div>
+<div class="font-label-sm text-outline uppercase tracking-wider pb-md">Wed</div>
+<div class="font-label-sm text-outline uppercase tracking-wider pb-md">Thu</div>
+<div class="font-label-sm text-outline uppercase tracking-wider pb-md">Fri</div>
+<div class="font-label-sm text-outline uppercase tracking-wider pb-md text-primary/60">Sat</div>
+<div class="font-label-sm text-outline uppercase tracking-wider pb-md text-primary/60">Sun</div>
+<!-- Days -->
+<div class="h-16 flex flex-col items-center justify-center text-outline-variant">26</div>
+<div class="h-16 flex flex-col items-center justify-center text-outline-variant">27</div>
+<div class="h-16 flex flex-col items-center justify-center text-outline-variant">28</div>
+<div class="h-16 flex flex-col items-center justify-center text-outline-variant">29</div>
+<div class="h-16 flex flex-col items-center justify-center text-outline-variant">30</div>
+<div class="h-16 flex flex-col items-center justify-center text-outline-variant">31</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">1</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">2</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer relative">
+                                3
+                                <div class="absolute bottom-3 flex gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+</div>
+</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">4</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">5</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer relative">
+                                6
+                                <div class="absolute bottom-3 flex gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+</div>
+</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">7</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">8</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">9</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">10</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">11</div>
+<div class="h-16 flex flex-col items-center justify-center bg-primary text-on-primary rounded-xl font-bold shadow-lg ring-4 ring-primary-container/20">12</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer relative">
+                                13
+                                <div class="absolute bottom-3 flex gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</div>
+</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">14</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">15</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">16</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">17</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer relative">
+                                18
+                                <div class="absolute bottom-3 flex gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</div>
+</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">19</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">20</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">21</div>
+<div class="h-16 flex flex-col items-center justify-center hover:bg-surface-container-high rounded-xl cursor-pointer">22</div>
+</div>
+</section>
+<!-- Bento Context Cards -->
+<section class="grid grid-cols-2 gap-lg">
+<div class="bg-tertiary-container text-on-tertiary-container p-lg rounded-2xl flex items-center justify-between shadow-sm">
+<div class="flex flex-col gap-1">
+<p class="font-label-md opacity-90 uppercase tracking-widest">Attendance Rate</p>
+<h5 class="font-h2">84%</h5>
+<div class="w-full bg-on-tertiary-container/20 h-1.5 rounded-full mt-2">
+<div class="bg-on-tertiary-container w-[84%] h-full rounded-full"></div>
+</div>
+</div>
+<span class="material-symbols-outlined text-5xl opacity-40">analytics</span>
+</div>
+<div class="bg-surface-container-highest p-lg rounded-2xl flex items-center justify-between border border-outline-variant shadow-sm">
+<div class="flex flex-col gap-1">
+<p class="font-label-md text-outline uppercase tracking-widest">Pending Tasks</p>
+<h5 class="font-h2 text-on-surface">3</h5>
+<p class="font-label-sm text-secondary">Due this week</p>
+</div>
+<span class="material-symbols-outlined text-secondary text-5xl opacity-40" style="font-variation-settings: 'FILL' 1;">assignment</span>
+</div>
+</section>
+</div>
+<!-- Right Content: Daily Timeline (Agenda View) -->
+<div class="xl:col-span-5 space-y-md">
+<div class="flex justify-between items-end px-xs pb-2 border-b border-outline-variant">
+<h3 class="font-h2 text-on-surface">Today's Schedule</h3>
+<span class="font-label-md text-primary font-bold">Thursday, Sept 12</span>
+</div>
+<!-- Timeline Entries Container -->
+<div class="relative pl-12 space-y-md before:content-[''] before:absolute before:left-[19px] before:top-4 before:bottom-4 before:w-[2px] before:bg-outline-variant">
+<!-- Completed Event -->
+<div class="relative group">
+<div class="absolute -left-12 w-10 text-right font-label-sm text-outline mt-1 group-hover:text-primary transition-colors">09:00</div>
+<div class="absolute -left-[31px] top-2 w-3 h-3 rounded-full bg-green-500 border-2 border-surface-container-lowest z-10"></div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md lg:p-lg rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-on-surface font-bold">Advanced Microeconomics</h4>
+<p class="font-label-sm text-outline mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Lec Hall 4 • Dr. Aris Thorne
+                                        </p>
+</div>
+<span class="bg-green-50 text-green-700 font-label-sm px-sm py-1 rounded-lg border border-green-200">Completed</span>
+</div>
+</div>
+</div>
+<!-- Missed Event -->
+<div class="relative group">
+<div class="absolute -left-12 w-10 text-right font-label-sm text-outline mt-1 group-hover:text-error transition-colors">11:30</div>
+<div class="absolute -left-[31px] top-2 w-3 h-3 rounded-full bg-error border-2 border-surface-container-lowest z-10"></div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md lg:p-lg rounded-2xl shadow-sm opacity-80">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-on-surface font-bold">Study Group: Game Theory</h4>
+<p class="font-label-sm text-outline mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">menu_book</span> Central Library • Study Room C
+                                        </p>
+</div>
+<span class="bg-red-50 text-error font-label-sm px-sm py-1 rounded-lg border border-red-200">Missed</span>
+</div>
+</div>
+</div>
+<!-- Active Event -->
+<div class="relative group">
+<div class="absolute -left-12 w-10 text-right font-label-sm text-secondary font-bold mt-1">14:00</div>
+<div class="absolute -left-[33px] top-2 w-4 h-4 rounded-full bg-secondary border-2 border-surface-container-lowest z-10 ring-4 ring-secondary-container/30"></div>
+<div class="bg-secondary-container text-on-secondary-container p-md lg:p-lg rounded-2xl shadow-lg border-l-4 border-secondary">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-md font-bold text-lg">Research Methodology Seminar</h4>
+<p class="font-label-sm opacity-80 mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">videocam</span> Online via Microsoft Teams
+                                        </p>
+</div>
+<span class="bg-on-secondary-container text-secondary-container font-label-sm px-sm py-1 rounded-lg animate-pulse">Now</span>
+</div>
+<button class="mt-lg w-full bg-on-secondary-container text-secondary-container py-sm rounded-xl font-label-md flex items-center justify-center gap-sm active:scale-95 hover:bg-on-secondary-container/90 transition-all">
+<span class="material-symbols-outlined">video_call</span> Join Meeting
+                                </button>
+</div>
+</div>
+<!-- Upcoming Event -->
+<div class="relative group">
+<div class="absolute -left-12 w-10 text-right font-label-sm text-outline mt-1 group-hover:text-primary transition-colors">16:30</div>
+<div class="absolute -left-[31px] top-2 w-3 h-3 rounded-full bg-outline-variant border-2 border-surface-container-lowest z-10"></div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md lg:p-lg rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-on-surface font-bold">Gym: HIIT Session</h4>
+<p class="font-label-sm text-outline mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">fitness_center</span> University Sports Complex
+                                        </p>
+</div>
+<span class="text-secondary font-label-sm font-bold bg-secondary/10 px-sm py-1 rounded-lg">Upcoming</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Add Event Prompt Desktop Only -->
+<div class="hidden lg:block pt-lg">
+<button class="w-full py-xl border-2 border-dashed border-outline-variant rounded-2xl text-outline hover:text-primary hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-4xl">add_circle</span>
+<span class="font-label-md font-bold">Add New Agenda Item</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Floating Action Button (Mobile/Tablet Only) -->
+<button class="lg:hidden fixed bottom-8 right-md w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-xl flex items-center justify-center z-40 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+<script>
+        // Micro-interaction for clicking days
+        document.querySelectorAll('.grid-cols-7 > div').forEach(day => {
+            day.addEventListener('click', function() {
+                const val = this.textContent.trim();
+                if(val && !isNaN(val)) {
+                    document.querySelectorAll('.grid-cols-7 > div').forEach(d => {
+                        d.classList.remove('bg-primary', 'text-on-primary', 'font-bold', 'shadow-lg', 'ring-4', 'ring-primary-container/20', 'rounded-xl');
+                        d.classList.add('hover:bg-surface-container-high', 'rounded-xl', 'cursor-pointer');
+                    });
+                    this.classList.add('bg-primary', 'text-on-primary', 'font-bold', 'shadow-lg', 'ring-4', 'ring-primary-container/20', 'rounded-xl');
+                    this.classList.remove('hover:bg-surface-container-high');
+                }
+            });
+        });
+    </script>
+</body></html>

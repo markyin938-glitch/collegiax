@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#091d2e",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#9accfa",
+                        "background": "#f7fafd",
+                        "tertiary-fixed": "#d1e4fb",
+                        "on-secondary-container": "#2e6080",
+                        "tertiary-container": "#64768a",
+                        "on-primary-fixed-variant": "#0a4a72",
+                        "inverse-surface": "#2d3133",
+                        "primary-fixed": "#cde5ff",
+                        "outline-variant": "#c1c7cf",
+                        "surface-container-high": "#e5e8eb",
+                        "secondary-container": "#aadaff",
+                        "tertiary-fixed-dim": "#b5c8df",
+                        "tertiary": "#4c5e71",
+                        "on-surface": "#181c1e",
+                        "surface-tint": "#2d628b",
+                        "outline": "#72787f",
+                        "secondary-fixed-dim": "#9cccf1",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#181c1e",
+                        "primary-container": "#4679a3",
+                        "surface-container-low": "#f1f4f7",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e0e3e6",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#fdfcff",
+                        "primary-fixed-dim": "#9accfa",
+                        "on-primary-container": "#fdfcff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f7fafd",
+                        "primary": "#2a6089",
+                        "surface-variant": "#e0e3e6",
+                        "on-primary-fixed": "#001d32",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#326383",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#134b6a",
+                        "inverse-on-surface": "#eef1f4",
+                        "on-tertiary-fixed-variant": "#36485b",
+                        "surface-container": "#ebeef1",
+                        "on-surface-variant": "#41474e",
+                        "surface-dim": "#d7dadd",
+                        "surface": "#f7fafd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "sm": "12px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "xs": "8px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Syne"],
+                        "label-sm": ["DM Sans"],
+                        "label-md": ["DM Sans"],
+                        "h1-mobile": ["Syne"],
+                        "body-lg": ["DM Sans"],
+                        "body-md": ["DM Sans"],
+                        "h2": ["Syne"],
+                        "h1": ["Syne"]
+                    },
+                    "fontSize": {
+                        "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .premium-border {
+            border: 1px solid #c1c7cf;
+        }
+        .active-pill {
+            border-left: 4px solid #2d628b;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-background flex justify-between items-center px-lg py-md w-full sticky top-0 z-50 border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary p-0.5">
+<img alt="Student Profile" class="w-full h-full object-cover rounded-full" data-alt="A close-up portrait of a professional-looking student with a bright, welcoming smile. The lighting is soft and natural, emphasizing a high-end academic environment. The background is a blurred university corridor with clean lines and a cool-toned aesthetic, fitting the premium minimalist style of the platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMFRWmEhzgepMAzqSs5DzmnLK4zsVb-7uTUiBD9A66kyjaxxN7QukRogQSTDHlwAeqFxZWLezklm6JI6bnQLI-8_460ki_7dN1k1-ChxNFMwXqbE7IUTT1QjEy8E1nedeDG8h4Yowmm8k44z8wPj6Fpx3UYFbXsGLACXE05ztsiRHjYCY06CagyTX_FN_t6gpXfj_P71sn1Y0Get6Akix7D_1LO12d5jSrAbr8Wnd9XXyURyda3GPpdBDhbFsyAsE8uWnA8Thnts52"/>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Welcome back,</p>
+<h1 class="font-h3 text-h3-mobile font-bold text-primary">Alex</h1>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-150 relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="px-md py-xs bg-primary-container text-on-primary-container rounded-full font-label-sm text-label-sm font-bold flex items-center gap-xs active:scale-95 duration-150">
+                AI
+            </button>
+</div>
+</header>
+<main class="flex-grow px-md pt-md pb-xxl space-y-lg">
+<!-- Large Banner: Upcoming Events -->
+<section class="relative overflow-hidden rounded-xl h-64 shadow-lg group">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A wide-angle shot of a high-tech university lecture hall during a major student summit. The lighting is sophisticated, with cool blue and white tones illuminating sleek furniture and digital displays. The atmosphere is energetic and professional, capturing a sense of prestigious academic collaboration and innovation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWyPsTpdjjBzcmJNY13AA6LrOjegkP_dRPPiChuqQzENv85WiDZuR-WTfe1a4DSi7ow-xmX5dykB-ptAc-qd_yD0K6JYSs_0yKXaYoDiyG-rdW-eT34D0PzQzG6_w296LX3OjwnV4jg0ghVgGAOq2dqu2Dg6jp7LJ9wCowlPo8yDe0OB3F7nFVfsgZ2_ZorVdnz2PzHD0hrGtC_sHScH1EVoFQ-8LfrX5qhrg4VshZXdOcgBBc8GWF4Fls1jInDdLgBiUeVIElvn5j"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-tertiary-fixed via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 p-lg text-on-tertiary-container w-full">
+<div class="flex items-center gap-xs mb-xs">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] uppercase font-bold px-2 py-0.5 rounded">Featured</span>
+<span class="text-label-sm text-white/80">Oct 24 • 10:00 AM</span>
+</div>
+<h2 class="font-h2 text-h2 text-white leading-tight mb-md">Global AI Student Summit 2024</h2>
+<button class="w-full bg-primary text-white font-label-md py-md rounded-lg active:scale-95 transition-transform">Register Now</button>
+</div>
+</section>
+<!-- Quick Actions -->
+<section>
+<h3 class="font-h3 text-[18px] mb-md text-on-surface">Quick Actions</h3>
+<div class="grid grid-cols-2 gap-md">
+<button class="flex flex-col items-center justify-center p-md bg-surface-container-lowest premium-border rounded-xl active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary mb-xs" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-label-sm text-on-surface">Browse Clubs</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md bg-surface-container-lowest premium-border rounded-xl active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary mb-xs" style="font-variation-settings: 'FILL' 1;">event_available</span>
+<span class="font-label-sm text-on-surface">Join Event</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md bg-surface-container-lowest premium-border rounded-xl active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary mb-xs" style="font-variation-settings: 'FILL' 1;">calendar_view_day</span>
+<span class="font-label-sm text-on-surface">View Schedule</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md bg-secondary-container text-on-secondary-container rounded-xl active:scale-95 transition-transform">
+<span class="material-symbols-outlined mb-xs" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label-sm">AI Assistant</span>
+</button>
+</div>
+</section>
+<!-- Registered Events Horizontal Scroll -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-h3 text-[18px] text-on-surface">Registered Events</h3>
+<button class="text-primary font-label-sm">View All</button>
+</div>
+<div class="flex gap-md overflow-x-auto pb-md no-scrollbar">
+<div class="min-w-[280px] bg-surface-container-lowest premium-border rounded-xl p-md flex gap-md">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A group of diverse students collaborating around a wooden table in a bright, modern library. Natural sunlight streams through large windows, highlighting the clean and scholarly environment. The focus is on productive engagement and collective intelligence in a premium academic setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqeM5P7fIGI1EJT4amMuzZ_WawlK1ESsFzTW3HV_aE-hZxoHacQdLSbqlaYqm3F4vvlGVlzAb3kRwEPRpPt3xIMtSY2YAjG_tfy1Qm535LjYoCyFMhXk2xxfJoS2L98m48eub5u9nZcc0-Q4t_JFIPZ1HLfP5a-Ht0irVnIUl8n24bP6HbIdLBpX_WevQpwyxyvb2ZVvS7fb96-M-33uE_YBwnp-pLIN0ybVCVAbElZIXLcjUO7LosF92PHd61Ufz-88ZB-k7tod0y"/>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-wider">Tomorrow</p>
+<h4 class="font-label-md text-on-surface line-clamp-1">Data Science Workshop</h4>
+</div>
+<p class="text-[12px] text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Room 402
+                        </p>
+</div>
+</div>
+<div class="min-w-[280px] bg-surface-container-lowest premium-border rounded-xl p-md flex gap-md">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional networking event with young professionals holding notebooks and coffee. The setting is a minimalist, industrial-style atrium with soft ambient lighting and polished concrete floors. The mood is sophisticated and focused on career development." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCReiZ-_mC__rXhSJ8PY7Pved6l_QYAFNJ4yd0uKXYqsoALKAP6YfrfytE1JPR278UXffYBJDb1sK8rDcRweXmwB6V-_q9c2GlHrxo3D6ovaf4KI2U7jQG7d9mSdj2_0qKYIRqPTjVvKqiEkG681vejIFqhtTUKjSkWe0kATEurmiuNvc-5f84EC_KBCQwAwFv3HQPAO0Jdlc99ckxgZt3zd4JA2fJpeBt7vmMgz-xLGkq8cAGKD0pzXh32r_DRw4galqpdw_rNBrno"/>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-wider">Fri, 27 Oct</p>
+<h4 class="font-label-md text-on-surface line-clamp-1">Career Fair 2024</h4>
+</div>
+<p class="text-[12px] text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Main Hall
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Achievements & Certificates Grid -->
+<section class="grid grid-cols-2 gap-md">
+<!-- Certificates -->
+<div class="bg-surface-container-lowest premium-border rounded-xl p-lg flex flex-col gap-sm">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed">verified</span>
+</div>
+<div>
+<h4 class="font-h3 text-h3-mobile leading-none">12</h4>
+<p class="font-label-sm text-on-surface-variant">Certificates</p>
+</div>
+<div class="mt-auto">
+<div class="w-full bg-surface-container h-1 rounded-full overflow-hidden">
+<div class="bg-primary w-3/4 h-full"></div>
+</div>
+</div>
+</div>
+<!-- Achievements -->
+<div class="bg-surface-container-lowest premium-border rounded-xl p-lg flex flex-col gap-sm">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed">military_tech</span>
+</div>
+<div>
+<h4 class="font-h3 text-h3-mobile leading-none">08</h4>
+<p class="font-label-sm text-on-surface-variant">Achievements</p>
+</div>
+<div class="mt-auto">
+<div class="w-full bg-surface-container h-1 rounded-full overflow-hidden">
+<div class="bg-secondary w-1/2 h-full"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-md pt-xs bg-surface-container-lowest rounded-t-xl shadow-lg border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="font-label-sm text-label-sm">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Clubs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-sm text-label-sm">Calendar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button, a').forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                btn.style.opacity = '0.7';
+            });
+            btn.addEventListener('touchend', () => {
+                btn.style.opacity = '1';
+            });
+        });
+
+        // Simple scroll animation observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(el => {
+            el.classList.add('transition-all', 'duration-500', 'ease-out', 'opacity-0', 'translate-y-4');
+            observer.observe(el);
+        });
+    </script>
+</body></html>

@@ -5,25 +5,26 @@ import { usePathname } from "next/navigation";
 import { useUIStore } from "@/stores/ui-store";
 import { ROLE_NAVS } from "@/lib/auth/permissions";
 import {
-  CalendarDays,
-  Users,
-  Bookmark,
-  Trophy,
   BarChart3,
-  MessageSquare,
+  Bookmark,
   Bot,
-  User,
-  PlusCircle,
-  ListChecks,
+  CalendarDays,
+  ChevronRight,
   Handshake,
   LineChart,
-  Shield,
-  UserCog,
+  ListChecks,
   Megaphone,
   PanelLeftClose,
   PanelLeftOpen,
-  X,
+  PlusCircle,
+  Shield,
   Sparkles,
+  Trophy,
+  User,
+  UserCog,
+  Users,
+  X,
+  MessageSquare,
 } from "lucide-react";
 import { LogoutButton } from "./LogoutButton";
 
@@ -52,57 +53,53 @@ export function Sidebar({ user }: { user: { id: string; name: string; role: stri
 
   return (
     <>
-      {/* Mobile overlay */}
-      {sidebarOpen && (
-        <div className="fixed inset-0 z-[99] bg-black/50 md:hidden" onClick={() => setSidebarOpen(false)} />
-      )}
+      {sidebarOpen ? (
+        <div className="fixed inset-0 z-[99] bg-[rgba(24,28,30,0.42)] backdrop-blur-sm md:hidden" onClick={() => setSidebarOpen(false)} />
+      ) : null}
 
       <aside
-        className={`sidebar fixed top-0 left-0 bottom-0 z-[100] flex w-[280px] max-w-[85vw] flex-col overflow-y-auto border-r border-[var(--border)] bg-[var(--bg2)] transition-[transform,width] duration-300 ease-out md:translate-x-0 ${
+        className={`fixed bottom-0 left-0 top-0 z-[100] flex w-[292px] max-w-[86vw] flex-col overflow-y-auto border-r border-[var(--outline-variant)] bg-[rgba(255,255,255,0.88)] shadow-[0_16px_44px_rgba(45,98,139,0.08)] backdrop-blur transition-[transform,width] duration-300 ease-out ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } ${sidebarCollapsed ? "md:w-[72px]" : "md:w-[240px]"}`}
+        } ${sidebarCollapsed ? "md:w-[96px]" : "md:w-[292px]"} md:translate-x-0`}
       >
-        {/* Left accent line */}
-        <div className="absolute top-0 left-0 bottom-0 w-[3px]" style={{ background: "linear-gradient(180deg,var(--accent),var(--accent2),var(--accent3))", opacity: 0.6 }} />
-
-        {/* Header */}
-        <div className={`relative border-b border-[var(--border)] px-[18px] pt-5 pb-4 ${sidebarCollapsed ? "md:px-3" : ""}`}>
+        <div className={`relative border-b border-[var(--outline-variant)] px-5 pb-5 pt-6 ${sidebarCollapsed ? "md:px-4" : ""}`}>
           <Link
             href="/dashboard"
             onClick={() => setSidebarOpen(false)}
-            className={`mb-3 flex items-center gap-2 transition hover:opacity-80 ${sidebarCollapsed ? "md:justify-center" : ""}`}
+            className={`mb-5 flex items-center gap-3 transition hover:opacity-85 ${sidebarCollapsed ? "md:justify-center" : ""}`}
           >
-            <div className="flex h-[34px] w-[34px] items-center justify-center rounded-[9px] text-sm text-white" style={{ background: "linear-gradient(135deg,var(--accent),var(--accent2))" }}>
-              <Sparkles size={16} />
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--primary)] text-white shadow-[0_12px_30px_rgba(42,96,137,0.22)]">
+              <Sparkles size={18} />
             </div>
-            <span className={`text-[17px] font-extrabold ${sidebarCollapsed ? "md:hidden" : ""}`} style={{ fontFamily: "var(--font-syne)" }}>
-              Collegia<span className="text-[var(--accent)]">X</span>
+            <span className={`font-heading text-2xl font-bold text-[var(--on-background)] ${sidebarCollapsed ? "md:hidden" : ""}`}>
+              Collegia<span className="text-[var(--primary)]">X</span>
             </span>
           </Link>
-          <div className={`flex items-center gap-2 rounded-[10px] bg-[var(--surface)] p-2 ${sidebarCollapsed ? "md:justify-center md:bg-transparent md:p-0" : ""}`}>
-            <div className="flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white" style={{ background: "linear-gradient(135deg,var(--accent),var(--accent2))" }}>
+
+          <div className={`ui-panel flex items-center gap-3 p-3 ${sidebarCollapsed ? "md:justify-center md:border-none md:bg-transparent md:p-0" : ""}`}>
+            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-sm font-semibold text-white">
               {user.avatarInitials || user.name.slice(0, 2).toUpperCase()}
             </div>
             <div className={`min-w-0 ${sidebarCollapsed ? "md:hidden" : ""}`}>
-              <div className="truncate text-xs font-semibold">{user.name}</div>
-              <div className="text-[10px] text-[var(--accent)] opacity-80" style={{ fontFamily: "var(--font-jetbrains)" }}>
-                {user.role}
-              </div>
+              <div className="truncate text-sm font-semibold text-[var(--on-surface)]">{user.name}</div>
+              <div className="text-xs uppercase tracking-[0.18em] text-[var(--primary)]">{user.role}</div>
             </div>
           </div>
+
           <button
             onClick={toggleSidebarCollapsed}
-            className={`hidden h-8 w-8 items-center justify-center rounded-[10px] text-[var(--text2)] transition hover:bg-[var(--surface)] hover:text-[var(--text)] md:flex ${
-              sidebarCollapsed ? "md:mx-auto md:mt-3" : "md:absolute md:top-4 md:right-3"
+            className={`hidden h-10 w-10 items-center justify-center rounded-full border border-[var(--outline-variant)] bg-[var(--surface-container-lowest)] text-[var(--on-surface-variant)] transition hover:border-[var(--primary)] hover:text-[var(--primary)] md:flex ${
+              sidebarCollapsed ? "md:mx-auto md:mt-3" : "md:absolute md:right-4 md:top-6"
             }`}
-            title={sidebarCollapsed ? "Expand dashboard menu" : "Close dashboard menu"}
-            aria-label={sidebarCollapsed ? "Expand dashboard menu" : "Close dashboard menu"}
+            title={sidebarCollapsed ? "Expand dashboard menu" : "Collapse dashboard menu"}
+            aria-label={sidebarCollapsed ? "Expand dashboard menu" : "Collapse dashboard menu"}
           >
             {sidebarCollapsed ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
           </button>
+
           <button
             onClick={() => setSidebarOpen(false)}
-            className="absolute top-4 right-3 flex h-8 w-8 items-center justify-center rounded-[10px] text-[var(--text2)] transition hover:bg-[var(--surface)] hover:text-[var(--text)] md:hidden"
+            className="absolute right-4 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-[var(--outline-variant)] bg-[var(--surface-container-lowest)] text-[var(--on-surface-variant)] transition hover:border-[var(--primary)] hover:text-[var(--primary)] md:hidden"
             title="Close menu"
             aria-label="Close menu"
           >
@@ -110,8 +107,7 @@ export function Sidebar({ user }: { user: { id: string; name: string; role: stri
           </button>
         </div>
 
-        {/* Nav */}
-        <nav className="flex-1 px-2.5 py-3.5">
+        <nav className="flex-1 px-3 py-5">
           {navs.map((item) => {
             const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
@@ -120,25 +116,23 @@ export function Sidebar({ user }: { user: { id: string; name: string; role: stri
                 href={item.href}
                 onClick={() => setSidebarOpen(false)}
                 title={item.label}
-                className={`nav-item relative mb-0.5 flex items-center gap-2 rounded-[10px] px-3 py-2 text-[13px] font-medium transition ${
+                className={`group relative mb-1.5 flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition ${
                   active
-                    ? "text-[var(--text)]"
-                    : "text-[var(--text2)] hover:bg-[var(--surface)] hover:text-[var(--text)]"
+                    ? "bg-[color:rgba(42,96,137,0.12)] text-[var(--primary)]"
+                    : "text-[var(--on-surface-variant)] hover:bg-[var(--surface-container-low)] hover:text-[var(--on-surface)]"
                 } ${sidebarCollapsed ? "md:justify-center md:px-0" : ""}`}
-                style={active ? { background: "linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.1))" } : undefined}
               >
-                {active && (
-                  <span className="absolute left-0 top-1/2 h-[18px] w-[3px] -translate-y-1/2 rounded-r-sm bg-[var(--accent)]" />
-                )}
-                <span className="flex-shrink-0">{iconMap[item.icon]}</span>
+                <span className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full ${active ? "bg-white text-[var(--primary)]" : "bg-[var(--surface-container-lowest)] text-[var(--on-surface-variant)]"}`}>
+                  {iconMap[item.icon]}
+                </span>
                 <span className={sidebarCollapsed ? "md:hidden" : ""}>{item.label}</span>
+                {!sidebarCollapsed ? <ChevronRight className={`ml-auto h-4 w-4 ${active ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} /> : null}
               </Link>
             );
           })}
         </nav>
 
-        {/* Footer */}
-        <div className="border-t border-[var(--border)] px-2.5 py-3.5">
+        <div className="border-t border-[var(--outline-variant)] px-3 py-5">
           <LogoutButton compact={sidebarCollapsed} />
         </div>
       </aside>

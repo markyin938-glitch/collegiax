@@ -15,7 +15,7 @@ export function LogoutButton({ compact = false }: { compact?: boolean }) {
   return (
     <button
       onClick={logout}
-      className={`flex w-full items-center gap-2 rounded-[10px] px-3 py-2 text-[13px] font-medium text-[var(--text2)] transition hover:bg-[var(--surface)] hover:text-[var(--text)] ${
+      className={`flex w-full items-center gap-2 rounded-full border border-[var(--outline-variant)] bg-[var(--surface-container-lowest)] px-4 py-3 text-sm font-medium text-[var(--on-surface-variant)] transition hover:border-[var(--primary)] hover:text-[var(--primary)] ${
         compact ? "justify-center md:px-0" : ""
       }`}
       title="Logout"

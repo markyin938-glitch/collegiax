@@ -1,14 +1,13 @@
 "use client";
 
-import { Suspense } from "react";
-import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Eye, EyeOff, Sparkles } from "lucide-react";
+import { Suspense, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { ArrowRight, Eye, EyeOff, Sparkles } from "lucide-react";
 
 export default function SignupPage() {
   return (
-    <Suspense fallback={<div className="w-full max-w-sm text-center text-sm text-[var(--text2)]">Loading...</div>}>
+    <Suspense fallback={<div className="ui-card p-8 text-center text-sm text-[var(--on-surface-variant)]">Loading...</div>}>
       <SignupForm />
     </Suspense>
   );
@@ -51,81 +50,57 @@ function SignupForm() {
   }
 
   return (
-    <div className="w-full max-w-sm">
-      <div className="mb-6 text-center">
-        <div className="mb-2 inline-flex items-center gap-2 text-2xl font-extrabold" style={{ fontFamily: "var(--font-syne)" }}>
-          <Sparkles className="text-[var(--accent)]" size={24} />
-          Collegia<span className="text-[var(--accent)]">X</span>
+    <div className="ui-card overflow-hidden">
+      <div className="border-b border-[var(--outline-variant)] px-6 py-6 sm:px-8">
+        <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--primary)] text-white shadow-[0_12px_30px_rgba(42,96,137,0.22)]">
+          <Sparkles className="h-5 w-5" />
         </div>
-        <div
-          className="mt-2 inline-block rounded-full px-3.5 py-1 text-[11px] font-semibold uppercase tracking-widest"
-          style={{ fontFamily: "var(--font-jetbrains)" }}
-        >
+        <p className="ui-eyebrow">Create account</p>
+        <h1 className="mt-2 font-heading text-3xl font-semibold text-[var(--on-background)]">Join CollegiaX</h1>
+        <p className="mt-3 text-sm leading-7 text-[var(--on-surface-variant)]">
+          Set up your campus account and enter the role-specific experience built for your workflow.
+        </p>
+        <div className="mt-4 inline-flex rounded-full bg-[color:rgba(42,96,137,0.12)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--primary)]">
           {preselectedRole === "clublead" ? "Club Lead Sign Up" : preselectedRole === "admin" ? "Admin Sign Up" : "Student Sign Up"}
         </div>
       </div>
 
-      <form onSubmit={onSubmit} className="space-y-4">
-        {error && (
-          <div className="rounded-[10px] border border-red-500/30 bg-red-500/10 px-3 py-2 text-xs text-red-400">
-            {error}
-          </div>
-        )}
-        <div>
-          <label className="mb-1.5 block text-xs font-medium text-[var(--text2)]">Full Name</label>
-          <input
-            type="text"
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="John Doe"
-            className="w-full rounded-[10px] border border-[var(--border2)] bg-[var(--surface)] px-3.5 py-2.5 text-sm text-[var(--text)] outline-none transition focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/15"
-          />
-        </div>
-        <div>
-          <label className="mb-1.5 block text-xs font-medium text-[var(--text2)]">Email</label>
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@university.edu"
-            className="w-full rounded-[10px] border border-[var(--border2)] bg-[var(--surface)] px-3.5 py-2.5 text-sm text-[var(--text)] outline-none transition focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/15"
-          />
-        </div>
-        <div>
-          <label className="mb-1.5 block text-xs font-medium text-[var(--text2)]">Password</label>
+      <form onSubmit={onSubmit} className="space-y-5 px-6 py-6 sm:px-8 sm:py-8">
+        {error ? <div className="rounded-2xl bg-[var(--error-container)] px-4 py-3 text-sm text-[var(--error)]">{error}</div> : null}
+        <label className="block space-y-2 text-sm font-medium text-[var(--on-surface-variant)]">
+          Full name
+          <input className="ui-input" value={name} onChange={(e) => setName(e.target.value)} placeholder="Aarav Sharma" required />
+        </label>
+        <label className="block space-y-2 text-sm font-medium text-[var(--on-surface-variant)]">
+          Email
+          <input className="ui-input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@university.edu" required type="email" />
+        </label>
+        <label className="block space-y-2 text-sm font-medium text-[var(--on-surface-variant)]">
+          Password
           <div className="relative">
             <input
-              type={showPassword ? "text" : "password"}
-              required
+              className="ui-input pr-12"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Min 8 characters"
-              className="w-full rounded-[10px] border border-[var(--border2)] bg-[var(--surface)] px-3.5 py-2.5 pr-10 text-sm text-[var(--text)] outline-none transition focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/15"
+              placeholder="Minimum 8 characters"
+              required
+              minLength={8}
+              type={showPassword ? "text" : "password"}
             />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text3)] hover:text-[var(--text)]"
-            >
-              {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+            <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--on-surface-variant)] hover:text-[var(--primary)]">
+              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
           </div>
-        </div>
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full rounded-[10px] bg-gradient-to-r from-[var(--accent)] to-[var(--accent2)] py-2.5 text-sm font-semibold text-white shadow-lg shadow-[var(--accent)]/30 transition hover:shadow-[var(--accent)]/50 disabled:opacity-60"
-        >
-          {loading ? "Creating account..." : "Create Account"}
+        </label>
+        <button type="submit" disabled={loading} className="ui-button ui-button-primary w-full justify-center">
+          {loading ? "Creating account..." : "Create account"}
+          {!loading ? <ArrowRight className="h-4 w-4" /> : null}
         </button>
       </form>
 
-      <div className="mt-6 text-center text-xs text-[var(--text2)]">
+      <div className="border-t border-[var(--outline-variant)] px-6 py-5 text-sm text-[var(--on-surface-variant)] sm:px-8">
         Already have an account?{" "}
-        <Link href={`/login${preselectedRole ? `?role=${preselectedRole}` : ""}`} className="font-semibold text-[var(--accent)] hover:underline">
+        <Link href={`/login?role=${preselectedRole}`} className="font-semibold text-[var(--primary)] hover:underline">
           Sign in
         </Link>
       </div>

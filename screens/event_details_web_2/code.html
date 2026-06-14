@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Event Details | CollegiaX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Sans:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-active-indicator {
+            width: 4px;
+            height: 24px;
+            background-color: #326383; /* Steel Blue */
+            border-radius: 0 4px 4px 0;
+            position: absolute;
+            left: 0;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        /* Custom scrollbar for deep work atmosphere */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F4F7FA;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c7cf;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #72787f;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#4679a3",
+                        "inverse-on-surface": "#eef1f4",
+                        "on-surface-variant": "#41474e",
+                        "on-tertiary-fixed": "#091d2e",
+                        "tertiary-fixed-dim": "#b5c8df",
+                        "on-tertiary-fixed-variant": "#36485b",
+                        "surface-container-high": "#e5e8eb",
+                        "on-primary-fixed-variant": "#0a4a72",
+                        "outline-variant": "#c1c7cf",
+                        "surface-bright": "#f7fafd",
+                        "on-secondary-container": "#2e6080",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f1f4f7",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#ebeef1",
+                        "surface": "#f7fafd",
+                        "primary-fixed-dim": "#9accfa",
+                        "on-surface": "#181c1e",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001d32",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#cde5ff",
+                        "surface-variant": "#e0e3e6",
+                        "on-primary-container": "#fdfcff",
+                        "inverse-primary": "#9accfa",
+                        "tertiary-container": "#64768a",
+                        "on-tertiary-container": "#fdfcff",
+                        "inverse-surface": "#2d3133",
+                        "tertiary": "#4c5e71",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#181c1e",
+                        "secondary": "#326383",
+                        "outline": "#72787f",
+                        "secondary-fixed-dim": "#9cccf1",
+                        "on-secondary-fixed-variant": "#134b6a",
+                        "tertiary-fixed": "#d1e4fb",
+                        "surface-container-highest": "#e0e3e6",
+                        "secondary-container": "#aadaff",
+                        "background": "#f7fafd",
+                        "on-secondary-fixed": "#001e2f",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d7dadd",
+                        "surface-tint": "#2d628b",
+                        "primary": "#2a6089"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin": "32px",
+                        "gutter": "24px",
+                        "xs": "8px",
+                        "sm": "12px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["DM Sans"],
+                        "h3": ["Syne"],
+                        "body-md": ["DM Sans"],
+                        "label-sm": ["DM Sans"],
+                        "h2": ["Syne"],
+                        "h1-mobile": ["Syne"],
+                        "body-lg": ["DM Sans"],
+                        "h1": ["Syne"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                        "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- Persistent Left Sidebar (Desktop Navigation) -->
+<aside class="hidden md:flex flex-col w-[280px] bg-surface-container-low border-r border-outline-variant fixed h-full z-50">
+<div class="px-xl py-xl">
+<h1 class="font-h3 text-h3 font-bold text-primary">CollegiaX</h1>
+</div>
+<nav class="flex-1 px-md space-y-xs">
+<a class="relative flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="relative flex items-center gap-md px-md py-sm rounded-lg bg-surface-container-highest text-on-surface transition-colors" href="#">
+<div class="sidebar-active-indicator"></div>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">event</span>
+<span class="font-label-md text-label-md font-bold text-secondary">Events</span>
+</a>
+<a class="relative flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-md text-label-md">Clubs</span>
+</a>
+<a class="relative flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md">Calendar</span>
+</a>
+<a class="relative flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<div class="p-xl mt-auto border-t border-outline-variant">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">account_circle</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface font-bold">Alex Rivers</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Graduate Scholar</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas Area -->
+<main class="flex-1 md:ml-[280px]">
+<!-- Top App Bar (Sync with JSON) -->
+<header class="flex justify-between items-center px-lg py-md w-full sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<button class="p-sm rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+<div class="hidden md:flex gap-md">
+<span class="font-label-md text-label-md text-on-surface font-bold">Global Research Symposium 2024</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-md py-xs bg-primary-container text-on-primary-container rounded-lg font-label-md text-label-md hover:bg-primary transition-colors active:scale-95 duration-150">
+                    AI Assistant
+                </button>
+</div>
+</header>
+<!-- Hero Banner Section -->
+<section class="relative w-full h-[400px] overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A grand, expansive university lecture hall with contemporary architecture and soft blue atmospheric lighting. The space is filled with a sense of scholarly anticipation and high-tech academic rigor. Minimalist digital overlays display abstract data visualizations in the background. The scene is illuminated by crisp, cool light creating a professional and focused atmosphere for an intellectual symposium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDGIyMmGvmQffemGDqaSNsaTrf88Zod6NmQcjd0_NFDyESljwDLk985tIywEopBUeEG86O4Yd6wvBzmTmsqM7cdM-8g3s0FlOXA-QwEgXhpjFLDsp-qt_jvoqIrZ0qiellJU05cTSFQSKZCxKV7JZwjClsKNP0Adp7K_WBL2SiyKdUrpd2GC9LuhZ4pNxP_rpoFcW2CDh8JRbkQq7EGPXDWC9ZaxLT7Jv06NMOlATQ_p-LNWNQ6TRUlJFDjNG13XMXrLcionZdOOd1"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-xl left-xl right-xl max-w-[1200px] mx-auto px-lg">
+<div class="inline-block px-sm py-xs bg-secondary text-on-secondary rounded-full font-label-sm text-label-sm mb-md uppercase tracking-widest">
+                    Academic Symposium
+                </div>
+<h2 class="font-h1 text-h1 text-on-surface mb-xs">Quantum Computing in Modern Economics</h2>
+<div class="flex flex-wrap gap-xl text-on-surface-variant mt-md">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary">calendar_today</span>
+<span class="font-label-md text-label-md">Oct 24, 2024</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary">schedule</span>
+<span class="font-label-md text-label-md">09:00 AM - 05:00 PM</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<span class="font-label-md text-label-md">Main Auditorium, East Wing</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Grid -->
+<div class="max-w-[1200px] mx-auto px-lg py-xxl grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Main Content Column -->
+<div class="lg:col-span-8 space-y-xxl">
+<!-- Description Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
+<h3 class="font-h3 text-h3 text-primary mb-lg">About the Event</h3>
+<p class="text-body-lg text-on-surface-variant leading-relaxed">
+                        This symposium brings together leading physicists and economic theorists to explore the burgeoning intersection of quantum mechanics and financial modeling. As computational power continues to scale, the application of quantum algorithms to market volatility, risk assessment, and resource allocation is becoming a critical area of study for the next generation of researchers.
+                    </p>
+<p class="text-body-md text-on-surface-variant mt-md">
+                        Join us for a day of intensive panels, peer-reviewed presentations, and networking opportunities designed to bridge the gap between abstract physics and practical economic application.
+                    </p>
+</div>
+<!-- Schedule Section (Bento Style) -->
+<div>
+<h3 class="font-h3 text-h3 text-primary mb-lg">Schedule</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="p-lg bg-surface-container border border-outline-variant rounded-xl hover:border-secondary transition-colors group">
+<span class="font-label-sm text-label-sm text-secondary-container bg-on-secondary-fixed-variant px-sm py-1 rounded-full">09:00 AM</span>
+<h4 class="font-h3 text-h3 text-on-surface mt-sm mb-xs">Keynote: The Entangled Market</h4>
+<p class="text-label-md text-on-surface-variant">Dr. Sarah Chen, MIT</p>
+</div>
+<div class="p-lg bg-surface-container border border-outline-variant rounded-xl hover:border-secondary transition-colors group">
+<span class="font-label-sm text-label-sm text-secondary-container bg-on-secondary-fixed-variant px-sm py-1 rounded-full">11:30 AM</span>
+<h4 class="font-h3 text-h3 text-on-surface mt-sm mb-xs">Workshop: Q-Algorithm Basics</h4>
+<p class="text-label-md text-on-surface-variant">Lab Room 402</p>
+</div>
+<div class="p-lg bg-surface-container border border-outline-variant rounded-xl hover:border-secondary transition-colors group">
+<span class="font-label-sm text-label-sm text-secondary-container bg-on-secondary-fixed-variant px-sm py-1 rounded-full">01:00 PM</span>
+<h4 class="font-h3 text-h3 text-on-surface mt-sm mb-xs">Panel: Ethical Implications</h4>
+<p class="text-label-md text-on-surface-variant">Main Stage</p>
+</div>
+<div class="p-lg bg-surface-container border border-outline-variant rounded-xl hover:border-secondary transition-colors group">
+<span class="font-label-sm text-label-sm text-secondary-container bg-on-secondary-fixed-variant px-sm py-1 rounded-full">03:30 PM</span>
+<h4 class="font-h3 text-h3 text-on-surface mt-sm mb-xs">Networking Mixer</h4>
+<p class="text-label-md text-on-surface-variant">East Terrace</p>
+</div>
+</div>
+</div>
+<!-- Speakers Section -->
+<div>
+<h3 class="font-h3 text-h3 text-primary mb-lg">Distinguished Speakers</h3>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-lg">
+<div class="flex flex-col items-center text-center">
+<div class="w-32 h-32 rounded-full overflow-hidden mb-md border-4 border-surface-container-high shadow-md">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a female academic researcher with glasses, smiling confidently. She is wearing a modern blazer, set against a blurred background of a sleek, minimalist university research facility. The lighting is soft and natural, emphasizing a high-end scholarly aesthetic with a palette of whites and cool grays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0nDH1gbuWVYFtdoVEbtXbHVSiMM7ZPnEhAeiVLHfTK_AiiR3kG9Evlw7BZsTk8zIcEEJAMVRaEfuklWFuuxnsU8Sl55ELvkLSaMsXJmAh41u9_ugkeFn8CmypnSn45ElgBR5VAJcodCj0FAjc8Fu8E5wgw4s6sxOAFGMiySgwMXwH0SIhN2WtRO7HWToHLshNAp0wODwVRx96vUDZ8iCZaKJL1_pjWjUg4lBIYYaoPlpgROf8k9iY2rxiAJJKSTYVGPKqNy21dpaF"/>
+</div>
+<h5 class="font-label-md text-label-md text-on-surface font-bold">Dr. Sarah Chen</h5>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Professor of Quantum Theory</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-32 h-32 rounded-full overflow-hidden mb-md border-4 border-surface-container-high shadow-md">
+<img class="w-full h-full object-cover" data-alt="Portrait of a distinguished male scholar in his 50s, wearing professional attire. He is standing in a brightly lit, modern university library with blurred books in the background. The style is clean and intellectual, using a primary palette of white and muted blues to convey a deep work atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvX0isupus6Ad-F6tZlk0QLqIpxjSBDjlw8Th_FEonp8-2lFvvXS0G_IymXy9P31NuijLve46QHfYnO3PmDYNAyqIRl0YgNls4GPb-m2fb0Mcw3NNt7ZZbZyCzaLH-w_pSXJSptLDJ6QkMmLBEgYcM0wfLhHMhXdVrxbZfLjPoz8Wof6FZPH0YGlZ4AeWCb0Tk6PsTOzYxD2HN5D1uJTNpiZANyC-XSPMuSfL2AfKXnZZxEVrkWtBtJjwXatuA3mmjN1pSewuM-0s-"/>
+</div>
+<h5 class="font-label-md text-label-md text-on-surface font-bold">Prof. Marcus Thorne</h5>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Director of Economic Research</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-32 h-32 rounded-full overflow-hidden mb-md border-4 border-surface-container-high shadow-md">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young female computational scientist. She has a focused and intelligent expression, wearing a minimalist silk shirt. The setting is a contemporary lab with soft glass partitions and blue-toned lighting, evoking a sense of calm intelligence and high-level academic collaboration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWD0sfHOTgCeBa9UuZSDvV08qxgS-yK0XueL0t2z2qPmMH51IA6VGRQy8xnF2u3x1y1ebS9qULkbC-vgeiBA9x8Q9b-SRdM2gcaftcEC0ZXDiWTNXbiVNW2X41quPtK9DmvwWclCKGOIdnDx4Iz-3VCMW94AzU73TT1M2sruw58P8rhWE4zZ8_6u104ODD_sMtU-0B399xGmbECgFmfDAF7aJB3ncnsUOBEUnoHETLK-m0WU-MUGe8OP6UC2QMa4mq_TVkEdx4L53k"/>
+</div>
+<h5 class="font-label-md text-label-md text-on-surface font-bold">Elena Vasquez</h5>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Senior Algorithm Lead</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Column -->
+<aside class="lg:col-span-4 space-y-lg">
+<!-- Registration Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-xl shadow-lg sticky top-[100px]">
+<div class="mb-xl">
+<div class="flex justify-between items-end mb-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Status</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Open for Enrollment</span>
+</div>
+<h4 class="font-h2 text-h2 text-primary">$45.00 <span class="text-body-md font-normal text-on-surface-variant">/ Scholar</span></h4>
+</div>
+<button class="w-full py-md bg-primary text-on-primary rounded-lg font-label-md text-label-md font-bold mb-md hover:bg-on-primary-fixed-variant transition-all shadow-md active:scale-[0.98] duration-150">
+                        Register Now
+                    </button>
+<button class="w-full py-md border border-outline-variant text-on-surface-variant rounded-lg font-label-md text-label-md hover:bg-surface-container transition-colors">
+                        Add to Calendar
+                    </button>
+<div class="mt-xl pt-xl border-t border-outline-variant space-y-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-outline">group</span>
+<span class="font-label-md text-label-md text-on-surface-variant">124 Attending</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-outline">verified</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Accredited Workshop</span>
+</div>
+</div>
+</div>
+<!-- Organizer Info -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-lg">
+<h5 class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-md">Organizer</h5>
+<div class="flex items-center gap-md mb-md">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'opsz' 40;">school</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Institute for Advanced Computational Study</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Research Department</p>
+</div>
+</div>
+<button class="text-secondary font-label-md text-label-md flex items-center gap-xs hover:underline">
+                        Contact Organizer
+                        <span class="material-symbols-outlined text-sm" style="font-size: 16px;">arrow_forward</span>
+</button>
+</div>
+<!-- Location Map Placeholder -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden h-48 relative">
+<img class="w-full h-full object-cover grayscale opacity-60" data-alt="A stylized, minimalist architectural floor plan of a university campus wing, showing clean lines and scholarly organization. The aesthetic is monochromatic with subtle blue highlights marking the auditorium location. It reflects a calm, precise, and academic environment." data-location="Boston, MA" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdVDjL2Qm6Ldc2E3gaJTx7B_HKdceC4yw0sNSbmRRVVd64l7b1ycu91phb4ixscoeq2Bj3xfdMtvqW_UPHwb_IwZARHpFo7i8uYXX9iQzzQfjBGGA-THlYuqoPgZACfyaX-XpdKlSCHmQy6fW7URFpefNJ7uMCEsILFHGzP3gz9pLGEMlKbEXNQiL_PG_wF_0g5gJhTmdzxViWga1qCBwW2fI4fotpHbAzKXVZOLjp-Ovi5nVre2FoW_Xz_YKui3-BjKdfh6mHCAMQ"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-primary text-on-primary p-xs rounded-full shadow-lg pulse">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Success Modal Interaction Script -->
+<script>
+        // Simple micro-interaction for the register button
+        const regBtn = document.querySelector('button.bg-primary');
+        regBtn.addEventListener('click', () => {
+            regBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Processing...';
+            setTimeout(() => {
+                regBtn.innerHTML = 'Registration Confirmed';
+                regBtn.classList.remove('bg-primary');
+                regBtn.classList.add('bg-green-600');
+            }, 1500);
+        });
+
+        // Hover animations for sidebar
+        const navItems = document.querySelectorAll('aside nav a');
+        navItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                if (!item.querySelector('.sidebar-active-indicator')) {
+                    item.style.transform = 'translateX(4px)';
+                }
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body></html>

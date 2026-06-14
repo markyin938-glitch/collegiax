@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CollegiaX Admin Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#091d2e",
+                    "secondary-fixed": "#c9e6ff",
+                    "on-secondary-fixed": "#001e2f",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#9accfa",
+                    "background": "#f7fafd",
+                    "tertiary-fixed": "#d1e4fb",
+                    "on-secondary-container": "#2e6080",
+                    "tertiary-container": "#64768a",
+                    "on-primary-fixed-variant": "#0a4a72",
+                    "inverse-surface": "#2d3133",
+                    "primary-fixed": "#cde5ff",
+                    "outline-variant": "#c1c7cf",
+                    "surface-container-high": "#e5e8eb",
+                    "secondary-container": "#aadaff",
+                    "tertiary-fixed-dim": "#b5c8df",
+                    "tertiary": "#4c5e71",
+                    "on-surface": "#181c1e",
+                    "surface-tint": "#2d628b",
+                    "outline": "#72787f",
+                    "secondary-fixed-dim": "#9cccf1",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#181c1e",
+                    "primary-container": "#4679a3",
+                    "surface-container-low": "#f1f4f7",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e0e3e6",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#fdfcff",
+                    "primary-fixed-dim": "#9accfa",
+                    "on-primary-container": "#fdfcff",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f7fafd",
+                    "primary": "#2a6089",
+                    "surface-variant": "#e0e3e6",
+                    "on-primary-fixed": "#001d32",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#326383",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#134b6a",
+                    "inverse-on-surface": "#eef1f4",
+                    "on-tertiary-fixed-variant": "#36485b",
+                    "surface-container": "#ebeef1",
+                    "on-surface-variant": "#41474e",
+                    "surface-dim": "#d7dadd",
+                    "surface": "#f7fafd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin": "32px",
+                    "lg": "24px",
+                    "xxl": "48px",
+                    "sm": "12px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "xs": "8px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "h3": ["Syne"],
+                    "label-sm": ["DM Sans"],
+                    "label-md": ["DM Sans"],
+                    "h1-mobile": ["Syne"],
+                    "body-lg": ["DM Sans"],
+                    "body-md": ["DM Sans"],
+                    "h2": ["Syne"],
+                    "h1": ["Syne"]
+            },
+            "fontSize": {
+                    "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(193, 199, 207, 0.5);
+        }
+        /* Mobile refinement */
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-lg py-md w-full sticky top-0 z-50 bg-background border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="admin_panel_settings">admin_panel_settings</span>
+<h1 class="font-h3 text-h3-mobile font-bold text-primary">CollegiaX</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+</button>
+<div class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-sm text-label-sm">
+                AI ADMIN
+            </div>
+</div>
+</header>
+<main class="px-md mt-md space-y-md">
+<!-- Welcome Section -->
+<section class="space-y-xs">
+<h2 class="font-h2 text-h2 text-primary">System Oversight</h2>
+<p class="text-on-surface-variant font-body-md">Managing 12,482 active academic nodes.</p>
+</section>
+<!-- Stats Bento Grid -->
+<div class="bento-grid">
+<!-- Total Students -->
+<div class="glass-card p-lg rounded-xl flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-2 rounded-lg" data-icon="school">school</span>
+<span class="text-success text-label-sm text-primary font-bold">+12%</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Total Students</p>
+<p class="font-h3 text-h3">8,432</p>
+</div>
+</div>
+<!-- Active Clubs -->
+<div class="glass-card p-lg rounded-xl flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary bg-secondary-fixed p-2 rounded-lg" data-icon="groups">groups</span>
+<span class="text-label-sm text-secondary font-bold">24 Pending</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Active Clubs</p>
+<p class="font-h3 text-h3">156</p>
+</div>
+</div>
+<!-- Global Events -->
+<div class="glass-card p-lg rounded-xl flex flex-col justify-between h-40">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-tertiary bg-tertiary-fixed p-2 rounded-lg" data-icon="event">event</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Upcoming Events</p>
+<p class="font-h3 text-h3">42</p>
+</div>
+</div>
+<!-- Active Users Now -->
+<div class="glass-card p-lg rounded-xl flex flex-col justify-between h-40 relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+
+</div>
+<div class="flex justify-between items-start relative z-10">
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-2 rounded-lg" data-icon="bolt">bolt</span>
+</div>
+<div class="relative z-10">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Real-time Users</p>
+<p class="font-h3 text-h3">1,209</p>
+</div>
+</div>
+</div>
+<!-- Moderation Queue -->
+<section class="glass-card rounded-xl overflow-hidden">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="font-label-md text-label-md text-on-surface font-bold uppercase tracking-wider">Moderation Queue</h3>
+<span class="bg-error-container text-on-error-container text-[10px] px-2 py-0.5 rounded-full font-bold">4 NEW</span>
+</div>
+<div class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-md">
+<img alt="Club Logo" class="w-10 h-10 rounded-lg object-cover" data-alt="A small, focused profile photograph of a diverse group of students collaborating around a laptop in a bright, modern university lounge. The lighting is natural and airy, with a cool blue and white aesthetic consistent with a professional academic environment. The composition is clean and minimalist." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEoSFpuEbJ6r-uuPv_niffYqXa67q5MoZdXKpAzUgD_ooUaXPIXUYnUko5oKC72PNBFWS5z897q_Z9yB36lzKeXP4avEt5cokIVp-N4xFkqh9mUWrt5rFiJJj_DfdrM3EGmblTgesENsZAgIJq3Pybh1r_2-PLGzTjQ_L6BO73DLbHrLymTrpZODwts9sp47Cf6DvGbB2IGE1bSnLxxK7-k4tiyub2fZGZ0X2DVvjrLZ3vOgbA7CsHygqUGlKMIRZGGjFV1NppMp63"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Robotics Society</p>
+<p class="text-[11px] text-on-surface-variant uppercase">New Club Approval</p>
+</div>
+</div>
+<div class="flex gap-xs">
+<button class="p-2 text-primary hover:bg-primary-fixed rounded-full active:scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container rounded-full active:scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="cancel">cancel</span>
+</button>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="report">report</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">"Post-Exam Gala"</p>
+<p class="text-[11px] text-on-surface-variant uppercase">Reported Content</p>
+</div>
+</div>
+<div class="flex gap-xs">
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant rounded-full active:scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<button class="w-full py-md text-primary font-label-sm text-label-sm hover:bg-surface-container-high transition-colors">
+                VIEW ALL TASKS
+            </button>
+</section>
+<!-- System Analytics Visual -->
+<section class="glass-card rounded-xl p-lg space-y-md">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-h3 text-h3 text-primary">Engagement Trends</h3>
+<p class="text-on-surface-variant font-label-sm text-label-sm">Daily active sessions over 30 days</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span>
+</div>
+<!-- Mock Chart Area -->
+<div class="h-32 w-full flex items-end gap-1.5 px-2">
+<div class="bg-primary-container flex-1 rounded-t-sm" style="height: 40%"></div>
+<div class="bg-primary flex-1 rounded-t-sm" style="height: 65%"></div>
+<div class="bg-primary-container flex-1 rounded-t-sm" style="height: 50%"></div>
+<div class="bg-primary flex-1 rounded-t-sm" style="height: 85%"></div>
+<div class="bg-primary-container flex-1 rounded-t-sm" style="height: 70%"></div>
+<div class="bg-primary flex-1 rounded-t-sm" style="height: 95%"></div>
+<div class="bg-secondary flex-1 rounded-t-sm" style="height: 60%"></div>
+<div class="bg-primary flex-1 rounded-t-sm" style="height: 80%"></div>
+<div class="bg-primary-container flex-1 rounded-t-sm" style="height: 45%"></div>
+<div class="bg-primary flex-1 rounded-t-sm" style="height: 100%"></div>
+</div>
+<div class="flex justify-between text-[10px] text-outline font-bold uppercase">
+<span>Week 01</span>
+<span>Week 02</span>
+<span>Week 03</span>
+<span>Now</span>
+</div>
+</section>
+<!-- User Controls -->
+<div class="grid grid-cols-2 gap-md">
+<button class="flex flex-col items-center justify-center p-lg glass-card rounded-xl gap-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl" data-icon="person_add">person_add</span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase font-bold">New User</span>
+</button>
+<button class="flex flex-col items-center justify-center p-lg glass-card rounded-xl gap-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl" data-icon="file_download">file_download</span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase font-bold">Reports</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-md pt-xs bg-surface-container-lowest border-t border-outline-variant shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="font-label-sm text-label-sm mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm mt-1">Clubs</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<!-- Admin Floating Action Button (FAB) -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+<script>
+        // Micro-interaction for table rows
+        document.querySelectorAll('.moderation-row').forEach(row => {
+            row.addEventListener('click', () => {
+                row.classList.add('bg-surface-container-high');
+                setTimeout(() => row.classList.remove('bg-surface-container-high'), 300);
+            });
+        });
+    </script>
+</body></html>

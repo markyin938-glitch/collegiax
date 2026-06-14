@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Participant Management | CollegiaX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config from Source of Truth -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#091d2e",
+                    "secondary-fixed": "#c9e6ff",
+                    "on-secondary-fixed": "#001e2f",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#9accfa",
+                    "background": "#f7fafd",
+                    "tertiary-fixed": "#d1e4fb",
+                    "on-secondary-container": "#2e6080",
+                    "tertiary-container": "#64768a",
+                    "on-primary-fixed-variant": "#0a4a72",
+                    "inverse-surface": "#2d3133",
+                    "primary-fixed": "#cde5ff",
+                    "outline-variant": "#c1c7cf",
+                    "surface-container-high": "#e5e8eb",
+                    "secondary-container": "#aadaff",
+                    "tertiary-fixed-dim": "#b5c8df",
+                    "tertiary": "#4c5e71",
+                    "on-surface": "#181c1e",
+                    "surface-tint": "#2d628b",
+                    "outline": "#72787f",
+                    "secondary-fixed-dim": "#9cccf1",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#181c1e",
+                    "primary-container": "#4679a3",
+                    "surface-container-low": "#f1f4f7",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e0e3e6",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#fdfcff",
+                    "primary-fixed-dim": "#9accfa",
+                    "on-primary-container": "#fdfcff",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f7fafd",
+                    "primary": "#2a6089",
+                    "surface-variant": "#e0e3e6",
+                    "on-primary-fixed": "#001d32",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#326383",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#134b6a",
+                    "inverse-on-surface": "#eef1f4",
+                    "on-tertiary-fixed-variant": "#36485b",
+                    "surface-container": "#ebeef1",
+                    "on-surface-variant": "#41474e",
+                    "surface-dim": "#d7dadd",
+                    "surface": "#f7fafd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin": "32px",
+                    "lg": "24px",
+                    "xxl": "48px",
+                    "sm": "12px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "xs": "8px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "h3": ["Syne"],
+                    "label-sm": ["DM Sans"],
+                    "label-md": ["DM Sans"],
+                    "h1-mobile": ["Syne"],
+                    "body-lg": ["DM Sans"],
+                    "body-md": ["DM Sans"],
+                    "h2": ["Syne"],
+                    "h1": ["Syne"]
+            },
+            "fontSize": {
+                    "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Premium Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c7cf;
+            border-radius: 10px;
+        }
+
+        /* Tactical 1px Inset for Buttons */
+        .btn-tactile {
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+        
+        .active-nav-indicator {
+            position: absolute;
+            left: 0;
+            width: 4px;
+            height: 24px;
+            background-color: #326383;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-surface">
+<!-- TopAppBar Execution -->
+<header class="flex justify-between items-center px-lg py-md w-full sticky top-0 z-50 bg-background dark:bg-on-tertiary-fixed border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="search">search</span>
+<h1 class="font-h3 text-h3-mobile font-bold text-primary dark:text-primary-fixed">CollegiaX</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-xs px-md py-xs rounded-lg hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-150 font-label-md text-label-md text-primary">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+                AI
+            </button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Admin" class="w-full h-full object-cover" data-alt="A close-up portrait of a professional academic leader with a confident and friendly expression. The lighting is soft and natural, reflecting a bright, modern university setting with a clean, high-key background. The overall aesthetic is minimalist and scholarly, using a palette of cool blues and crisp whites to emphasize a focus on leadership and education." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrwlHfYDVrAa6XomP4cpqsxQ_Iskhf0Q1efCnH0Ia9_hI3aS6mmPC8_62eWhcPOe1ExDYLsg1uFyFeJmASdWV8JRt80s-FoXYNPhHOVK7eHdRj_l8wVYYI1psAeLH2kiyQPEWPVO-nwuhPQcX2fL8JFsMEsoBbrkgfdoHWcX5AAsrqoP4mmFqMi2_3XKPtNc3-F0_dH0blwerggF6nEX8v7SNiarV0Iludo3-IyX3t1zxEfgY-RHgKk9mqxeZ_o1D1Dh0ihA8n2-8M"/>
+</div>
+</div>
+</header>
+<div class="flex max-w-[1400px] mx-auto min-h-screen">
+<!-- Sidebar - Desktoop Only -->
+<aside class="hidden md:flex flex-col w-[280px] bg-surface-container-low border-r border-outline-variant p-lg sticky top-[72px] h-[calc(100vh-72px)]">
+<nav class="space-y-xs">
+<div class="relative flex items-center px-md py-sm rounded-lg hover:bg-surface-container-high transition-colors cursor-pointer text-on-surface-variant">
+<span class="material-symbols-outlined mr-md">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="relative flex items-center px-md py-sm rounded-lg bg-surface-container-highest text-on-surface font-bold cursor-pointer">
+<div class="active-nav-indicator"></div>
+<span class="material-symbols-outlined mr-md text-secondary">groups</span>
+<span class="font-label-md text-label-md">Clubs &amp; Members</span>
+</div>
+<div class="relative flex items-center px-md py-sm rounded-lg hover:bg-surface-container-high transition-colors cursor-pointer text-on-surface-variant">
+<span class="material-symbols-outlined mr-md">event</span>
+<span class="font-label-md text-label-md">Event Roster</span>
+</div>
+<div class="relative flex items-center px-md py-sm rounded-lg hover:bg-surface-container-high transition-colors cursor-pointer text-on-surface-variant">
+<span class="material-symbols-outlined mr-md">mail</span>
+<span class="font-label-md text-label-md">Communications</span>
+</div>
+<div class="relative flex items-center px-md py-sm rounded-lg hover:bg-surface-container-high transition-colors cursor-pointer text-on-surface-variant">
+<span class="material-symbols-outlined mr-md">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</div>
+</nav>
+<div class="mt-auto pt-lg border-t border-outline-variant">
+<div class="p-md bg-secondary-container/30 rounded-xl">
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-xs">Active Club</p>
+<p class="font-label-md text-label-md text-on-surface font-bold">Research Ethics Soc.</p>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-md md:p-lg lg:p-xl space-y-lg">
+<!-- Header & Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<h2 class="font-h2 text-h2 text-on-surface">Participant Management</h2>
+<p class="font-body-md text-on-surface-variant">Managing 124 students for 'Spring Symposium 2024'</p>
+</div>
+<div class="flex flex-wrap items-center gap-sm">
+<button class="btn-tactile flex items-center gap-xs px-md py-sm bg-surface-container-highest text-on-surface-variant rounded-lg border border-outline-variant hover:bg-outline-variant/20 transition-all font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">ios_share</span>
+                        Export Excel
+                    </button>
+<button class="btn-tactile flex items-center gap-xs px-md py-sm bg-primary text-on-primary rounded-lg shadow-sm hover:bg-primary-container transition-all font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">qr_code_2</span>
+                        Generate QR
+                    </button>
+</div>
+</div>
+<!-- Dashboard Stats / Bento Grid Mini -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Total Members</p>
+<p class="font-h3 text-h3 text-primary">1,248</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Present Today</p>
+<p class="font-h3 text-h3 text-secondary">86%</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">New Requests</p>
+<p class="font-h3 text-h3 text-error">12</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Verified</p>
+<p class="font-h3 text-h3 text-tertiary">942</p>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<!-- Table Filters -->
+<div class="p-md border-b border-outline-variant flex flex-col sm:flex-row justify-between gap-md bg-surface-container-low/50">
+<div class="flex flex-1 items-center bg-surface-container-lowest border border-outline-variant rounded-lg px-md py-xs max-w-md focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-outline mr-sm text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-label-md font-label-md text-on-surface" placeholder="Search by name or department..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<button class="px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg font-label-md text-label-md flex items-center gap-xs hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                            Filter
+                        </button>
+<button class="px-md py-sm bg-secondary text-on-secondary rounded-lg font-label-md text-label-md flex items-center gap-xs hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">send</span>
+                            Notify All
+                        </button>
+</div>
+</div>
+<!-- Structured Table (Responsive Desktop) -->
+<div class="overflow-x-auto hidden md:block">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<tr>
+<th class="px-lg py-md border-b border-outline-variant"><input class="rounded border-outline text-primary focus:ring-primary" type="checkbox"/></th>
+<th class="px-lg py-md border-b border-outline-variant">Student Name</th>
+<th class="px-lg py-md border-b border-outline-variant">Department</th>
+<th class="px-lg py-md border-b border-outline-variant">Year</th>
+<th class="px-lg py-md border-b border-outline-variant">Attendance</th>
+<th class="px-lg py-md border-b border-outline-variant">Status</th>
+<th class="px-lg py-md border-b border-outline-variant text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md"><input class="rounded border-outline text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center font-bold text-on-tertiary-fixed">JS</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Julian Sterling</p>
+<p class="text-[12px] text-outline">julian.s@university.edu</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Molecular Biology</td>
+<td class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Senior (Yr 4)</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-2 bg-surface-container-high rounded-full max-w-[100px] overflow-hidden">
+<div class="h-full bg-primary" style="width: 92%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">92%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 bg-secondary-container text-on-secondary-container rounded-full text-[12px] font-bold">Active</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md"><input class="rounded border-outline text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-on-primary-fixed">EM</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Elena Martinez</p>
+<p class="text-[12px] text-outline">e.martinez@university.edu</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Quantum Physics</td>
+<td class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Junior (Yr 3)</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-2 bg-surface-container-high rounded-full max-w-[100px] overflow-hidden">
+<div class="h-full bg-secondary" style="width: 78%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">78%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-[12px] font-bold">Probation</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md"><input class="rounded border-outline text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-on-secondary-fixed">AK</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Arjun Kapoor</p>
+<p class="text-[12px] text-outline">arjun.k@university.edu</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Liberal Arts</td>
+<td class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Freshman (Yr 1)</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-2 bg-surface-container-high rounded-full max-w-[100px] overflow-hidden">
+<div class="h-full bg-error" style="width: 45%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">45%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 bg-error-container text-on-error-container rounded-full text-[12px] font-bold">Inactive</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Mobile Card-based Table Optimization -->
+<div class="block md:hidden divide-y divide-outline-variant">
+<div class="p-md space-y-md">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center font-bold text-on-tertiary-fixed">JS</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Julian Sterling</p>
+<p class="text-[12px] text-outline">Senior • Bio-Molecular</p>
+</div>
+</div>
+<span class="px-sm py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-bold">Active</span>
+</div>
+<div class="flex justify-between items-center text-[13px]">
+<span class="text-outline">Attendance</span>
+<span class="font-bold text-primary">92%</span>
+</div>
+<div class="flex gap-sm">
+<button class="flex-1 py-xs border border-outline-variant rounded-lg text-label-sm font-label-sm">Edit</button>
+<button class="flex-1 py-xs border border-outline-variant rounded-lg text-label-sm font-label-sm">Profile</button>
+</div>
+</div>
+<div class="p-md space-y-md">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-on-primary-fixed">EM</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Elena Martinez</p>
+<p class="text-[12px] text-outline">Junior • Physics</p>
+</div>
+</div>
+<span class="px-sm py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-[10px] font-bold">Probation</span>
+</div>
+<div class="flex justify-between items-center text-[13px]">
+<span class="text-outline">Attendance</span>
+<span class="font-bold text-primary">78%</span>
+</div>
+<div class="flex gap-sm">
+<button class="flex-1 py-xs border border-outline-variant rounded-lg text-label-sm font-label-sm">Edit</button>
+<button class="flex-1 py-xs border border-outline-variant rounded-lg text-label-sm font-label-sm">Profile</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="p-md flex items-center justify-between border-t border-outline-variant bg-surface-container-low/30">
+<p class="text-label-sm font-label-sm text-outline hidden sm:block">Showing 1-10 of 124 students</p>
+<div class="flex items-center gap-xs">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-outline-variant hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-primary text-on-primary font-bold shadow-sm">1</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-outline-variant hover:bg-surface-container-high transition-colors">2</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-outline-variant hover:bg-surface-container-high transition-colors">3</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-outline-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Contextual Notification Modal Trigger Placeholder -->
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-lg flex flex-col md:flex-row items-center gap-lg">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[32px]">campaign</span>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h4 class="font-h3 text-on-surface mb-xs">Broadcast Message</h4>
+<p class="font-body-md text-on-surface-variant">Send a push notification or email to all active participants about upcoming deadline.</p>
+</div>
+<button class="px-xl py-md bg-primary text-on-primary rounded-xl font-label-md text-label-md btn-tactile hover:shadow-lg transition-all active:scale-95">
+                    Compose Message
+                </button>
+</div>
+</main>
+</div>
+<!-- BottomNavBar Execution (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-md pt-xs bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-lg dark:shadow-none md:hidden rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="font-label-sm text-label-sm">Events</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-full px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Clubs</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-sm text-label-sm">Calendar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<!-- FAB Suppression Logic: Hidden on Management/Details screen as per mandate -->
+<script>
+        // Simple Micro-interaction for table rows
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('click', (e) => {
+                if (e.target.type !== 'checkbox') {
+                    // Logic for row selection or navigation
+                    console.log('Row clicked');
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CollegiaX - Event Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            background: rgba(247, 250, 253, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .timeline-border {
+            border-left: 2px solid #c1c7cf;
+        }
+        .custom-shadow {
+            box-shadow: 0px 12px 24px rgba(44, 62, 80, 0.08);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#091d2e",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#9accfa",
+                        "background": "#f7fafd",
+                        "tertiary-fixed": "#d1e4fb",
+                        "on-secondary-container": "#2e6080",
+                        "tertiary-container": "#64768a",
+                        "on-primary-fixed-variant": "#0a4a72",
+                        "inverse-surface": "#2d3133",
+                        "primary-fixed": "#cde5ff",
+                        "outline-variant": "#c1c7cf",
+                        "surface-container-high": "#e5e8eb",
+                        "secondary-container": "#aadaff",
+                        "tertiary-fixed-dim": "#b5c8df",
+                        "tertiary": "#4c5e71",
+                        "on-surface": "#181c1e",
+                        "surface-tint": "#2d628b",
+                        "outline": "#72787f",
+                        "secondary-fixed-dim": "#9cccf1",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#181c1e",
+                        "primary-container": "#4679a3",
+                        "surface-container-low": "#f1f4f7",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e0e3e6",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#fdfcff",
+                        "primary-fixed-dim": "#9accfa",
+                        "on-primary-container": "#fdfcff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f7fafd",
+                        "primary": "#2a6089",
+                        "surface-variant": "#e0e3e6",
+                        "on-primary-fixed": "#001d32",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#326383",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#134b6a",
+                        "inverse-on-surface": "#eef1f4",
+                        "on-tertiary-fixed-variant": "#36485b",
+                        "surface-container": "#ebeef1",
+                        "on-surface-variant": "#41474e",
+                        "surface-dim": "#d7dadd",
+                        "surface": "#f7fafd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin": "32px",
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "sm": "12px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "xs": "8px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Syne"],
+                        "label-sm": ["DM Sans"],
+                        "label-md": ["DM Sans"],
+                        "h1-mobile": ["Syne"],
+                        "body-lg": ["DM Sans"],
+                        "body-md": ["DM Sans"],
+                        "h2": ["Syne"],
+                        "h1": ["Syne"]
+                    },
+                    "fontSize": {
+                        "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-white">
+<!-- Top AppBar -->
+<header class="flex justify-between items-center px-lg py-md w-full sticky top-0 z-50 bg-background dark:bg-on-tertiary-fixed border-b border-outline-variant dark:border-outline glass-header">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-150">arrow_back</button>
+<span class="font-h3 text-h3-mobile font-bold text-primary dark:text-primary-fixed">CollegiaX</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors rounded-full">search</button>
+<button class="font-label-md text-primary font-bold px-4 py-2 bg-secondary-container rounded-lg">AI</button>
+</div>
+</header>
+<main class="pb-32">
+<!-- Hero Banner -->
+<section class="relative w-full h-[300px] md:h-[450px] overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A sophisticated high-angle view of a modern university lecture hall filled with students during a prestigious academic symposium. The scene features clean architectural lines, warm natural light pouring through large windows, and a professional atmosphere. The color palette is dominated by soft whites, denim blues, and cool grays, reflecting a calm and intelligent environment suitable for deep learning and research collaboration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuCUMRSX8U5MO4i7TTCGH7FAT8XAph49bbV8QB4FMkB0cjWFhn7_CCPFcVyFwESivZruseCrI7LeD2NWJ8EwwurydtIEpyuL037yrmvpMbeMREGfho6WPoYWIrPEJa_eQi0gxwJfwUC8wQtYPgD8tjFb-Eo5aV0DIhjlPnuPgo2WfKlOn65M9iR7RjOyWEbEqnp225dG2zbtQGCux-NTai7Tbn_F0gNvcO4XI8NwIggZMItPzaK1uQWdPv8x62CVBwtVZXMYizZxaX"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-lg w-full">
+<div class="flex flex-wrap gap-xs mb-xs">
+<span class="bg-primary-container text-on-primary-container font-label-sm text-xs px-2 py-1 rounded">Symposium</span>
+<span class="bg-surface-container-highest text-on-surface-variant font-label-sm text-xs px-2 py-1 rounded">240 Attending</span>
+</div>
+<h1 class="font-h1-mobile text-h1-mobile text-on-surface drop-shadow-sm">Global Ethics in AI & Humanities</h1>
+</div>
+</section>
+<!-- Content Canvas -->
+<div class="px-lg mt-md space-y-xl">
+<!-- Description -->
+<section>
+<div class="flex items-center justify-between mb-sm">
+<h2 class="font-h3 text-h3 text-primary">Description</h2>
+<div class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md">4.9 (124)</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md leading-relaxed">
+                    This interdisciplinary symposium explores the philosophical implications of artificial intelligence within the modern academic landscape. We will delve into algorithmic transparency, digital ethics, and the future of human-centric research in an automated world.
+                </p>
+</section>
+<!-- Organizer Info -->
+<section class="bg-surface-container-low border border-outline-variant p-md rounded-xl flex items-center gap-md">
+<img class="w-14 h-14 rounded-full object-cover border-2 border-primary" data-alt="A professional portrait of a senior academic researcher with a friendly expression. He is wearing professional attire, and the background is a blurred library setting with books, evoking a sense of calm intelligence and deep expertise in an academic SaaS environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4Roh-kSYyTMgNiWKx9KbZmrZqGVN2MU1vFvZa_rBMrOVgeseudmA_Z4CwPt_LluzNyvGnILM0X3mHXQgc55Hk80g4YSLjpwHGqQrqvFaNKZ3HIrTsEaWXC98ay35aIwhgi_zuYS38Ag2vyo91LGo2aiFuKTFYT2ZaRIw9yZ6x8Beas6Bm2WKPlQCudDlckjotWfZgsfjLVojgLDZ8pQKROe9MhtWxzRrES6i_ym5LpRmWC45yGmchAr28VimmTNlXHoGXBjuAIYyu"/>
+<div>
+<h4 class="font-label-md text-on-surface font-bold">Organized by Dr. Elias Vance</h4>
+<p class="text-xs text-on-surface-variant">Dean of Interdisciplinary Studies</p>
+<button class="text-primary font-label-sm mt-1 flex items-center gap-base">
+                        View Profile <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</section>
+<!-- Schedule Timeline -->
+<section>
+<h2 class="font-h3 text-h3 text-primary mb-md">Schedule</h2>
+<div class="space-y-0 ml-2">
+<!-- Item 1 -->
+<div class="relative pl-8 pb-8 timeline-border">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-background"></div>
+<span class="font-label-sm text-primary block">09:00 AM — 10:30 AM</span>
+<h4 class="font-label-md font-bold text-on-surface">Opening Keynote: The Silicon Soul</h4>
+<p class="text-sm text-on-surface-variant">Main Hall & Stream</p>
+</div>
+<!-- Item 2 -->
+<div class="relative pl-8 pb-8 timeline-border">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-outline-variant border-4 border-background"></div>
+<span class="font-label-sm text-on-surface-variant block">11:00 AM — 12:30 PM</span>
+<h4 class="font-label-md font-bold text-on-surface">Panel Discussion: Digital Privacy</h4>
+<p class="text-sm text-on-surface-variant">Seminar Room B</p>
+</div>
+<!-- Item 3 -->
+<div class="relative pl-8 timeline-border border-transparent">
+<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-outline-variant border-4 border-background"></div>
+<span class="font-label-sm text-on-surface-variant block">01:00 PM — 02:00 PM</span>
+<h4 class="font-label-md font-bold text-on-surface">Networking Lunch</h4>
+<p class="text-sm text-on-surface-variant">The Commons Area</p>
+</div>
+</div>
+</section>
+<!-- Speakers (Bento Style) -->
+<section>
+<h2 class="font-h3 text-h3 text-primary mb-md">Featured Speakers</h2>
+<div class="grid grid-cols-2 gap-sm">
+<div class="bg-white border border-outline-variant p-sm rounded-xl flex flex-col items-center text-center">
+<img class="w-20 h-20 rounded-full mb-xs object-cover" data-alt="Portrait of a female professional lecturer in a modern office setting. She has a confident smile and is wearing a slate-colored blazer. The background is minimalist and bright, consistent with a clean, scholarly, and professional academic atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAxpxt4TYlJq0LQVqMLYK1j6OK5h5ecvTn0VvjQT1jIR8F5kpQs8yq46ZjFtr7DP1RkzsTxahEwzczULSo2GWuLgY2QwR6XOmzHQvYB9bQfDNbVsTJhrZsCuav5BuGlaAM6yuEF-zEqZ7RmgOcOR0QlAV5-i2pTJKQgPJzClDdU3VF6gUGqQ0-YM0o8il_0ugrC6JCvKHbD-iy5_6VNAZNOQsu-z2YnlqqmLdYqHoyoMTvKcYhEOPiOO4ufWGJLuqN_AxSYPZQjktN"/>
+<h5 class="font-label-md font-bold text-on-surface">Dr. Sarah Chen</h5>
+<p class="text-xs text-on-surface-variant">AI Ethics Lead</p>
+</div>
+<div class="bg-white border border-outline-variant p-sm rounded-xl flex flex-col items-center text-center">
+<img class="w-20 h-20 rounded-full mb-xs object-cover" data-alt="Portrait of a male academic professional with glasses and a friendly, focused look. He is in a brightly lit studio with a soft blue-toned background. The lighting is high-key and professional, suitable for a premium educational platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBe1tFGSyNAkPudSh4QKGaRJRDiS4GG2peZBjB5z7Yqn8ktR89Bmzkj9OSlSwh5Q9z9EMiXQRQV2ImvU8mvgZ-3ug6uUomIDkeLxpuRQG2egLiTM9oMrMeJfGJaBe4j_dDKwobZQmzaiwDeiMfvh-lnjCwifR7KAG3qy_yrH3449LXmoHl0oZD_zMLoeM8rTe2atTRoDM-kUkih2y0lEUh0iqpKTpNrxAGgNBhg3w6POflgDaB8uw6L7uHXLzY0izfFw-0MA5_32Iz"/>
+<h5 class="font-label-md font-bold text-on-surface">Prof. Marcus Thorne</h5>
+<p class="text-xs text-on-surface-variant">Cognitive Science</p>
+</div>
+</div>
+</section>
+<!-- Participants -->
+<section>
+<h2 class="font-h3 text-h3 text-primary mb-sm">Participants</h2>
+<div class="flex items-center gap-xs">
+<div class="flex -space-x-3 overflow-hidden">
+<img class="inline-block h-10 w-10 rounded-full ring-2 ring-background object-cover" data-alt="Close-up portrait of a young student smiling, bright outdoor campus lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxJR0ryRXnvLNJe5XIeL-gSS9GiImCN8ABTh3sOzF12_KJUu-5t4WyizkR-2PykWJBeDjg9Ppe2wFOsI80sEZIguUcQenewpz2LMvLCNnWNr8KJkoz9FRf3FWg9CETHsSqNn7o0nB-WDmoCP-7vh3cXS7jQxFKCqCm6hyhLAGLVZciVK5AECNBHbpdk2nTDR4NqRjA0aNVyele2976OouNdoG6UNWFyGXZJTeAzdXpURvh8pVmqEDT3DzUzD_9-KJygxsKlSFameCH"/>
+<img class="inline-block h-10 w-10 rounded-full ring-2 ring-background object-cover" data-alt="Close-up portrait of a male student with a calm expression, soft indoor studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdh7E5QCsxPdfWww-yZ9fGPDfyU1b0iGSo1mQua807KIfTh-8wCi4B8452mUt0qSjSjE_ofNu-aQEzBdGPRG5zmk1j8DGCAtqoGETDZG6-sELc2KY_AoiVvDsNos71fq33gjIGTVppxbYQnzTuggs2bTq2--Q6Bav5yRXl--9NUPJeNa9op94wnMc2e7Q3rWZUE4NDeupH9VgfRg7TMEHTrXB1OuqJJX555LjEgeX4FEGyHQOnegK4d9BjUmiFIWi7u3qoaYFu1X6R"/>
+<img class="inline-block h-10 w-10 rounded-full ring-2 ring-background object-cover" data-alt="Close-up portrait of a professional female researcher, bright neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNggDPEDTyR3Lkax95zy_ofRfspI4R8VkjizA8RM2ccII8ubDPJ5ZWb65Ywu6Qs_sgq3cT8n9AUg6dqlahMUqV_TfbdMWq68SDWdWcQSkv0NP8zOMY1SCn7g0PxhibIxsLGSfztphJSqtfCzu4nJjg8wIx_AMDv3q27_DO2nRXiDGQIAkOS6A1chZgMpOx5yZku2Lt-zrDCrctOLJ2yIk6O72hcw_O1TVUMzgGKdsCwoE0rk2NPR5Je1gm_tL-cgLiK2mCCWPtgRtZ"/>
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-secondary-container ring-2 ring-background">
+<span class="text-xs font-bold text-on-secondary-container">+236</span>
+</div>
+</div>
+<span class="text-sm text-on-surface-variant ml-2">including 12 colleagues</span>
+</div>
+</section>
+<!-- Comments & Interaction -->
+<section class="space-y-md">
+<div class="flex items-center justify-between">
+<h2 class="font-h3 text-h3 text-primary">Discussion</h2>
+<div class="flex gap-md">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-md">1.2k</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-md">45</span>
+</button>
+</div>
+</div>
+<!-- Sample Comment -->
+<div class="space-y-sm">
+<div class="flex gap-md">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A small avatar of a female student with a smart, thoughtful expression, clean lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvVEcvSz6mJjUKOSvttkqNLtYUt6fc68lVIzPT8WTDhMfA8_9N2pcTjrbfG5n9Zt51dgOJP9P1av49nNVv0Wdd8zSqleKOr1bhUsnKOu8-KNYFdpG9ZEcyaDDHfLhhROlalHRhpn4Qefb5wSAocw7ONlW4rL7Hgm08D5y994DMuuD92B2BC85RpTV1t9bt3P2U6mX0eq7RSW4ocFGKfnliM1M6KNA5cm8dR71zLd06AO3x0Yv1LgwsmmVgvcb-YjUjIP4cHJsCQxNf"/>
+<div class="flex-1">
+<div class="bg-surface-container p-md rounded-xl rounded-tl-none">
+<h6 class="font-label-sm text-on-surface font-bold">Lydia Moore</h6>
+<p class="text-sm text-on-surface-variant mt-1">Is there a digital syllabus available before the morning keynote?</p>
+</div>
+<div class="flex gap-md mt-xs ml-base text-xs font-label-sm text-on-surface-variant">
+<span>2h ago</span>
+<button class="font-bold hover:text-primary">Reply</button>
+<button class="font-bold hover:text-primary">Like</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating CTA -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-sm">
+<button class="w-full bg-primary text-white font-label-md py-4 rounded-full custom-shadow flex items-center justify-center gap-md hover:brightness-110 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">assignment_ind</span>
+            Register Now
+        </button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-md pt-xs bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-lg dark:shadow-none md:hidden rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-full px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event</span>
+<span class="font-label-sm text-label-sm">Events</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Clubs</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-sm text-label-sm">Calendar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-all active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<script>
+        // Simple ripple-like effect on button interaction
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', function() {
+                this.classList.add('opacity-80');
+            });
+            button.addEventListener('mouseup', function() {
+                this.classList.remove('opacity-80');
+            });
+            button.addEventListener('mouseleave', function() {
+                this.classList.remove('opacity-80');
+            });
+        });
+
+        // Intersection Observer for fade-in effect of sections
+        const observerOptions = {
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-4');
+            observer.observe(section);
+        });
+    </script>
+</body></html>

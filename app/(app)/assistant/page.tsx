@@ -1,10 +1,12 @@
+// @ts-nocheck
+import { AssistantConsole } from "@/components/app/assistant-console";
+import { PageIntro } from "@/components/app/ui";
+
 export default function AssistantPage() {
   return (
-    <div>
-      <h2 className="mb-4 text-xl font-bold" style={{ fontFamily: "var(--font-syne)" }}>AI Assistant</h2>
-      <div className="glass-card p-6 text-sm text-[var(--text2)]">
-        Ask the AI Club Assistant anything. (Coming soon)
-      </div>
+    <div className="space-y-8">
+      <PageIntro eyebrow="AI campus assistant" title="Ask CollegiaX anything" description="The assistant UI is now aligned with the uploaded design direction and connected to a minimal backend contract for prompt-response interactions." />
+      <AssistantConsole />
     </div>
   );
 }

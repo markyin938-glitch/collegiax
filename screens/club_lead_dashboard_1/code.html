@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Club Lead Dashboard | CollegiaX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#091d2e",
+                    "secondary-fixed": "#c9e6ff",
+                    "on-secondary-fixed": "#001e2f",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#9accfa",
+                    "background": "#f7fafd",
+                    "tertiary-fixed": "#d1e4fb",
+                    "on-secondary-container": "#2e6080",
+                    "tertiary-container": "#64768a",
+                    "on-primary-fixed-variant": "#0a4a72",
+                    "inverse-surface": "#2d3133",
+                    "primary-fixed": "#cde5ff",
+                    "outline-variant": "#c1c7cf",
+                    "surface-container-high": "#e5e8eb",
+                    "secondary-container": "#aadaff",
+                    "tertiary-fixed-dim": "#b5c8df",
+                    "tertiary": "#4c5e71",
+                    "on-surface": "#181c1e",
+                    "surface-tint": "#2d628b",
+                    "outline": "#72787f",
+                    "secondary-fixed-dim": "#9cccf1",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#181c1e",
+                    "primary-container": "#4679a3",
+                    "surface-container-low": "#f1f4f7",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e0e3e6",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#fdfcff",
+                    "primary-fixed-dim": "#9accfa",
+                    "on-primary-container": "#fdfcff",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f7fafd",
+                    "primary": "#2a6089",
+                    "surface-variant": "#e0e3e6",
+                    "on-primary-fixed": "#001d32",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#326383",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#134b6a",
+                    "inverse-on-surface": "#eef1f4",
+                    "on-tertiary-fixed-variant": "#36485b",
+                    "surface-container": "#ebeef1",
+                    "on-surface-variant": "#41474e",
+                    "surface-dim": "#d7dadd",
+                    "surface": "#f7fafd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin": "32px",
+                    "lg": "24px",
+                    "xxl": "48px",
+                    "sm": "12px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "xs": "8px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "h3": ["Syne"],
+                    "label-sm": ["DM Sans"],
+                    "label-md": ["DM Sans"],
+                    "h1-mobile": ["Syne"],
+                    "body-lg": ["DM Sans"],
+                    "body-md": ["DM Sans"],
+                    "h2": ["Syne"],
+                    "h1": ["Syne"]
+            },
+            "fontSize": {
+                    "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7fafd; /* Ice Background */
+            font-family: 'DM Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: #ffffff;
+            border: 1px solid #c1c7cf; /* Steel Mist Border */
+        }
+        .active-pill {
+            border-left: 4px solid #2a6089; /* Denim indicator */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-lg py-md w-full sticky top-0 z-50 bg-background dark:bg-on-tertiary-fixed border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="search">search</span>
+</div>
+<h1 class="font-h3 text-h3-mobile font-bold text-primary dark:text-primary-fixed">CollegiaX</h1>
+<button class="bg-primary text-on-primary px-4 py-1 rounded-full font-label-md hover:bg-primary-container transition-colors active:scale-95 duration-150">
+            AI
+        </button>
+</header>
+<main class="pb-24 px-md pt-lg max-w-md mx-auto">
+<!-- Dashboard Header -->
+<div class="mb-lg">
+<h2 class="font-h2 text-h2 text-on-surface mb-base">Leadership Workspace</h2>
+<p class="font-body-md text-on-surface-variant">Robotics &amp; AI Society Management</p>
+</div>
+<!-- Bento Grid Stats -->
+<section class="grid grid-cols-2 gap-md mb-lg">
+<div class="glass-card p-md rounded-xl flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary mb-xs" data-icon="groups">groups</span>
+<div>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-wider">Members</p>
+<p class="font-h3 text-h3">1,284</p>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary mb-xs" data-icon="bolt">bolt</span>
+<div>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-wider">Engagement</p>
+<p class="font-h3 text-h3">82%</p>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col justify-between">
+<span class="material-symbols-outlined text-tertiary mb-xs" data-icon="event_available">event_available</span>
+<div>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-wider">Events</p>
+<p class="font-h3 text-h3">12</p>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col justify-between">
+<span class="material-symbols-outlined text-on-secondary-container mb-xs" data-icon="app_registration">app_registration</span>
+<div>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-wider">Registrations</p>
+<p class="font-h3 text-h3">456</p>
+</div>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="mb-lg">
+<h3 class="font-label-md text-on-surface mb-md">Quick Actions</h3>
+<div class="space-y-sm">
+<button class="w-full flex items-center justify-between p-md bg-primary text-on-primary rounded-xl shadow-sm hover:opacity-90 active:scale-95 transition-all">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-label-md">Create New Event</span>
+</div>
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-md glass-card text-on-surface rounded-xl hover:bg-surface-container transition-all">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary" data-icon="campaign">campaign</span>
+<span class="font-label-md">Send Announcement</span>
+</div>
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-md glass-card text-on-surface rounded-xl hover:bg-surface-container transition-all">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-tertiary" data-icon="person_search">person_search</span>
+<span class="font-label-md">Manage Members</span>
+</div>
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Engagement Chart Mockup -->
+<section class="mb-lg">
+<div class="glass-card p-lg rounded-xl">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-label-md text-on-surface">Weekly Activity</h3>
+<span class="text-xs text-on-surface-variant">Last 7 Days</span>
+</div>
+<div class="h-32 w-full flex items-end justify-between gap-xs px-base">
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 40%"></div>
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 60%"></div>
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 85%"></div>
+<div class="w-full bg-primary rounded-t-sm" style="height: 50%"></div>
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 70%"></div>
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 95%"></div>
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 45%"></div>
+</div>
+<div class="flex justify-between mt-xs text-[10px] text-outline font-label-sm">
+<span>MON</span>
+<span>TUE</span>
+<span>WED</span>
+<span>THU</span>
+<span>FRI</span>
+<span>SAT</span>
+<span>SUN</span>
+</div>
+</div>
+</section>
+<!-- Recent Registrations -->
+<section class="mb-xl">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-label-md text-on-surface">Recent Joiners</h3>
+<button class="text-primary font-label-sm">View All</button>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center gap-md p-sm glass-card rounded-xl">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center font-bold text-on-tertiary-fixed">
+                        JD
+                    </div>
+<div class="flex-1">
+<p class="font-label-md text-on-surface">Jane Doe</p>
+<p class="text-xs text-on-surface-variant">Joined 2h ago • CS Major</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span>
+</div>
+<div class="flex items-center gap-md p-sm glass-card rounded-xl">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-on-secondary-fixed">
+                        MK
+                    </div>
+<div class="flex-1">
+<p class="font-label-md text-on-surface">Marcus Kane</p>
+<p class="text-xs text-on-surface-variant">Joined 5h ago • Physics Major</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-md pt-xs bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-lg dark:shadow-none rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="font-label-sm text-label-sm">Events</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-full px-4 py-1 active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Clubs</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-sm text-label-sm">Calendar</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</nav>
+<!-- Micro-interactions Script -->
+<script>
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body></html>

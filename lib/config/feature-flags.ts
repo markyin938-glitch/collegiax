@@ -9,10 +9,3 @@ export function isEmailVerificationEnabled() {
     true
   );
 }
-
-export function isDemoLoginEnabled() {
-  return readBooleanFlag(
-    process.env.DEMO_LOGIN_ENABLED ?? process.env.NEXT_PUBLIC_DEMO_LOGIN_ENABLED,
-    process.env.NODE_ENV !== "production"
-  );
-}

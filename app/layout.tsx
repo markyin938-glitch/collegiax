@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClickSpark } from "@/components/app/click-spark";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,7 +24,10 @@ export default function RootLayout({
         } as React.CSSProperties
       }
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <ClickSpark />
+        {children}
+      </body>
     </html>
   );
 }

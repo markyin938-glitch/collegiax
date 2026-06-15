@@ -290,3 +290,85 @@
     background-position: 200% 0;
   }
 }
+
+.click-spark {
+  position: absolute;
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%);
+}
+
+.click-spark__core {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(154, 204, 250, 0.95) 35%, rgba(42, 96, 137, 0.7) 72%, rgba(42, 96, 137, 0) 100%);
+  transform: translate(-50%, -50%);
+  animation: click-spark-core 520ms ease-out forwards;
+}
+
+.click-spark__ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(42, 96, 137, 0.4);
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  animation: click-spark-ring 620ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.click-spark__particle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 4px;
+  height: 24px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), var(--primary) 28%, rgba(154, 204, 250, 0));
+  box-shadow: 0 0 14px rgba(42, 96, 137, 0.18);
+  transform-origin: center center;
+  transform: rotate(var(--spark-rotate)) translateY(-4px);
+  animation: click-spark-burst 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--spark-delay);
+}
+
+@keyframes click-spark-core {
+  0% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
+@keyframes click-spark-ring {
+  0% {
+    opacity: 0.75;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.2);
+  }
+}
+
+@keyframes click-spark-burst {
+  0% {
+    opacity: 0.95;
+    transform: rotate(var(--spark-rotate)) translateY(-4px) scaleY(0.4);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--spark-rotate)) translateY(-42px) scaleY(1.15);
+  }
+}

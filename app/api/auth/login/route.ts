@@ -18,7 +18,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: parsed.error.issues[0].message }, { status: 400 });
     }
 
-    const { email, password } = parsed.data;
+    const { email, password, role } = parsed.data;
 
     const userRows = await db.select().from(users).where(eq(users.email, email)).limit(1);
     if (userRows.length === 0) {
@@ -29,6 +29,10 @@ export async function POST(req: Request) {
     const valid = await comparePassword(password, user.passwordHash);
     if (!valid) {
       return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
+    }
+
+    if (user.role !== role) {
+      return NextResponse.json({ error: `This account is registered as ${user.role}, not ${role}.` }, { status: 403 });
     }
 
     const accessToken = await signAccessToken({

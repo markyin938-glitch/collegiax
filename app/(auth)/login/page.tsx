@@ -56,7 +56,7 @@ function LoginForm() {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, role: activeRole }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -110,6 +110,13 @@ function LoginForm() {
 
       <form onSubmit={onSubmit} className="space-y-5 px-6 py-6 sm:px-8 sm:py-8">
         {error ? <div className="rounded-2xl bg-[var(--error-container)] px-4 py-3 text-sm text-[var(--error)]">{error}</div> : null}
+        <div className="rounded-2xl border border-[var(--outline-variant)] bg-[var(--surface-container-low)] px-4 py-3 text-xs leading-6 text-[var(--on-surface-variant)]">
+          {activeRole === "admin"
+            ? "Admin account: admin@collegiax.app / admin123"
+            : activeRole === "clublead"
+              ? "Club lead account: lead@collegiax.app / lead1234"
+              : "Student account: student@collegiax.app / student123"}
+        </div>
         <label className="block space-y-2 text-sm font-medium text-[var(--on-surface-variant)]">
           Email
           <input

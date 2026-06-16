@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { getRoleRedirectPath, isAppRole } from "./lib/auth/permissions";
 import { verifyAccessToken } from "./lib/auth/jwt";
 
 const PUBLIC_PATHS = ["/login", "/signup", "/verify-email", "/forgot-password", "/reset-password"];
@@ -49,9 +50,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  // Admin-only pages
-  if (pathname.startsWith("/admin") && payload.role !== "admin") {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+  // Role-scoped app pages
+  if (!isAppRole(payload.role)) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  const redirectPath = getRoleRedirectPath(payload.role, pathname);
+  if (redirectPath) {
+    return NextResponse.redirect(new URL(redirectPath, request.url));
   }
 
   return NextResponse.next();

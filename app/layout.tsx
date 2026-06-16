@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BackgroundFx } from "@/components/app/background-fx";
 import { ClickSpark } from "@/components/app/click-spark";
 import "./globals.css";
 
@@ -25,8 +26,9 @@ export default function RootLayout({
       }
     >
       <body className="min-h-full">
+        <BackgroundFx />
         <ClickSpark />
-        {children}
+        <div className="relative z-10">{children}</div>
       </body>
     </html>
   );

@@ -28,7 +28,7 @@ export async function seedDatabase() {
       {
         id: clubLeadId,
         email: "lead@collegiax.app",
-        passwordHash: await hashPassword("lead123"),
+        passwordHash: await hashPassword("lead1234"),
         name: "Club Lead",
         role: "clublead",
         avatarInitials: "CL",

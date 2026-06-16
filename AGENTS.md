@@ -72,7 +72,7 @@ npx tsx scripts/seed.ts
 
 Default seed accounts:
 - `admin@collegiax.app` / `admin123` (Admin)
-- `lead@collegiax.app` / `lead123` (Club Lead)
+- `lead@collegiax.app` / `lead1234` (Club Lead)
 - `student@collegiax.app` / `student123` (Student)
 
 ## Auth

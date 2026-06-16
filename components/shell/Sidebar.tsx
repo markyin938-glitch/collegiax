@@ -74,7 +74,7 @@ const roleDisplayLabels: Record<string, Record<string, string>> = {
 export function Sidebar({ user }: { user: { id: string; name: string; role: string; avatarInitials: string | null } }) {
   const pathname = usePathname();
   const { sidebarOpen, setSidebarOpen, sidebarCollapsed, toggleSidebarCollapsed } = useUIStore();
-  const navs = ROLE_NAVS[user.role] || ROLE_NAVS.student;
+  const navs = ROLE_NAVS[user.role as keyof typeof ROLE_NAVS] || ROLE_NAVS.student;
   const isAdmin = user.role === "admin";
   const isClubLead = user.role === "clublead";
   const roleLabels = roleDisplayLabels[user.role] || {};
